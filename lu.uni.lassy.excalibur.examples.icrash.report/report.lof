@@ -1,0 +1,55 @@
+\select@language {english}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Introduction}{15}{chapter.1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{General Description}{17}{chapter.2}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-suDeployAndRun}}{22}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-suGlobalCrisisHandling}}{26}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugAdministrateTheSystem}}{26}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugManageCrisis}}{27}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugMonitor}}{27}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-ugSecurelyUseSystem}}{28}{figure.2.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-oeSetCrisisHandler}}{29}{figure.2.7}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-oeSollicitateCrisisHandling}}{30}{figure.2.8}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Sequence Diagram: uci-suDeployAndRun-uciSimpleAndComplete-Part01}}{32}{figure.2.9}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Sequence Diagram: uci-suDeployAndRun-uciSimpleAndComplete-Part02}}{33}{figure.2.10}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Sequence Diagram: uci-uciugSecurelyUseSystem}}{34}{figure.2.11}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Environment Model}{35}{chapter.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Environment Model - Local View 01 - environment model local view - Part }}{36}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Environment Model - Local View 02 - environment model local view - Part }}{37}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Environment Model - Local View 03 - administrator actor environment mode}}{37}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Environment Model - Local View 04 - coordinator actor environment model }}{38}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Environment Model - Local View 05 - authenticated actor environment mode}}{38}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Environment Model - Global View 01 - em-gv-01 environment model global v}}{39}{figure.3.6}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Concept Model}{43}{chapter.4}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Concept Model - PrimaryTypes-Classes local view 01 - Local view of all the primary types }}{44}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Concept Model - PrimaryTypes-Classes local view 02 - local view of the ctState primary ty}}{45}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Concept Model - PrimaryTypes-Classes local view 03 - local view of the ctAlert primary ty}}{45}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Concept Model - PrimaryTypes-Classes local view 04 - local view of the ctCrisis primary t}}{45}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Concept Model - PrimaryTypes-Classes global view 01 - Primary types class types global vi}}{46}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Concept Model - PrimaryTypes-Datatypes local view 06 - }}{46}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Concept Model - PrimaryTypes-Datatypes global view 01 - global view of primary types dataty}}{47}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Concept Model - SecondaryTypes-Datatypes local view 01 - Local view of the secondary types da}}{48}{figure.4.8}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Operation Model}{55}{chapter.5}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Operation Scope: operation-scope-outactActivator-oeSollicitateCrisisHandling}}{60}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Operation Scope: operation-scope-outactComCompany-oeAlertv2}}{80}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Operation Scope: operation-scope-outactComCompany-oeAlertv3}}{81}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Operation Scope: operation-scope-outactMsrCreator-oeCreateSystemAndEnvironment}}{103}{figure.5.4}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Test Model(s)}{141}{chapter.6}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Sequence Diagram: tci-testcase01-instance01-Part01}}{164}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Sequence Diagram: tci-testcase01-instance01-Part02}}{166}{figure.6.2}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Additional Constraints}{167}{chapter.7}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Undocumented Messir Specification Elements}{173}{appendix.A}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Specification project lu.uni.lassy.excalibur.examples.icrash}{175}{appendix.B}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces lu.uni.lassy.excalibur.examples.icrash Use Case Diagram: uc-oeCloseCrisis}}{176}{figure.B.1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Messir Specification Files Listing}{177}{appendix.C}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Listing of the Prolog Files Referenced in the Operation Model Specification}{237}{appendix.D}

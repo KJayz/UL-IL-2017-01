@@ -1,0 +1,263 @@
+\BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{1.1 Overview}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{1.2 Purpose and recipients of the document}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{1.3 Application Domain}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{1.4 Definitions, acronyms and abbreviations}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{1.5 Document structure}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{2 General Description}{}% 7
+\BOOKMARK [1][-]{section.2.1}{2.1 Domain Stakeholders}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Communication Company}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Humans}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Coordinators}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Administrator}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.5}{2.1.5 Creator}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.6}{2.1.6 Activator}{section.2.1}% 14
+\BOOKMARK [1][-]{section.2.2}{2.2 System's Actors}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.3}{2.3 Use Cases Model}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Use Cases}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Use Case Instance\(s\)}{section.2.3}% 18
+\BOOKMARK [0][-]{chapter.3}{3 Environment Model}{}% 19
+\BOOKMARK [1][-]{section.3.1}{3.1 Local view 01}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.2}{3.2 Local view 02}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.3}{3.3 Local view 03}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.4}{3.4 Local view 04}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.5}{3.5 Local view 05}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.6}{3.6 Global view 01}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.7}{3.7 Actors and Interfaces Descriptions}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.7.1}{3.7.1 \040=` actActivator Actor}{section.3.7}% 27
+\BOOKMARK [2][-]{subsection.3.7.2}{3.7.2 \040=` actAdministrator Actor}{section.3.7}% 28
+\BOOKMARK [2][-]{subsection.3.7.3}{3.7.3 \040=` actAuthenticated Actor}{section.3.7}% 29
+\BOOKMARK [2][-]{subsection.3.7.4}{3.7.4 \040=` actComCompany Actor}{section.3.7}% 30
+\BOOKMARK [2][-]{subsection.3.7.5}{3.7.5 \040=` actCoordinator Actor}{section.3.7}% 31
+\BOOKMARK [2][-]{subsection.3.7.6}{3.7.6 \040=` actMsrCreator Actor}{section.3.7}% 32
+\BOOKMARK [0][-]{chapter.4}{4 Concept Model}{}% 33
+\BOOKMARK [1][-]{section.4.1}{4.1 PrimaryTypes-Classes}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Local view 01}{section.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Local view 02}{section.4.1}% 36
+\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Local view 03}{section.4.1}% 37
+\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Local view 04}{section.4.1}% 38
+\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 Global view 01}{section.4.1}% 39
+\BOOKMARK [1][-]{section.4.2}{4.2 PrimaryTypes-Datatypes}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Local view 06}{section.4.2}% 41
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Global view 01}{section.4.2}% 42
+\BOOKMARK [1][-]{section.4.3}{4.3 SecondaryTypes-Datatypes}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Local view 01}{section.4.3}% 44
+\BOOKMARK [1][-]{section.4.4}{4.4 Concept Model Types Descriptions}{chapter.4}% 45
+\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Primary types - Class types descriptions}{section.4.4}% 46
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Primary types - Datatypes types descriptions}{section.4.4}% 47
+\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Primary types - Association types descriptions}{section.4.4}% 48
+\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Primary types - Aggregation types descriptions}{section.4.4}% 49
+\BOOKMARK [2][-]{subsection.4.4.5}{4.4.5 Secondary types - Class types descriptions}{section.4.4}% 50
+\BOOKMARK [2][-]{subsection.4.4.6}{4.4.6 Secondary types - Datatypes types descriptions}{section.4.4}% 51
+\BOOKMARK [2][-]{subsection.4.4.7}{4.4.7 Secondary types - Association types descriptions}{section.4.4}% 52
+\BOOKMARK [2][-]{subsection.4.4.8}{4.4.8 Secondary types - Aggregation types descriptions}{section.4.4}% 53
+\BOOKMARK [2][-]{subsection.4.4.9}{4.4.9 Secondary types - Composition types descriptions}{section.4.4}% 54
+\BOOKMARK [0][-]{chapter.5}{5 Operation Model}{}% 55
+\BOOKMARK [1][-]{section.5.1}{5.1 Environment - Out Interface Operation Scheme for actActivator}{chapter.5}% 56
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Operation Model for oeSetClock}{section.5.1}% 57
+\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Operation Model for oeSollicitateCrisisHandling}{section.5.1}% 58
+\BOOKMARK [1][-]{section.5.2}{5.2 Environment - Out Interface Operation Scheme for actAdministrator}{chapter.5}% 59
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Operation Model for oeAddCoordinator}{section.5.2}% 60
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Operation Model for oeDeleteCoordinator}{section.5.2}% 61
+\BOOKMARK [1][-]{section.5.3}{5.3 Environment - Out Interface Operation Scheme for actAuthenticated}{chapter.5}% 62
+\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Operation Model for oeLogin}{section.5.3}% 63
+\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Operation Model for oeLogout}{section.5.3}% 64
+\BOOKMARK [1][-]{section.5.4}{5.4 Environment - Out Interface Operation Scheme for actComCompany}{chapter.5}% 65
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Operation Model for oeAlert}{section.5.4}% 66
+\BOOKMARK [1][-]{section.5.5}{5.5 Environment - Out Interface Operation Scheme for actCoordinator}{chapter.5}% 67
+\BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Operation Model for oeCloseCrisis}{section.5.5}% 68
+\BOOKMARK [2][-]{subsection.5.5.2}{5.5.2 Operation Model for oeGetAlertsSet}{section.5.5}% 69
+\BOOKMARK [2][-]{subsection.5.5.3}{5.5.3 Operation Model for oeGetCrisisSet}{section.5.5}% 70
+\BOOKMARK [2][-]{subsection.5.5.4}{5.5.4 Operation Model for oeInvalidateAlert}{section.5.5}% 71
+\BOOKMARK [2][-]{subsection.5.5.5}{5.5.5 Operation Model for oeReportOnCrisis}{section.5.5}% 72
+\BOOKMARK [2][-]{subsection.5.5.6}{5.5.6 Operation Model for oeSetCrisisHandler}{section.5.5}% 73
+\BOOKMARK [2][-]{subsection.5.5.7}{5.5.7 Operation Model for oeSetCrisisStatus}{section.5.5}% 74
+\BOOKMARK [2][-]{subsection.5.5.8}{5.5.8 Operation Model for oeSetCrisisType}{section.5.5}% 75
+\BOOKMARK [2][-]{subsection.5.5.9}{5.5.9 Operation Model for oeValidateAlert}{section.5.5}% 76
+\BOOKMARK [1][-]{section.5.6}{5.6 Environment - Out Interface Operation Scheme for actMsrCreator}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.6.1}{5.6.1 Operation Model for oeCreateSystemAndEnvironment}{section.5.6}% 78
+\BOOKMARK [1][-]{section.5.7}{5.7 Environment - Actor Operation Scheme for actMsrCreator}{chapter.5}% 79
+\BOOKMARK [2][-]{subsection.5.7.1}{5.7.1 Operation Model for init}{section.5.7}% 80
+\BOOKMARK [1][-]{section.5.8}{5.8 Primary Types - Operation Schemes for Class ctAdministrator}{chapter.5}% 81
+\BOOKMARK [2][-]{subsection.5.8.1}{5.8.1 Operation Model for init}{section.5.8}% 82
+\BOOKMARK [1][-]{section.5.9}{5.9 Primary Types - Operation Schemes for Class ctAlert}{chapter.5}% 83
+\BOOKMARK [2][-]{subsection.5.9.1}{5.9.1 Operation Model for init}{section.5.9}% 84
+\BOOKMARK [2][-]{subsection.5.9.2}{5.9.2 Operation Model for isSentToCoordinator}{section.5.9}% 85
+\BOOKMARK [1][-]{section.5.10}{5.10 Primary Types - Operation Schemes for Class ctAuthenticated}{chapter.5}% 86
+\BOOKMARK [2][-]{subsection.5.10.1}{5.10.1 Operation Model for init}{section.5.10}% 87
+\BOOKMARK [1][-]{section.5.11}{5.11 Primary Types - Operation Schemes for Class ctCoordinator}{chapter.5}% 88
+\BOOKMARK [2][-]{subsection.5.11.1}{5.11.1 Operation Model for init}{section.5.11}% 89
+\BOOKMARK [1][-]{section.5.12}{5.12 Primary Types - Operation Schemes for Class ctCrisis}{chapter.5}% 90
+\BOOKMARK [2][-]{subsection.5.12.1}{5.12.1 Operation Model for init}{section.5.12}% 91
+\BOOKMARK [2][-]{subsection.5.12.2}{5.12.2 Operation Model for handlingDelayPassed}{section.5.12}% 92
+\BOOKMARK [2][-]{subsection.5.12.3}{5.12.3 Operation Model for maxHandlingDelayPassed}{section.5.12}% 93
+\BOOKMARK [2][-]{subsection.5.12.4}{5.12.4 Operation Model for isSentToCoordinator}{section.5.12}% 94
+\BOOKMARK [2][-]{subsection.5.12.5}{5.12.5 Operation Model for isAllocatedIfPossible}{section.5.12}% 95
+\BOOKMARK [1][-]{section.5.13}{5.13 Primary Types - Operation Schemes for Class ctHuman}{chapter.5}% 96
+\BOOKMARK [2][-]{subsection.5.13.1}{5.13.1 Operation Model for init}{section.5.13}% 97
+\BOOKMARK [2][-]{subsection.5.13.2}{5.13.2 Operation Model for isAcknowledged}{section.5.13}% 98
+\BOOKMARK [1][-]{section.5.14}{5.14 Primary Types - Operation Schemes for Class ctState}{chapter.5}% 99
+\BOOKMARK [2][-]{subsection.5.14.1}{5.14.1 Operation Model for init}{section.5.14}% 100
+\BOOKMARK [1][-]{section.5.15}{5.15 Primary Types - Operation Schemes for Datatype dtAlertID}{chapter.5}% 101
+\BOOKMARK [2][-]{subsection.5.15.1}{5.15.1 Operation Model for is}{section.5.15}% 102
+\BOOKMARK [1][-]{section.5.16}{5.16 Primary Types - Operation Schemes for Datatype dtComment}{chapter.5}% 103
+\BOOKMARK [2][-]{subsection.5.16.1}{5.16.1 Operation Model for is}{section.5.16}% 104
+\BOOKMARK [1][-]{section.5.17}{5.17 Primary Types - Operation Schemes for Datatype dtCoordinatorID}{chapter.5}% 105
+\BOOKMARK [2][-]{subsection.5.17.1}{5.17.1 Operation Model for is}{section.5.17}% 106
+\BOOKMARK [1][-]{section.5.18}{5.18 Primary Types - Operation Schemes for Datatype dtCrisisID}{chapter.5}% 107
+\BOOKMARK [2][-]{subsection.5.18.1}{5.18.1 Operation Model for is}{section.5.18}% 108
+\BOOKMARK [1][-]{section.5.19}{5.19 Primary Types - Operation Schemes for Datatype dtGPSLocation}{chapter.5}% 109
+\BOOKMARK [2][-]{subsection.5.19.1}{5.19.1 Operation Model for is}{section.5.19}% 110
+\BOOKMARK [2][-]{subsection.5.19.2}{5.19.2 Operation Model for isNearTo}{section.5.19}% 111
+\BOOKMARK [1][-]{section.5.20}{5.20 Primary Types - Operation Schemes for Datatype dtLatitude}{chapter.5}% 112
+\BOOKMARK [2][-]{subsection.5.20.1}{5.20.1 Operation Model for is}{section.5.20}% 113
+\BOOKMARK [1][-]{section.5.21}{5.21 Primary Types - Operation Schemes for Datatype dtLogin}{chapter.5}% 114
+\BOOKMARK [2][-]{subsection.5.21.1}{5.21.1 Operation Model for is}{section.5.21}% 115
+\BOOKMARK [1][-]{section.5.22}{5.22 Primary Types - Operation Schemes for Datatype dtLongitude}{chapter.5}% 116
+\BOOKMARK [2][-]{subsection.5.22.1}{5.22.1 Operation Model for is}{section.5.22}% 117
+\BOOKMARK [1][-]{section.5.23}{5.23 Primary Types - Operation Schemes for Datatype dtPassword}{chapter.5}% 118
+\BOOKMARK [2][-]{subsection.5.23.1}{5.23.1 Operation Model for is}{section.5.23}% 119
+\BOOKMARK [1][-]{section.5.24}{5.24 Primary Types - Operation Schemes for Datatype dtPhoneNumber}{chapter.5}% 120
+\BOOKMARK [2][-]{subsection.5.24.1}{5.24.1 Operation Model for is}{section.5.24}% 121
+\BOOKMARK [1][-]{section.5.25}{5.25 Primary Types - Operation Schemes for Enumeration etAlertStatus}{chapter.5}% 122
+\BOOKMARK [2][-]{subsection.5.25.1}{5.25.1 Operation Model for is}{section.5.25}% 123
+\BOOKMARK [1][-]{section.5.26}{5.26 Primary Types - Operation Schemes for Enumeration etCrisisStatus}{chapter.5}% 124
+\BOOKMARK [2][-]{subsection.5.26.1}{5.26.1 Operation Model for is}{section.5.26}% 125
+\BOOKMARK [1][-]{section.5.27}{5.27 Primary Types - Operation Schemes for Enumeration etCrisisType}{chapter.5}% 126
+\BOOKMARK [2][-]{subsection.5.27.1}{5.27.1 Operation Model for is}{section.5.27}% 127
+\BOOKMARK [1][-]{section.5.28}{5.28 Primary Types - Operation Schemes for Enumeration etHumanKind}{chapter.5}% 128
+\BOOKMARK [2][-]{subsection.5.28.1}{5.28.1 Operation Model for is}{section.5.28}% 129
+\BOOKMARK [1][-]{section.5.29}{5.29 Secondary Types - Operation Schemes for Classes}{chapter.5}% 130
+\BOOKMARK [1][-]{section.5.30}{5.30 Secondary Types - Operation Schemes for Datatype dtSMS}{chapter.5}% 131
+\BOOKMARK [2][-]{subsection.5.30.1}{5.30.1 Operation Model for is}{section.5.30}% 132
+\BOOKMARK [1][-]{section.5.31}{5.31 Secondary Types - Operation Schemes for Enumerations}{chapter.5}% 133
+\BOOKMARK [0][-]{chapter.6}{6 Test Model\(s\)}{}% 134
+\BOOKMARK [1][-]{section.6.1}{6.1 Test Model for testcase01}{chapter.6}% 135
+\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 Test Steps Specification}{section.6.1}% 136
+\BOOKMARK [2][-]{subsection.6.1.2}{6.1.2 Test Case Instance - instance01}{section.6.1}% 137
+\BOOKMARK [2][-]{subsection.6.1.3}{6.1.3 Test Case Instance - instance01Part01}{section.6.1}% 138
+\BOOKMARK [2][-]{subsection.6.1.4}{6.1.4 Test Case Instance - instance01Part02}{section.6.1}% 139
+\BOOKMARK [0][-]{chapter.7}{7 Additional Constraints}{}% 140
+\BOOKMARK [1][-]{section.7.1}{7.1 Quality Constraints}{chapter.7}% 141
+\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Functional suitability}{section.7.1}% 142
+\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Performance efficiency}{section.7.1}% 143
+\BOOKMARK [2][-]{subsection.7.1.3}{7.1.3 Compatibility}{section.7.1}% 144
+\BOOKMARK [2][-]{subsection.7.1.4}{7.1.4 Usability}{section.7.1}% 145
+\BOOKMARK [2][-]{subsection.7.1.5}{7.1.5 Reliability}{section.7.1}% 146
+\BOOKMARK [2][-]{subsection.7.1.6}{7.1.6 Security}{section.7.1}% 147
+\BOOKMARK [2][-]{subsection.7.1.7}{7.1.7 Maintainability}{section.7.1}% 148
+\BOOKMARK [2][-]{subsection.7.1.8}{7.1.8 Portability}{section.7.1}% 149
+\BOOKMARK [1][-]{section.7.2}{7.2 Other Constraints}{chapter.7}% 150
+\BOOKMARK [0][-]{appendix.A}{A Undocumented Messir Specification Elements}{}% 151
+\BOOKMARK [1][-]{section.A.1}{A.1 Undocumented Use Case Instances}{appendix.A}% 152
+\BOOKMARK [2][-]{subsection.A.1.1}{A.1.1 Undocumented Use Case Instances - User-Goal Level}{section.A.1}% 153
+\BOOKMARK [2][-]{subsection.A.1.2}{A.1.2 Undocumented Use Case Instance Views}{section.A.1}% 154
+\BOOKMARK [1][-]{section.A.2}{A.2 Undocumented Concept Model Views}{appendix.A}% 155
+\BOOKMARK [1][-]{section.A.3}{A.3 Undocumented Test-Case Instance Specifications}{appendix.A}% 156
+\BOOKMARK [0][-]{appendix.B}{B Specification project lu.uni.lassy.excalibur.examples.icrash}{}% 157
+\BOOKMARK [1][-]{section.B.1}{B.1 Use Cases Model}{appendix.B}% 158
+\BOOKMARK [2][-]{subsection.B.1.1}{B.1.1 Use Cases}{section.B.1}% 159
+\BOOKMARK [0][-]{appendix.C}{C Messir Specification Files Listing}{}% 160
+\BOOKMARK [1][-]{section.C.1}{C.1 File /src-gen/messir-spec/.views.msr}{appendix.C}% 161
+\BOOKMARK [1][-]{section.C.2}{C.2 File /src-gen/messir-spec/operations/concepts/secondarytypes-datatypes/dtSMS.msr}{appendix.C}% 162
+\BOOKMARK [1][-]{section.C.3}{C.3 File /src-gen/messir-spec/operations.../environment-actActivator-oeSetClock.msr}{appendix.C}% 163
+\BOOKMARK [1][-]{section.C.4}{C.4 File /src-gen.../environment-actActivator-oeSollicitateCrisisHandling.msr}{appendix.C}% 164
+\BOOKMARK [1][-]{section.C.5}{C.5 File /src-gen/messir-spec.../environment-actAdministrator-oeAddCoordinator.msr}{appendix.C}% 165
+\BOOKMARK [1][-]{section.C.6}{C.6 File /src-gen.../environment-actAdministrator-oeDeleteCoordinator.msr}{appendix.C}% 166
+\BOOKMARK [1][-]{section.C.7}{C.7 File /src-gen/messir-spec/operations.../environment-actAuthenticated.msr}{appendix.C}% 167
+\BOOKMARK [1][-]{section.C.8}{C.8 File /src-gen/messir-spec/operations/environment/environment-actComCompany.msr}{appendix.C}% 168
+\BOOKMARK [1][-]{section.C.9}{C.9 File /src-gen/messir-spec.../environment-actCoordinator-oeCloseCrisis.msr}{appendix.C}% 169
+\BOOKMARK [1][-]{section.C.10}{C.10 File /src-gen/messir-spec.../environment-actCoordinator-oeGetAlertsSet.msr}{appendix.C}% 170
+\BOOKMARK [1][-]{section.C.11}{C.11 File /src-gen/messir-spec.../environment-actCoordinator-oeGetCrisisSet.msr}{appendix.C}% 171
+\BOOKMARK [1][-]{section.C.12}{C.12 File /src-gen/messir-spec.../environment-actCoordinator-oeInvalidateAlert.msr}{appendix.C}% 172
+\BOOKMARK [1][-]{section.C.13}{C.13 File /src-gen/messir-spec.../environment-actCoordinator-oeReportOnCrisis.msr}{appendix.C}% 173
+\BOOKMARK [1][-]{section.C.14}{C.14 File /src-gen/messir-spec.../environment-actCoordinator-oeSetCrisisHandler.msr}{appendix.C}% 174
+\BOOKMARK [1][-]{section.C.15}{C.15 File /src-gen/messir-spec.../environment-actCoordinator-oeSetCrisisStatus.msr}{appendix.C}% 175
+\BOOKMARK [1][-]{section.C.16}{C.16 File /src-gen/messir-spec.../environment-actCoordinator-oeSetCrisisType.msr}{appendix.C}% 176
+\BOOKMARK [1][-]{section.C.17}{C.17 File /src-gen/messir-spec.../environment-actCoordinator-oeValidateAlert.msr}{appendix.C}% 177
+\BOOKMARK [1][-]{section.C.18}{C.18 File /src-gen/messir-spec/operations.../environment-actMsrCreator-init.msr}{appendix.C}% 178
+\BOOKMARK [1][-]{section.C.19}{C.19 File /src-gen.../environment-actMsrCreator-oeCreateSystemAndEnvironment.msr}{appendix.C}% 179
+\BOOKMARK [1][-]{section.C.20}{C.20 File /src-gen/messir-spec/environment/environment.msr}{appendix.C}% 180
+\BOOKMARK [1][-]{section.C.21}{C.21 File /src-gen/messir-spec/concepts/primarytypes-associations.msr}{appendix.C}% 181
+\BOOKMARK [1][-]{section.C.22}{C.22 File /src-gen/messir-spec.../primarytypes-classes-ctAdministrator.msr}{appendix.C}% 182
+\BOOKMARK [1][-]{section.C.23}{C.23 File /src-gen/messir-spec/operations.../primarytypes-classes-ctAlert.msr}{appendix.C}% 183
+\BOOKMARK [1][-]{section.C.24}{C.24 File /src-gen/messir-spec.../primarytypes-classes-ctAuthenticated.msr}{appendix.C}% 184
+\BOOKMARK [1][-]{section.C.25}{C.25 File /src-gen/messir-spec/operations.../primarytypes-classes-ctCoordinator.msr}{appendix.C}% 185
+\BOOKMARK [1][-]{section.C.26}{C.26 File /src-gen/messir-spec/operations.../primarytypes-classes-ctCrisis.msr}{appendix.C}% 186
+\BOOKMARK [1][-]{section.C.27}{C.27 File /src-gen/messir-spec/operations.../primarytypes-classes-ctHuman.msr}{appendix.C}% 187
+\BOOKMARK [1][-]{section.C.28}{C.28 File /src-gen/messir-spec/operations.../primarytypes-classes-ctState.msr}{appendix.C}% 188
+\BOOKMARK [1][-]{section.C.29}{C.29 File /src-gen/messir-spec/concepts/primarytypes-classes.msr}{appendix.C}% 189
+\BOOKMARK [1][-]{section.C.30}{C.30 File /src-gen/messir-spec/operations.../primarytypes-datatypes-dtAlertID.msr}{appendix.C}% 190
+\BOOKMARK [1][-]{section.C.31}{C.31 File /src-gen/messir-spec/operations.../primarytypes-datatypes-dtComment.msr}{appendix.C}% 191
+\BOOKMARK [1][-]{section.C.32}{C.32 File /src-gen/messir-spec.../primarytypes-datatypes-dtCoordinatorID.msr}{appendix.C}% 192
+\BOOKMARK [1][-]{section.C.33}{C.33 File /src-gen/messir-spec/operations.../primarytypes-datatypes-dtCrisisID.msr}{appendix.C}% 193
+\BOOKMARK [1][-]{section.C.34}{C.34 File /src-gen/messir-spec.../primarytypes-datatypes-dtGPSLocation.msr}{appendix.C}% 194
+\BOOKMARK [1][-]{section.C.35}{C.35 File /src-gen/messir-spec/operations.../primarytypes-datatypes-dtLogin.msr}{appendix.C}% 195
+\BOOKMARK [1][-]{section.C.36}{C.36 File /src-gen/messir-spec/operations.../primarytypes-datatypes-dtPassword.msr}{appendix.C}% 196
+\BOOKMARK [1][-]{section.C.37}{C.37 File /src-gen/messir-spec.../primarytypes-datatypes-dtPhoneNumber.msr}{appendix.C}% 197
+\BOOKMARK [1][-]{section.C.38}{C.38 File /src-gen/messir-spec.../primarytypes-datatypes-etAlertStatus.msr}{appendix.C}% 198
+\BOOKMARK [1][-]{section.C.39}{C.39 File /src-gen/messir-spec.../primarytypes-datatypes-etCrisisStatus.msr}{appendix.C}% 199
+\BOOKMARK [1][-]{section.C.40}{C.40 File /src-gen/messir-spec/operations.../primarytypes-datatypes-etCrisisType.msr}{appendix.C}% 200
+\BOOKMARK [1][-]{section.C.41}{C.41 File /src-gen/messir-spec/operations.../primarytypes-datatypes-etHumanKind.msr}{appendix.C}% 201
+\BOOKMARK [1][-]{section.C.42}{C.42 File /src-gen/messir-spec/concepts/primarytypes-datatypes.msr}{appendix.C}% 202
+\BOOKMARK [1][-]{section.C.43}{C.43 File /src-gen/messir-spec/concepts/secondarytypes-associations.msr}{appendix.C}% 203
+\BOOKMARK [1][-]{section.C.44}{C.44 File /src-gen/messir-spec/concepts/secondarytypes-classes.msr}{appendix.C}% 204
+\BOOKMARK [1][-]{section.C.45}{C.45 File /src-gen/messir-spec/concepts/secondarytypes-datatypes.msr}{appendix.C}% 205
+\BOOKMARK [1][-]{section.C.46}{C.46 File /src-gen/messir-spec/usecases/subfunctions-usecases.msr}{appendix.C}% 206
+\BOOKMARK [1][-]{section.C.47}{C.47 File /src-gen/messir-spec/test/tc-testcase01.msr}{appendix.C}% 207
+\BOOKMARK [1][-]{section.C.48}{C.48 File /src-gen/messir-spec/test/tci-testcase01-instance01.msr}{appendix.C}% 208
+\BOOKMARK [1][-]{section.C.49}{C.49 File /src-gen/messir-spec/usecases/usecase-suDeployAndRun.msr}{appendix.C}% 209
+\BOOKMARK [1][-]{section.C.50}{C.50 File /src-gen/messir-spec/usecases/usecase-suGlobalCrisisHandling.msr}{appendix.C}% 210
+\BOOKMARK [1][-]{section.C.51}{C.51 File /src-gen/messir-spec/usecases/usecase-ugAdministrateTheSystem.msr}{appendix.C}% 211
+\BOOKMARK [1][-]{section.C.52}{C.52 File /src-gen/messir-spec/usecases/usecase-ugManageCrisis.msr}{appendix.C}% 212
+\BOOKMARK [1][-]{section.C.53}{C.53 File /src-gen/messir-spec/usecases/usecase-ugMonitor.msr}{appendix.C}% 213
+\BOOKMARK [1][-]{section.C.54}{C.54 File /src-gen/messir-spec/usecases/usecase-ugSecurelyUseSystem.msr}{appendix.C}% 214
+\BOOKMARK [1][-]{section.C.55}{C.55 File /src-gen.../usecaseinstance-ugSecurelyUseSystem-uciugSecurelyUseSystem.msr}{appendix.C}% 215
+\BOOKMARK [0][-]{appendix.D}{D Listing of the Prolog Files Referenced in the Operation Model Specification}{}% 216
+\BOOKMARK [1][-]{section.D.1}{D.1 File /src-gen/prolog-ref-spec/Operations.../outactActivator-oeSetClock.pl}{appendix.D}% 217
+\BOOKMARK [1][-]{section.D.2}{D.2 File /src-gen/prolog-ref-spec.../outactActivator-oeSollicitateCrisisHandling.pl}{appendix.D}% 218
+\BOOKMARK [1][-]{section.D.3}{D.3 File /src-gen/prolog-ref-spec.../outactAdministrator-oeAddCoordinator.pl}{appendix.D}% 219
+\BOOKMARK [1][-]{section.D.4}{D.4 File /src-gen/prolog-ref-spec.../outactAdministrator-oeDeleteCoordinator.pl}{appendix.D}% 220
+\BOOKMARK [1][-]{section.D.5}{D.5 File /src-gen/prolog-ref-spec/Operations.../outactAuthenticated-oeLogin.pl}{appendix.D}% 221
+\BOOKMARK [1][-]{section.D.6}{D.6 File /src-gen/prolog-ref-spec/Operations.../outactAuthenticated-oeLogout.pl}{appendix.D}% 222
+\BOOKMARK [1][-]{section.D.7}{D.7 File /src-gen/prolog-ref-spec/Operations.../outactComCompany-oeAlert.pl}{appendix.D}% 223
+\BOOKMARK [1][-]{section.D.8}{D.8 File /src-gen/prolog-ref-spec/Operations.../outactCoordinator-oeCloseCrisis.pl}{appendix.D}% 224
+\BOOKMARK [1][-]{section.D.9}{D.9 File /src-gen/prolog-ref-spec/Operations.../outactCoordinator-oeGetAlertsSet.pl}{appendix.D}% 225
+\BOOKMARK [1][-]{section.D.10}{D.10 File /src-gen/prolog-ref-spec/Operations.../outactCoordinator-oeGetCrisisSet.pl}{appendix.D}% 226
+\BOOKMARK [1][-]{section.D.11}{D.11 File /src-gen/prolog-ref-spec.../outactCoordinator-oeInvalidateAlert.pl}{appendix.D}% 227
+\BOOKMARK [1][-]{section.D.12}{D.12 File /src-gen/prolog-ref-spec.../outactCoordinator-oeReportOnCrisis.pl}{appendix.D}% 228
+\BOOKMARK [1][-]{section.D.13}{D.13 File /src-gen/prolog-ref-spec.../outactCoordinator-oeSetCrisisHandler.pl}{appendix.D}% 229
+\BOOKMARK [1][-]{section.D.14}{D.14 File /src-gen/prolog-ref-spec.../outactCoordinator-oeSetCrisisStatus.pl}{appendix.D}% 230
+\BOOKMARK [1][-]{section.D.15}{D.15 File /src-gen/prolog-ref-spec.../outactCoordinator-oeSetCrisisType.pl}{appendix.D}% 231
+\BOOKMARK [1][-]{section.D.16}{D.16 File /src-gen/prolog-ref-spec.../outactCoordinator-oeValidateAlert.pl}{appendix.D}% 232
+\BOOKMARK [1][-]{section.D.17}{D.17 File /src-gen.../outactMsrCreator-oeCreateSystemAndEnvironment.pl}{appendix.D}% 233
+\BOOKMARK [1][-]{section.D.18}{D.18 File /src-gen/prolog-ref-spec.../PrimaryTypesClasses-ctAdministrator-init.pl}{appendix.D}% 234
+\BOOKMARK [1][-]{section.D.19}{D.19 File /src-gen/prolog-ref-spec/Operations.../PrimaryTypesClasses-ctAlert-init.pl}{appendix.D}% 235
+\BOOKMARK [1][-]{section.D.20}{D.20 File /src-gen.../PrimaryTypesClasses-ctAlert-isSentToCoordinator.pl}{appendix.D}% 236
+\BOOKMARK [1][-]{section.D.21}{D.21 File /src-gen/prolog-ref-spec.../PrimaryTypesClasses-ctAuthenticated-init.pl}{appendix.D}% 237
+\BOOKMARK [1][-]{section.D.22}{D.22 File /src-gen/prolog-ref-spec.../PrimaryTypesClasses-ctCoordinator-init.pl}{appendix.D}% 238
+\BOOKMARK [1][-]{section.D.23}{D.23 File /src-gen.../PrimaryTypesClasses-ctCrisis-handlingDelayPassed.pl}{appendix.D}% 239
+\BOOKMARK [1][-]{section.D.24}{D.24 File /src-gen/prolog-ref-spec.../PrimaryTypesClasses-ctCrisis-init.pl}{appendix.D}% 240
+\BOOKMARK [1][-]{section.D.25}{D.25 File /src-gen.../PrimaryTypesClasses-ctCrisis-isAllocatedIfPossible.pl}{appendix.D}% 241
+\BOOKMARK [1][-]{section.D.26}{D.26 File /src-gen.../PrimaryTypesClasses-ctCrisis-isSentToCoordinator.pl}{appendix.D}% 242
+\BOOKMARK [1][-]{section.D.27}{D.27 File /src-gen.../PrimaryTypesClasses-ctCrisis-maxHandlingDelayPassed.pl}{appendix.D}% 243
+\BOOKMARK [1][-]{section.D.28}{D.28 File /src-gen/prolog-ref-spec/Operations.../PrimaryTypesClasses-ctHuman-init.pl}{appendix.D}% 244
+\BOOKMARK [1][-]{section.D.29}{D.29 File /src-gen/prolog-ref-spec.../PrimaryTypesClasses-ctHuman-isAcknowledged.pl}{appendix.D}% 245
+\BOOKMARK [1][-]{section.D.30}{D.30 File /src-gen/prolog-ref-spec/Operations.../PrimaryTypesClasses-ctState-init.pl}{appendix.D}% 246
+\BOOKMARK [1][-]{section.D.31}{D.31 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtAlertID-is.pl}{appendix.D}% 247
+\BOOKMARK [1][-]{section.D.32}{D.32 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtComment-is.pl}{appendix.D}% 248
+\BOOKMARK [1][-]{section.D.33}{D.33 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtCoordinatorID-is.pl}{appendix.D}% 249
+\BOOKMARK [1][-]{section.D.34}{D.34 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtCrisisID-is.pl}{appendix.D}% 250
+\BOOKMARK [1][-]{section.D.35}{D.35 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtGPSLocation-is.pl}{appendix.D}% 251
+\BOOKMARK [1][-]{section.D.36}{D.36 File /src-gen.../PrimaryTypesDatatypes-dtGPSLocation-isNearTo.pl}{appendix.D}% 252
+\BOOKMARK [1][-]{section.D.37}{D.37 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtLatitude-is.pl}{appendix.D}% 253
+\BOOKMARK [1][-]{section.D.38}{D.38 File /src-gen/prolog-ref-spec/Operations.../PrimaryTypesDatatypes-dtLogin-is.pl}{appendix.D}% 254
+\BOOKMARK [1][-]{section.D.39}{D.39 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtLongitude-is.pl}{appendix.D}% 255
+\BOOKMARK [1][-]{section.D.40}{D.40 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtPassword-is.pl}{appendix.D}% 256
+\BOOKMARK [1][-]{section.D.41}{D.41 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-dtPhoneNumber-is.pl}{appendix.D}% 257
+\BOOKMARK [1][-]{section.D.42}{D.42 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-etAlertStatus-is.pl}{appendix.D}% 258
+\BOOKMARK [1][-]{section.D.43}{D.43 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-etCrisisStatus-is.pl}{appendix.D}% 259
+\BOOKMARK [1][-]{section.D.44}{D.44 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-etCrisisType-is.pl}{appendix.D}% 260
+\BOOKMARK [1][-]{section.D.45}{D.45 File /src-gen/prolog-ref-spec.../PrimaryTypesDatatypes-etHumanKind-is.pl}{appendix.D}% 261
+\BOOKMARK [1][-]{section.D.46}{D.46 File /src-gen/prolog-ref-spec/Operations.../SecondaryTypesDatatypes-dtSMS-is.pl}{appendix.D}% 262
+\BOOKMARK [0][-]{section*.2}{Glossary}{}% 263
