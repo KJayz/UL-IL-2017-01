@@ -1,0 +1,26 @@
+package icrash.concepts.primarytypes.datatypes.operations.datatypes.etExperience.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.etExperience.is():ptBoolean{
+	postF{
+		let TheResult: ptBoolean in
+		( if
+			(self = novice
+			or self = beginner
+			or self = experienced
+			or self = professional
+			or self = expert
+			)
+			then (TheResult = true)
+			else (TheResult = false)
+			endif
+			result = TheResult
+		)
+	}
+
+		}
+	}
+}

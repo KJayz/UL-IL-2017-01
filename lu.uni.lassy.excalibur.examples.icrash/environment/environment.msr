@@ -36,13 +36,18 @@ import lu.uni.lassy.messir.libraries.calendar
 											
 				operation oeDeleteCoordinator(
 											AdtCoordinatorID:dtCoordinatorID ):ptBoolean
+											
+				operation oeEvaluateCoordinator(
+											AdtCoordinatorID:dtCoordinatorID,
+											AdtExperience:etExperience ):ptBoolean
 			}
 			
 			input interface inactAdministrator{
 				
 				operation ieCoordinatorAdded():ptBoolean
 				operation ieCoordinatorDeleted():ptBoolean
-	 		}
+	 		operation ieSollicitateGrading():ptBoolean
+			}
 		}
 		
 		actor actCoordinator 
@@ -71,6 +76,10 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+			operation oeCoordinatorGrade(AdtCrisisID:dtCrisisID ,
+										 AdtGrade:dtInteger
+											):ptBoolean
+			operation oeSollicitateGrading(AdtCrisisID:dtCrisisID):ptBoolean
 			}
 			
 			input interface inactCoordinator{
@@ -92,6 +101,10 @@ import lu.uni.lassy.messir.libraries.calendar
 										AdtGPSLocation:dtGPSLocation , 
 										AdtComment:dtComment 
 										):ptBoolean
+										
+				operation oeGradeCrisis(
+										AdtCrisisID:dtCrisisID ,
+										AdtGrade:dtInteger ):ptBoolean
 			}
 			
 			input interface inactComCompany{

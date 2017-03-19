@@ -3,6 +3,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis
 //parameters
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis.AdtCrisisID
 "the identification information used to determine the crisis to close"
+@parameter icrash.operations.environment.actCoordinator.oeCloseCrisis.operationmodel.actCoordinator.outactCoordinator.oeCloseCrisis.AdtCrisisID
+" "
 @endParameters
 @description
 "sent to indicate that a crisis should be considered as closed."
@@ -28,6 +30,12 @@ icrash.environment.actCoordinator.outactCoordinator.oeCloseCrisis
 "all the alert instances associated to this crisis do not belong any more to the system's post state."
 @postF
 "the coordinator actor is informed about the satisfaction of its request."
+@postF
+"the gradedcoordinator attribute of the specified crisis is set as the CoordinatorID of the coordinator actor executing the oeCloseCrisis use case. (Stores the ID of the coordinator who closed the crisis)"
+@postF
+"the oeSollicitateGrading use case is executed using the CrisisID attribute of the ctCrisis instance as input value"
+@postF
+"the coordinator actor executing the oeCloseCrisis use case is considered the main responsible actor for this crisis"
 @endPostF
 
 //postProtocol descriptions

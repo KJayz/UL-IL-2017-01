@@ -21,6 +21,12 @@
 @attribute icrash.concepts.primarytypes.classes.ctCrisis.comment
 "a textual description providing unstructured information on the crisis handling."
 
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.coordinatorgrade
+" "
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.victimgrade
+" "
+@attribute icrash.concepts.primarytypes.classes.ctCrisis.gradedcoordinator
+" "
 @endAttributes
 
 @operation icrash.concepts.primarytypes.classes.ctCrisis.init

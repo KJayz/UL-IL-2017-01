@@ -2,11 +2,16 @@
 
 @description
 "represents an actor responsible of administration tasks for the \msricrash system."
+@operation icrash.environment.actAdministrator.init
+" "
+@endOperations
 //input events
 @inputEvent icrash.environment.actAdministrator.inactAdministrator.ieCoordinatorAdded
 "its reception confirms the creation of the requested coodinator. "
 @inputEvent icrash.environment.actAdministrator.inactAdministrator.ieCoordinatorDeleted
 "its reception confirms the deletion of the requested coodinator. "
+@inputEvent icrash.environment.actAdministrator.inactAdministrator.ieSollicitateGrading
+" "
 @endInputEvents
 
 //output events

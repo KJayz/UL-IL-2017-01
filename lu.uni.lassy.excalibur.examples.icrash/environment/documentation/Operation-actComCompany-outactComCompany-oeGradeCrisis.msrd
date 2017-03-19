@@ -1,0 +1,41 @@
+/*
+@author kwinten
+@date Sun Mar 19 19:05:23 CET 2017
+*/
+
+
+@@Operation
+icrash.environment.actComCompany.outactComCompany.oeGradeCrisis
+//parameters
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeGradeCrisis.AdtCrisisID
+""
+@parameter
+icrash.environment.actComCompany.outactComCompany.oeGradeCrisis.AdtGrade
+""
+@endParameters
+
+@description "sets the value of the victim
+ "
+//preProtocol descriptions
+@preP
+"the system is started."
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+//preFunctional descriptions
+@preF
+"The ctCrisis class instance with the specified CrisisID is not considered closed"
+@preF
+"The specified grade value is greater than '0' and less than '6'."
+@endPreF
+//postFunctional descriptions
+@postF 
+"The ctCrisis class instance with the specified CrisisID has its victimgrade attribute set to the specified value."
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

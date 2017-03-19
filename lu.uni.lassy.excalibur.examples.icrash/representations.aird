@@ -899,6 +899,17 @@
     <semanticResources>usecases/OLD-documentation/UseCaseInstance-uciSimpleAndCompletePart02.msrd</semanticResources>
     <semanticResources>documentation/View-cm-view6.msrd</semanticResources>
     <semanticResources>documentation/View-em-gv-02.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-etExperience-is.msr</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/Primarytypes-dtImage.msr</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Enumeration-etExperience.msrd</semanticResources>
+    <semanticResources>documentation/View-operation-scope-actMsrCreator-init.msrd</semanticResources>
+    <semanticResources>environment/documentation/Actor-actCaptorFingerPrint.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actCoordinator-oeCoordinatorGrade.msr</semanticResources>
+    <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeCoordinatorGrade.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeSollicitateGrading.msrd</semanticResources>
+    <semanticResources>operations/environment/environment-actAdministrator-oeEvaluateCoordinator.msr</semanticResources>
+    <semanticResources>environment/documentation/Operation-actAdministrator-outactAdministrator-oeEvaluateCoordinator.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actComCompany-outactComCompany-oeGradeCrisis.msrd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Aguk8EY3EeOwoLagakxXNQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8IZyuNKSEeadaP6YRq5p0w" name="cm-pt-ct-gv-01" representation="_frDQIFBBEeOoKst3jxjvgA">

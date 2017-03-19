@@ -1,0 +1,46 @@
+/*
+@author kwinten
+@date Sun Mar 19 18:26:24 CET 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade.AdtCrisisID
+"the ID used to determine the Crisis"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade.AdtGrade
+"the integer value used to set the specified Crisis' coordinatorgrade attribute."
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeCoordinatorGrade.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade.AdtCrisisID
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeCoordinatorGrade.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade.AdtGrade
+" "
+@endParameters
+
+@description 
+"sent to grade one ctCrisis instance."
+
+//preProtocol descriptions
+@preP
+"the system is started."
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)."
+@endPreP
+//preFunctional descriptions
+@preF
+"it is supposed that there exist one crisis in the pre state having the given id."
+@preF
+"the specified integer value is greater than '0' and less than '6'."
+@endPreF
+//postFunctional descriptions
+@postF 
+"the ctCrisis class instance with the provided id has its coordinatorgrade attribute set to the specified 'grade' value."
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "
