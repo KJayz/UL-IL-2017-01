@@ -15,4 +15,6 @@
 //output events
 @outputEvent icrash.environment.actComCompany.outactComCompany.oeAlert
 "sent to alert of a potential crisis situation."
+@outputEvent icrash.environment.actComCompany.outactComCompany.oeGradeCrisis
+" "
 @endOutputEvents

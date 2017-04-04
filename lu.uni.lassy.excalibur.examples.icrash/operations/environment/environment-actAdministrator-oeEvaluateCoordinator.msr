@@ -8,7 +8,7 @@ import icrash.concepts.primarytypes.datatypes
 
 	Operation Model {
 
-		operation: icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator(AdtCoordinatorID:dtCoordinatorID, AdtExperience:etExperience):ptBoolean{
+		operation: icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator(AdtCoordinatorID:dtCoordinatorID, AetExperience:etExperience):ptBoolean{
 		// include below the specification information (pre,post or ocl or prolog)
 
 		}

@@ -22,11 +22,13 @@
 "a textual description providing unstructured information on the crisis handling."
 
 @attribute icrash.concepts.primarytypes.classes.ctCrisis.coordinatorgrade
-" "
+"the grade given by the handling coordinator on the quality of the crisis handling"
+
 @attribute icrash.concepts.primarytypes.classes.ctCrisis.victimgrade
-" "
+"the grade given by an indirect actor on the quality of the crisis handling"
+
 @attribute icrash.concepts.primarytypes.classes.ctCrisis.gradedcoordinator
-" "
+"the coordinatorID of the coordinator considered the primary handler of the crisis"
 @endAttributes
 
 @operation icrash.concepts.primarytypes.classes.ctCrisis.init

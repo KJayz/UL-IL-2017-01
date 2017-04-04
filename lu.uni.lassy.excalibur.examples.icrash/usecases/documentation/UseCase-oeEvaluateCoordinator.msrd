@@ -1,0 +1,27 @@
+/*
+@author kwinten
+@date Tue Apr 04 19:17:03 CEST 2017
+*/
+
+
+@@Use Case Subfunction icrash.usecases.subfunctions.oeEvaluateCoordinator
+@description ""
+@parameter icrash.usecases.subfunctions.oeEvaluateCoordinator.AdtCoordinatorID ""
+@parameter icrash.usecases.subfunctions.oeEvaluateCoordinator.AetExperience ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

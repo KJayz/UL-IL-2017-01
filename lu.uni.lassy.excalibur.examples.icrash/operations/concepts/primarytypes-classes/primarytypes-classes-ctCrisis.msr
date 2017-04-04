@@ -20,9 +20,9 @@ operation: icrash.concepts.primarytypes.classes.ctCrisis.init(
                 Astatus:etCrisisStatus,
                 Alocation:dtGPSLocation,
                 Ainstant:dtDateAndTime,
-                Acomment:dtComment,
-                Acoordinatorgrade:dtInteger,
-                Avictimgrade:dtInteger,
+                Acomment:dtComment ,
+                Acoordinatorgrade:dtGrade ,
+                Avictimgrade:dtGrade ,
                 Agradedcoordinator:dtCoordinatorID
               ):ptBoolean{
 postF{

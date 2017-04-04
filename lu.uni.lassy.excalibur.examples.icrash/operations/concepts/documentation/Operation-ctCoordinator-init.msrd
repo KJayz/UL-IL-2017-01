@@ -13,8 +13,6 @@ icrash.concepts.primarytypes.classes.ctCoordinator.init
 " "
 @parameter icrash.operations.concepts.primarytypes.classes.ctCoordinator.init.operationmodel.icrash.concepts.primarytypes.classes.ctCoordinator.init.Apwd
 " "
-@parameter icrash.operations.concepts.primarytypes.classes.ctCoordinator.init.operationmodel.icrash.concepts.primarytypes.classes.ctCoordinator.init.Aexperience
-" "
 @endParameters
 @description
 "used to initialize the current object as a new instance of the ctCoordinator type."

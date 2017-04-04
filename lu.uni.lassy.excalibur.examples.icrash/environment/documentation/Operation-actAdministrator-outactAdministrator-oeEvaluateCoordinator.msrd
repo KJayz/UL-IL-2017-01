@@ -1,34 +1,28 @@
 /*
 @author kwinten
-@date Sun Mar 19 19:00:24 CET 2017
+@date Mon Apr 03 21:52:31 GMT+01:00 2017
 */
 
 
 @@Operation
 icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator
-//parameters
-@parameter
-icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator.AdtCoordinatorID
-""
-@parameter
-icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator.AdtExperience
-""
+@parameter icrash.environment.operations.actAdministrator.outactAdministrator.oeEvaluateCoordinator.operationmodel.icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator.AdtCoordinatorID
+" "
+@parameter icrash.environment.operations.actAdministrator.outactAdministrator.oeEvaluateCoordinator.operationmodel.icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator.AetExperience
+" "
 @endParameters
-
-@description "Sets the value of the etExperience attribute of a ctCoordinator instance"
+@description " sets the experience level of the specified coordinator"
 //preProtocol descriptions
 @preP
-"The system is started."
-@preP
-"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+" "
 @endPreP
 //preFunctional descriptions
 @preF
-"it is supposed that there exists one ctCoordinator class instance with the specified ID as its coordinatorID attribute value"
+" "
 @endPreF
 //postFunctional descriptions
 @postF 
-"The experience attribute of the coordinator with the specified CoordinatorID is set to the specified etExperience value"
+" "
 @endPostF
 //postProtocol descriptions
 @postP 

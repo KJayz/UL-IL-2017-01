@@ -1,15 +1,12 @@
 /*
 @author kwinten
-@date Sun Mar 19 18:04:20 CET 2017
+@date Mon Apr 03 23:01:28 CEST 2017
 */
 
 
 @@Primary Type Enumeration icrash.concepts.primarytypes.datatypes.etExperience
-@description 
-"
-this type is used to indicate the different experience levels.
-"
+@description ""
 @operation
 icrash.concepts.primarytypes.datatypes.etExperience.is
-"used to determine which literal belongs to the enumeration"
+""
 @endOperations

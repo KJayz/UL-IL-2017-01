@@ -6,7 +6,7 @@ import icrash.concepts.primarytypes.classes
 
 Operation Model {
 
-operation: icrash.concepts.primarytypes.classes.ctCoordinator.init(Aid:dtCoordinatorID, Alogin:dtLogin, Apwd:dtPassword,Aexperience:etExperience):ptBoolean
+operation: icrash.concepts.primarytypes.classes.ctCoordinator.init(Aid:dtCoordinatorID, Alogin:dtLogin, Apwd:dtPassword):ptBoolean
 {
 postF{ 
 if

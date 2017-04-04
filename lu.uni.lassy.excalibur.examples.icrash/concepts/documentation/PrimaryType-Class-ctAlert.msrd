@@ -18,6 +18,12 @@
 @attribute icrash.concepts.primarytypes.classes.ctAlert.comment
 "a textual description providing unstructured information on the alert."
 
+@attribute icrash.concepts.primarytypes.classes.ctAlert.coordinatorgrade
+" "
+@attribute icrash.concepts.primarytypes.classes.ctAlert.victimgrade
+" "
+@attribute icrash.concepts.primarytypes.classes.ctAlert.gradedcoordinator
+" "
 @endAttributes
 
 @operation icrash.concepts.primarytypes.classes.ctAlert.init

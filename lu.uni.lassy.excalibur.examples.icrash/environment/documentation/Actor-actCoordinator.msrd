@@ -33,6 +33,6 @@
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeValidateAlert
 "sent to indicate that a specific alert is not a fake."
 
-@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeCoordinatorGrade
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator
 " "
 @endOutputEvents

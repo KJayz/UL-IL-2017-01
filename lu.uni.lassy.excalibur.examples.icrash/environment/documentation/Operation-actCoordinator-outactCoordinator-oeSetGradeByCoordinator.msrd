@@ -1,0 +1,43 @@
+/*
+@author kwinten
+@date Mon Apr 03 19:37:16 GMT+01:00 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.AdtCrisisID
+"the identification information used to determine the crisis"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.AdtGrade
+"the grade given to the crisis by the coordinator"
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.AdtCrisisID
+" "
+@parameter icrash.environment.operations.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.operationmodel.icrash.environment.actCoordinator.outactCoordinator.oeSetGradeByCoordinator.AdtGrade
+" "
+@endParameters
+
+@description 
+" sent to define the coordinatorgrade attribute of a specific crisis."
+//preProtocol descriptions
+@preP
+" The system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+//preFunctional descriptions
+@preF
+" it is supposed that there exist one crisis in the pre state having the given id."
+@endPreF
+//postFunctional descriptions
+@postF 
+" the coordinatorgrade attribute of the crisis instance having the given id is replaced by the given one."
+@endPostF
+//postProtocol descriptions
+@postP 
+" none"
+@endPostP
+//example
+@example" "

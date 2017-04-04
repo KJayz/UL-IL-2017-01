@@ -34,12 +34,15 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute location:dtGPSLocation
 				attribute instant:dtDateAndTime
 				attribute comment:dtComment
+				attribute coordinatorgrade:dtGrade
+				attribute victimgrade:dtGrade
+				attribute gradedcoordinator:dtCoordinatorID
 				
 				operation init(     	Aid:dtAlertID ,
 										Astatus:etAlertStatus ,
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
-										Acomment:dtComment ):ptBoolean
+										Acomment:dtComment):ptBoolean
 				operation isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
 			 
 			}
@@ -51,8 +54,8 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute location:dtGPSLocation
 				attribute instant:dtDateAndTime
 				attribute comment:dtComment
-				attribute coordinatorgrade:dtInteger
-				attribute victimgrade:dtInteger
+				attribute coordinatorgrade:dtGrade
+				attribute victimgrade:dtGrade
 				attribute gradedcoordinator:dtCoordinatorID
 				
 				operation init(
@@ -62,9 +65,9 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
 										Acomment:dtComment ,
-										Acoordinatorgrade:dtInteger ,
-										Avictimgrade:dtInteger ,
-										Agradedcoordinator:dtCoordinatorID ):ptBoolean
+										Acoordinatorgrade:dtGrade ,
+										Avictimgrade:dtGrade ,
+										Agradedcoordinator:dtCoordinatorID):ptBoolean
 										
 				operation handlingDelayPassed():ptBoolean
         operation maxHandlingDelayPassed():ptBoolean
@@ -104,13 +107,11 @@ import lu.uni.lassy.messir.libraries.calendar
 					extends ctAuthenticated{
 			
 				attribute id:dtCoordinatorID
-				attribute experience:etExperience
 				
 				operation init(
 										Aid:dtCoordinatorID ,
 										Alogin:dtLogin ,
-										Apwd:dtPassword ,
-										Aexperience:etExperience ):ptBoolean
+										Apwd:dtPassword ):ptBoolean
 			}
 
 			class ctAdministrator 

@@ -10,8 +10,6 @@
 "its reception confirms the creation of the requested coodinator. "
 @inputEvent icrash.environment.actAdministrator.inactAdministrator.ieCoordinatorDeleted
 "its reception confirms the deletion of the requested coodinator. "
-@inputEvent icrash.environment.actAdministrator.inactAdministrator.ieSollicitateGrading
-" "
 @endInputEvents
 
 //output events
@@ -20,4 +18,6 @@
 @outputEvent icrash.environment.actAdministrator.outactAdministrator.oeDeleteCoordinator
 "sent to delete an existing coordinator in the system's post state and environment's post state."
 
+@outputEvent icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator
+" "
 @endOutputEvents

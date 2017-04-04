@@ -1,0 +1,12 @@
+/*
+@author kwinten
+@date Mon Apr 03 17:49:28 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtGrade
+@description "an integer used to store the grade from a coordinator or human grading a crisis"
+@operation
+icrash.concepts.primarytypes.datatypes.dtGrade.is
+"used to determine which integers are considered as valid dtGrade"
+@endOperations

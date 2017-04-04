@@ -9,8 +9,8 @@ Operation Model {
     postF{ 
         let TheResult: ptBoolean in
         ( if
-          ( AdtValue.value.length().gt(0)
-            and AdtValue.value.length().leq(10)
+          ( self.value.length().gt(0)
+            and self.value.length().leq(10)
           )
           then (TheResult = true)
           else (TheResult = false)
