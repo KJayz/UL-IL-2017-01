@@ -33,6 +33,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute status: etAlertStatus
 				attribute location:dtGPSLocation
 				attribute instant:dtDateAndTime
+				attribute criminal:dtCriminalAct
 				attribute comment:dtComment
 				attribute coordinatorgrade:dtGrade
 				attribute victimgrade:dtGrade
@@ -42,6 +43,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										Astatus:etAlertStatus ,
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
+										Acriminal:dtCriminalAct,
 										Acomment:dtComment):ptBoolean
 				operation isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
 			 
@@ -53,6 +55,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute status: etCrisisStatus
 				attribute location:dtGPSLocation
 				attribute instant:dtDateAndTime
+				attribute criminal:dtCriminalAct
 				attribute comment:dtComment
 				attribute coordinatorgrade:dtGrade
 				attribute victimgrade:dtGrade
@@ -64,6 +67,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										Astatus:etCrisisStatus ,
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
+										Acriminal:dtCriminalAct,
 										Acomment:dtComment ,
 										Acoordinatorgrade:dtGrade ,
 										Avictimgrade:dtGrade ,
