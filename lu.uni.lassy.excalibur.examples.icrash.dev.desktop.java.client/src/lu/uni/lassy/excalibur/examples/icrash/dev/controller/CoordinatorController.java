@@ -24,10 +24,12 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyCoordinatorImpl;
@@ -257,6 +259,26 @@ public class CoordinatorController extends AbstractUserController {
 			ActProxyCoordinator actCoord = (ActProxyCoordinator)this.getAuth();
 			try {
 				return actCoord.oeGetAlertsSet(aEtAlertStatus);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	
+	public PtBoolean oeSetGradeByCoordinator(String crisisID, int grade) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException {
+		DtCrisisID aDtCrisisID = new DtCrisisID(new PtString(crisisID));
+		DtGrade aDtGrade = new DtGrade(new PtInteger(grade));
+		Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
+		ht.put(aDtCrisisID, aDtCrisisID.value.getValue());
+		if (this.getUserType() == UserType.Coordinator){
+			ActProxyCoordinator actCoord = (ActProxyCoordinator)this.getAuth();
+			try {
+				return actCoord.oeSetGradeByCoordinator(aDtCrisisID, aDtGrade);
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerOfflineException();

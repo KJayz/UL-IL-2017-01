@@ -51,6 +51,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
@@ -1359,5 +1360,32 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			log.error("Exception in oeSetClock..." + ex);
 			return new PtBoolean(false);
 		}
+	}
+
+	@Override
+	public synchronized PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) {
+		try{
+			//PreP1
+			isSystemStarted();
+			//PreP2
+			isUserLoggedIn();
+			CtCrisis theCrisis = cmpSystemCtCrisis.get(aDtCrisisID.value
+					.getValue());
+			if (currentRequestingAuthenticatedActor instanceof ActCoordinator) {
+				ActCoordinator theActCoordinator = (ActCoordinator) currentRequestingAuthenticatedActor;
+				//PostF1
+				theCrisis.coordinatorgrade = aDtGrade;
+				DbCrises.updateCrisis(theCrisis);
+				PtString aMessage = new PtString("The crisis with ID '"
+						+ aDtCrisisID.value.getValue() + "' has been graded by the coordinator as: '"
+						+ aDtGrade.toString() + "' !");
+				theActCoordinator.ieMessage(aMessage);
+				return new PtBoolean(true);
+			}
+		}
+		catch (Exception e){
+			log.error("Exception in oeSetCrisisType..." + e);
+		}
+		return new PtBoolean(false);
 	}
 }

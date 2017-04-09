@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014-2015 University of Luxembourg.
+3 * Copyright (c) 2014-2015 University of Luxembourg.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
@@ -330,6 +331,29 @@ public class ActCoordinatorImpl extends ActAuthenticatedImpl implements ActCoord
 		PtBoolean res = iCrashSys_Server.oeGetAlertsSet(aEtAlertStatus);
 		if(res.getValue() == true)
 			log.info("operation oeGetAlertsSet successfully executed by the system");
+		return res;
+	}
+
+	@Override
+	synchronized public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException, NotBoundException {
+
+		Logger log = Log4JUtils.getInstance().getLogger();
+
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+
+		//Gathering the remote object as it was published into the registry
+		IcrashSystem iCrashSys_Server = (IcrashSystem)registry.lookup("iCrashServer");
+		//set up ActAuthenticated instance that performs the request
+		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+
+		log.info("message ActCoordinator.oeSetGradeByCoordinator sent to system");
+		PtBoolean res = iCrashSys_Server.oeSetGradeByCoordinator(aDtCrisisID, aDtGrade);
+
+
+		if(res.getValue() == true)
+			log.info("operation oeSetGradeByCoordinator successfully executed by the system");
+
+
 		return res;
 	}
 }

@@ -56,6 +56,15 @@ public class CtCrisis implements Serializable {
 	/** The comment associated with the crisis. Often refered to as the report. */
 	public DtComment comment;
 
+	/** The grade given by the coordinator handling the crisis. */
+	public DtGrade coordinatorgrade;
+	
+	/** The grade given by the indirect actor(s) involved in the crisis. */
+	public DtGrade victimgrade;
+	
+	/** The coordinatorID of the coordinator considered the main responsible for handling the crisis. */
+	public DtCoordinatorID gradedcoordinator;
+	
 	/**
 	 * Initialises the crisis.
 	 *
