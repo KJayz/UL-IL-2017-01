@@ -107,11 +107,13 @@ import lu.uni.lassy.messir.libraries.calendar
 					extends ctAuthenticated{
 			
 				attribute id:dtCoordinatorID
+				attribute xp:etExperience
 				
 				operation init(
 										Aid:dtCoordinatorID ,
 										Alogin:dtLogin ,
-										Apwd:dtPassword ):ptBoolean
+										Apwd:dtPassword ,
+										Axp:etExperience ):ptBoolean
 			}
 
 			class ctAdministrator 
