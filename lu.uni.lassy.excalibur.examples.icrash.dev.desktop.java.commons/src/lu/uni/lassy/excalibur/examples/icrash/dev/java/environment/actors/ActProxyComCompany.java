@@ -19,7 +19,9 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
@@ -66,5 +68,16 @@ public interface ActProxyComCompany extends Remote, JIntIsActor {
 	 * @throws RemoteException Thrown if the server is offline
 	 */
 	public PtBoolean ieSmsSend(DtPhoneNumber aDtPhoneNumber,DtSMS aDtSMS) throws RemoteException;
+
+	/**
+	 * Sets the victimgrade of the crisis
+	 * 
+	 * @param aDtCrisisID The ID of the crisis to grade
+	 * @param aDtGrade The grade to be passed
+	 * @return  The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 */
+	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException, NotBoundException;
 	
 }

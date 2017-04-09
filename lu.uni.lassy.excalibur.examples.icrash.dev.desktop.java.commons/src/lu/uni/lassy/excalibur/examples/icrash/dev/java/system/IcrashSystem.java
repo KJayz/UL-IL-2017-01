@@ -387,6 +387,17 @@ public interface IcrashSystem extends Remote {
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in the RMI settings 
 	 */
-	public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade); 
+	public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
+
+	/**
+	 * Sets the victimgrade of the crisis
+	 * 
+	 * @param aDtCrisisID The ID of the crisis to grade
+	 * @param aDtGrade The grade to be passed
+	 * @return  The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 */
+	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException; 
 
 }

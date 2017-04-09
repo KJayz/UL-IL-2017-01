@@ -24,7 +24,9 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
@@ -135,6 +137,25 @@ public class ComCompanyController implements HasListeners{
 		}
 	}
 	
+	public PtBoolean oeGradeCrisis(String crisis, int grade) throws  ServerOfflineException, ServerNotBoundException{
+		try   {
+			if(aActProxyComCompany == null) {
+				return new PtBoolean(false);
+			}
+			DtCrisisID aDtCrisisID = new DtCrisisID(new PtString(crisis));
+			DtGrade aDtGrade = new DtGrade(new PtInteger(grade));
+			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
+			ht.put(aDtCrisisID, aDtCrisisID.value.getValue());
+			return aActProxyComCompany.oeGradeCrisis(aDtCrisisID,aDtGrade);
+		} catch (RemoteException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerOfflineException();
+		} catch (NotBoundException e) {
+			Log4JUtils.getInstance().getLogger().error(e);
+			throw new ServerNotBoundException();
+		}
+	}
+	
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.controller.HasListeners#removeAllListeners()
 	 */
@@ -149,4 +170,5 @@ public class ComCompanyController implements HasListeners{
 			throw new ServerNotBoundException();
 		}
 	}
+	
 }

@@ -1384,8 +1384,27 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			}
 		}
 		catch (Exception e){
-			log.error("Exception in oeSetCrisisType..." + e);
+			log.error("Exception in oeSetGradeByCoordinator..." + e);
+		}
+		return new PtBoolean(false);
+	}
+	
+	@Override
+	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException {
+		try{
+			//PreP1
+			isSystemStarted();
+
+			CtCrisis theCrisis = cmpSystemCtCrisis.get(aDtCrisisID.value
+					.getValue());
+			//PostF1
+			theCrisis.victimgrade = aDtGrade;
+			DbCrises.updateCrisis(theCrisis);
+			return new PtBoolean(true);
+		}catch (Exception e){
+			log.error("Exception in oeSetGradeByCoordinator..." + e);
 		}
 		return new PtBoolean(false);
 	}
 }
+	

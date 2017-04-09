@@ -18,10 +18,13 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompany;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
@@ -143,5 +146,12 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public synchronized PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException, NotBoundException {
+		if (serverSideActor != null)
+			return serverSideActor.oeGradeCrisis(aDtCrisisID, aDtGrade);
+		else
+			return new PtBoolean(false);
+	}
 }
