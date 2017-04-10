@@ -80,7 +80,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										   AdtComment:dtComment
 										   
 										  ):ptBoolean
-			    operation oeSetGradeByCoordinator(
+				operation oeSetGradeByCoordinator(
 										  AdtCrisisID:dtCrisisID ,
 										  AdtGrade:dtGrade
 										  ):ptBoolean
