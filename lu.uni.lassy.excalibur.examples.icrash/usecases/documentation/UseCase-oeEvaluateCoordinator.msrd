@@ -24,6 +24,7 @@ the iCrash system has been deployed.
 @endPreConditions
 @postCondition
 "
+The experience attribute of the CtCoordinator instance with the specified ID has its value changed to the given value.
 "
 
 @endPostConditions
