@@ -21,7 +21,7 @@ operation: icrash.concepts.primarytypes.classes.ctCrisis.init(
                 Alocation:dtGPSLocation,
                 Ainstant:dtDateAndTime,
                 Acriminal:dtCriminalAct,
-                Acomment:dtComment
+                Acomment:dtComment,
                 Acoordinatorgrade:dtGrade ,
                 Avictimgrade:dtGrade ,
                 Agradedcoordinator:dtCoordinatorID
