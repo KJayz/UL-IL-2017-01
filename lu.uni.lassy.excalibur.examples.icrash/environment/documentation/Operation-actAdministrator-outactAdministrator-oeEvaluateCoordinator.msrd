@@ -14,19 +14,23 @@ icrash.environment.actAdministrator.outactAdministrator.oeEvaluateCoordinator
 @description " sets the experience level of the specified coordinator"
 //preProtocol descriptions
 @preP
-" "
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctAdministrator instance is considered logged)"
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+" it is supposed that there exist one ctCoordinator instance with the same \msrcode{id} attribute than the one the administrator wants to evaluate."
 @endPreF
 //postFunctional descriptions
 @postF 
-" "
+" the ctCoordinator class instance having the required id has its experience attribute changed to the specified EtExperience enum value."
+@postF
+"the administrator actor is informed about the satisfaction of its request."
 @endPostF
 //postProtocol descriptions
 @postP 
-" "
+" none"
 @endPostP
 //example
 @example" "

@@ -5,8 +5,8 @@
 
 
 @@Primary Type Enumeration icrash.concepts.primarytypes.datatypes.etExperience
-@description ""
+@description "this type is used to indicate the different experience levels of a coordinator"
 @operation
 icrash.concepts.primarytypes.datatypes.etExperience.is
-""
+"used to determine which literal belongs to the enumeration."
 @endOperations
