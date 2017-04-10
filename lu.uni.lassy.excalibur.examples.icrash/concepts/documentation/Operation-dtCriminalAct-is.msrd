@@ -1,0 +1,16 @@
+/*
+@author Mauricelux
+@date Wed Apr 05 10:32:37 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.datatypes.dtCriminalAct.is
+@description "Confirms that the message has been send to the Police Headquarter
+ "
+//postFunctional descriptions
+@postF 
+"Considered as Send "
+@endPostF
+//example
+@example" test "

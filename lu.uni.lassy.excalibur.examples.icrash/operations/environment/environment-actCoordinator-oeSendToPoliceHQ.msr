@@ -1,0 +1,17 @@
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeSendToPoliceHQ {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.datatypes
+
+
+	Operation Model {
+
+		operation: icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ(AdtCrisisID:dtCrisisID, AetCrisisType:etCrisisType, AdtGPSLocation:dtGPSLocation, AdtCriminalAct:dtCriminalAct, AdtComment:dtComment):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		}
+	}
+}

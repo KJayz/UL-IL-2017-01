@@ -1,0 +1,30 @@
+/*
+@author Mauricelux
+@date Wed Apr 05 10:35:27 CEST 2017
+*/
+
+
+@@Use Case Subfunction icrash.usecases.subfunctions.oeSendToPoliceHQ
+@description "the coordinator can send all the information with this function to the police HQ."
+@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AetCrisisType ""
+@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtGPSLocation ""
+@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtCriminalAct ""
+@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtComment ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"
