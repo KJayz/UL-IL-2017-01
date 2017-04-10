@@ -15,8 +15,8 @@ Operation Model {
     postF{ 
         let TheResult: ptBoolean in
         ( if
-          ( self.latitude.is()
-            and self.longitude.is
+          ( AdtValue.latitude.is()
+            and AdtValue.longitude.is
           )
           then (TheResult = true)
           else (TheResult = false)

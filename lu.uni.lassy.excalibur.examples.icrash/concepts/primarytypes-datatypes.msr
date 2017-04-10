@@ -9,31 +9,31 @@ import lu.uni.lassy.messir.libraries.calendar
 		
 		Primary Types {
    
-			 datatype dtAlertID {
+			 datatype dtAlertID extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtCrisisID {
+			datatype dtCrisisID extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtLogin {
+			datatype dtLogin extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtPassword {
+			datatype dtPassword extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtCoordinatorID {
+			datatype dtCoordinatorID extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtPhoneNumber {
+			datatype dtPhoneNumber extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtComment {
+			datatype dtComment extends dtString {
 				operation is():ptBoolean			
 			}
-			datatype dtLatitude {
+			datatype dtLatitude extends dtReal {
 				operation is():ptBoolean			
 			}
-			datatype dtLongitude {
+			datatype dtLongitude extends dtReal {
 				operation is():ptBoolean			
 			}
 			datatype dtGPSLocation {
@@ -41,6 +41,9 @@ import lu.uni.lassy.messir.libraries.calendar
 				attribute longitude: dtLongitude
 				operation is():ptBoolean			
 				operation isNearTo(AGPSLocation:dtGPSLocation ):ptBoolean
+			}
+			datatype dtCriminalAct extends dtString{
+				operation is():ptBoolean
 			}
 			
 			enum etCrisisStatus {
@@ -52,7 +55,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation is():ptBoolean
 			}
 			enum etCrisisType {
-				constants["small", "medium", "huge"]
+				constants["very small","small", "medium", "huge", "insane"]
 				operation is():ptBoolean
 			}
 			enum etHumanKind {

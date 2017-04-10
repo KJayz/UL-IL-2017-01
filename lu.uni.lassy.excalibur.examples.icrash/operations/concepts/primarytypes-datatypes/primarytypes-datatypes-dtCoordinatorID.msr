@@ -8,8 +8,8 @@ Operation Model {
 		postF{ 
         let TheResult: ptBoolean in
         ( if
-          ( self.value.length().gt(0)
-            and self.value.length().leq(5)
+          ( AdtValue.value.length().gt(0)
+            and AdtValue.value.length().leq(5)
           )
           then (TheResult = true)
           else (TheResult = false)
