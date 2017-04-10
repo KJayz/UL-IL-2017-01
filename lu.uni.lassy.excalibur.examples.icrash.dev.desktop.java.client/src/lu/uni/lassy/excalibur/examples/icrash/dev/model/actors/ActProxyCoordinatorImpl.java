@@ -23,6 +23,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -174,6 +175,16 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 		if (getServerSideActor() != null)
 			return ((ActCoordinator) getServerSideActor())
 					.oeCloseCrisis(aDtCrisisID);
+		else
+			return new PtBoolean(false);
+	}
+	
+	@Override
+	synchronized public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade)
+			throws RemoteException, NotBoundException {
+		if (getServerSideActor() != null)
+			return ((ActCoordinator) getServerSideActor()).oeSetGradeByCoordinator(
+					aDtCrisisID, aDtGrade);
 		else
 			return new PtBoolean(false);
 	}

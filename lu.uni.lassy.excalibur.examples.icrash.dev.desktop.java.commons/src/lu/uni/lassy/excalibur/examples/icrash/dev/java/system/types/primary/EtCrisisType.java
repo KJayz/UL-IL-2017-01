@@ -21,12 +21,21 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 public enum EtCrisisType implements JIntIs {
 	
 	/** A small crisis. */
-	small, 
+	small(1), 
 	/** A medium crisis. */
-	medium, 
+	medium(2), 
 	/** A huge crisis. */
-	huge;
+	huge(3);
 	
+	
+	private int value;
+	EtCrisisType(int value) {
+		this.value = value;
+	}
+	
+	public int getValue() {
+		return value;
+	}
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.DtIs#is()
 	 */

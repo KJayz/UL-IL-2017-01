@@ -22,7 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
@@ -181,5 +183,27 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 		if (!this.getName().equals(aActComCompany.getName()))
 			return false;
 		return true;
+	}
+	@Override
+	synchronized public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException, NotBoundException {
+
+	Logger log = Log4JUtils.getInstance().getLogger();
+
+	Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+
+	//Gathering the remote object as it was published into the registry
+	IcrashSystem iCrashSys_Server = (IcrashSystem) registry
+			.lookup("iCrashServer");
+
+	//set up ComCompany instance that performs the request
+	iCrashSys_Server.setCurrentConnectedComCompany(this);
+
+	log.info("message ActComCompany.oeGradeCrisis sent to system");
+	PtBoolean res = iCrashSys_Server.oeGradeCrisis(aDtCrisisID, aDtGrade);
+
+	if (res.getValue() == true)
+		log.info("operation oeGradeCrisis successfully executed by the system");
+
+	return res;
 	}
 }

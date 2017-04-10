@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system;
 
+import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
@@ -374,6 +376,28 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeSetClock(DtDateAndTime aCurrentClock) throws RemoteException; 
+	public PtBoolean oeSetClock(DtDateAndTime aCurrentClock) throws RemoteException;
+
+	/**
+	 * Sets the coordinatorgrade of the crisis
+	 * 
+	 * @param aDtCrisisID The ID of the crisis to change the coordinatorgrade of
+	 * @param aDtGrade The grade to be passed.
+	 * @return The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in the RMI settings 
+	 */
+	public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
+
+	/**
+	 * Sets the victimgrade of the crisis
+	 * 
+	 * @param aDtCrisisID The ID of the crisis to grade
+	 * @param aDtGrade The grade to be passed
+	 * @return  The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 */
+	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException; 
 
 }
