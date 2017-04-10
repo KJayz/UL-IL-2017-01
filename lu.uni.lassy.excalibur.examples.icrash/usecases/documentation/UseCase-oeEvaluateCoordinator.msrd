@@ -5,13 +5,18 @@
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeEvaluateCoordinator
-@description ""
+@description "
+the actAdministrator's goal is to evaluate the coordinator. 
+"
 @parameter icrash.usecases.subfunctions.oeEvaluateCoordinator.AdtCoordinatorID ""
 @parameter icrash.usecases.subfunctions.oeEvaluateCoordinator.AetExperience ""
 @endParameters
 @protocolCondition
 "
+the iCrash system has been deployed.
 "
+@protocolCondition
+"the administrator is considered logged in (and has not previously logged out!)"
 @endProtocolConditions
 @preCondition
 "
@@ -19,7 +24,9 @@
 @endPreConditions
 @postCondition
 "
+The experience attribute of the CtCoordinator instance with the specified ID has its value changed to the given value.
 "
+
 @endPostConditions
 @additionalInformation
 "
