@@ -73,7 +73,14 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
-			operation oeSetGradeByCoordinator(
+				operation oeSendToPoliceHQ(AdtCrisisID:dtCrisisID ,
+										   AetCrisisType:etCrisisType,
+										   AdtGPSLocation:dtGPSLocation,
+										   AdtCriminalAct:dtCriminalAct,
+										   AdtComment:dtComment
+										   
+										  ):ptBoolean
+				operation oeSetGradeByCoordinator(
 										  AdtCrisisID:dtCrisisID ,
 										  AdtGrade:dtGrade
 										  ):ptBoolean

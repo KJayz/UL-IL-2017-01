@@ -1,0 +1,12 @@
+/*
+@author Mauricelux
+@date Wed Apr 05 10:30:09 CEST 2017
+*/
+
+
+@@Primary Type Datatype icrash.concepts.primarytypes.datatypes.dtCriminalAct
+@description "A datatype contains the information if the Crisis has to do sth with a Criminal Act or not."
+@operation
+icrash.concepts.primarytypes.datatypes.dtCriminalAct.is
+""
+@endOperations

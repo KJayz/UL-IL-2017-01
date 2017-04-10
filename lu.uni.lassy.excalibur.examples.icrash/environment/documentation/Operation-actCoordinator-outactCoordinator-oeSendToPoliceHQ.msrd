@@ -1,0 +1,46 @@
+/*
+@author Mauricelux
+@date Wed Apr 05 10:33:45 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtCrisisID
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AetCrisisType
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtGPSLocation
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtCriminalAct
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtComment
+""
+@endParameters
+
+@description " this operation is used to send all the nessesary information to the Police Headquarter.
+ "
+//preProtocol descriptions
+@preP
+" System Started, Crisis Handled"
+@endPreP
+//preFunctional descriptions
+@preF
+" Has not been send earlier"
+@endPreF
+//postFunctional descriptions
+@postF 
+" considered as send cant be send anymore."
+@endPostF
+//postProtocol descriptions
+@postP 
+"police Hq recived a message "
+@endPostP
+//example
+@example" test"

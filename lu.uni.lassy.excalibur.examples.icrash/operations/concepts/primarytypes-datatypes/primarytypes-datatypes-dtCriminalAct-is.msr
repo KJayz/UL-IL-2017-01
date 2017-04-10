@@ -1,0 +1,15 @@
+package icrash.concepts.primarytypes.datatypes.operations.datatypes.dtCriminalAct.is {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.dtCriminalAct.is():ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		}
+	}
+}
