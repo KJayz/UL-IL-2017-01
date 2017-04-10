@@ -917,6 +917,14 @@
     <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-etExperience-is.msr</semanticResources>
     <semanticResources>operations/environment/environment-actAdministrator-oeEvaluateCoordinator.msr</semanticResources>
     <semanticResources>usecases/documentation/UseCase-oeEvaluateCoordinator.msrd</semanticResources>
+    <semanticResources>concepts/documentation/Operation-dtCriminalAct-is.msrd</semanticResources>
+    <semanticResources>concepts/documentation/PrimaryType-Datatype-dtCriminalAct.msrd</semanticResources>
+    <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeSendToPoliceHQ.msrd</semanticResources>
+    <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtCriminalAct-is.msr</semanticResources>
+    <semanticResources>operations/environment/environment-actCoordinator-oeSendToPoliceHQ.msr</semanticResources>
+    <semanticResources>usecases/documentation/UseCase-oeSendToPoliceHQ.msrd</semanticResources>
+    <semanticResources>usecases/documentation/UseCaseInstance-ucioeSendToPoliceHQ.msrd</semanticResources>
+    <semanticResources>usecases/usecaseinstance-oeSendToPoliceHQ-ucioeSendToPoliceHQ.msr</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Aguk8EY3EeOwoLagakxXNQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8IZyuNKSEeadaP6YRq5p0w" name="cm-pt-ct-gv-01" representation="_frDQIFBBEeOoKst3jxjvgA">
