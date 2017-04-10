@@ -1402,9 +1402,15 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			DbCrises.updateCrisis(theCrisis);
 			return new PtBoolean(true);
 		}catch (Exception e){
-			log.error("Exception in oeSetGradeByCoordinator..." + e);
+			log.error("Exception in oeGradeCrisis..." + e);
 		}
 		return new PtBoolean(false);
+	}
+
+	@Override
+	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 	

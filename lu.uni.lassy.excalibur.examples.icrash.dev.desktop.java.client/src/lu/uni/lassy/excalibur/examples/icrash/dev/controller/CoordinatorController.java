@@ -270,6 +270,15 @@ public class CoordinatorController extends AbstractUserController {
 		return new PtBoolean(false);
 	}
 	
+	/**
+	 * 
+	 * @param crisisID
+	 * @param grade
+	 * @return
+	 * @throws ServerOfflineException
+	 * @throws ServerNotBoundException
+	 * @throws IncorrectFormatException
+	 */
 	public PtBoolean oeSetGradeByCoordinator(String crisisID, int grade) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException {
 		DtCrisisID aDtCrisisID = new DtCrisisID(new PtString(crisisID));
 		DtGrade aDtGrade = new DtGrade(new PtInteger(grade));
@@ -279,6 +288,34 @@ public class CoordinatorController extends AbstractUserController {
 			ActProxyCoordinator actCoord = (ActProxyCoordinator)this.getAuth();
 			try {
 				return actCoord.oeSetGradeByCoordinator(aDtCrisisID, aDtGrade);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}
+		}
+		return new PtBoolean(false);
+	}
+	/**
+	 * 
+	 * @param crisisID
+	 * @return
+	 * @throws ServerOfflineException
+	 * @throws ServerNotBoundException
+	 * @throws IncorrectFormatException
+	 */
+	public PtBoolean SendToPoliceHQ(String crisisID) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		DtCrisisID aDtCrisisID = new DtCrisisID(new PtString(crisisID));
+		Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
+		ht.put(aDtCrisisID, aDtCrisisID.value.getValue());
+		
+		
+		if (this.getUserType() == UserType.Coordinator){
+			ActProxyCoordinator actCoord = (ActProxyCoordinator)this.getAuth();
+			try {
+				return actCoord.oeSendToPoliceHQ(aDtCrisisID);
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerOfflineException();

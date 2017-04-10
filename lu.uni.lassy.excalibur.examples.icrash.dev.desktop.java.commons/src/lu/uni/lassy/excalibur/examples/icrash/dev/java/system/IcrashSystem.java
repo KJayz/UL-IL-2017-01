@@ -398,6 +398,14 @@ public interface IcrashSystem extends Remote {
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
 	 */
-	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException; 
+	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
+
+	/**
+	 * 
+	 * @param aDtCrisisID
+	 * @return
+	 * @throws RemoteException
+	 */
+	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException; 
 
 }
