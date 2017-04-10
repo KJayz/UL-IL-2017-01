@@ -141,7 +141,8 @@ import icrash.environment
 				ieMessage(AMessage) returned to actCoordinator
 			}
 		}
-	}
+	
+	
 //----------------------------------------------------
   use case system subfunction oeEvaluateCoordinator(AdtCoordinatorID:dtCoordinatorID , AetExperience:etExperience) {
   	actor actAdministrator[primary,active]
@@ -150,5 +151,4 @@ import icrash.environment
   	}
   }
   }
-  
 }
