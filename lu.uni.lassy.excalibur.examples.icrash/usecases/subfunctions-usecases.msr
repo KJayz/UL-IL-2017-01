@@ -135,6 +135,13 @@ import icrash.environment
       ieMessage(AMessage) returned to actCoordinator
     }
   }
+  use case system subfunction oeSendToPoliceHQ(AdtCrisisID:dtCrisisID ,AetCrisisType:etCrisisType, AdtGPSLocation:dtGPSLocation, AdtCriminalAct:dtCriminalAct, AdtComment:dtComment) {
+			actor actCoordinator[primary, active]
+			returned messages{
+				ieMessage(AMessage) returned to actCoordinator
+			}
+		}
+	}
 //----------------------------------------------------
   use case system subfunction oeEvaluateCoordinator(AdtCoordinatorID:dtCoordinatorID , AetExperience:etExperience) {
   	actor actAdministrator[primary,active]
