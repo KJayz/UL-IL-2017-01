@@ -22,6 +22,9 @@ operation: icrash.concepts.primarytypes.classes.ctCrisis.init(
                 Ainstant:dtDateAndTime,
                 Acriminal:dtCriminalAct,
                 Acomment:dtComment
+                Acoordinatorgrade:dtGrade ,
+                Avictimgrade:dtGrade ,
+                Agradedcoordinator:dtCoordinatorID
               ):ptBoolean{
 postF{
 if

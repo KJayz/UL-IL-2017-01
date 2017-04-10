@@ -44,7 +44,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
 										Acriminal:dtCriminalAct,
-										Acomment:dtComment):ptBoolean
+										Acomment:dtComment ):ptBoolean
 				operation isSentToCoordinator(AactCoordinator:actCoordinator ):ptBoolean
 			 
 			}
@@ -68,10 +68,11 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alocation:dtGPSLocation ,
 										Ainstant:dtDateAndTime ,
 										Acriminal:dtCriminalAct,
-										Acomment:dtComment ,
+										Acomment:dtComment,
 										Acoordinatorgrade:dtGrade ,
 										Avictimgrade:dtGrade ,
-										Agradedcoordinator:dtCoordinatorID):ptBoolean
+										Agradedcoordinator:dtCoordinatorID
+										):ptBoolean
 										
 				operation handlingDelayPassed():ptBoolean
         operation maxHandlingDelayPassed():ptBoolean
