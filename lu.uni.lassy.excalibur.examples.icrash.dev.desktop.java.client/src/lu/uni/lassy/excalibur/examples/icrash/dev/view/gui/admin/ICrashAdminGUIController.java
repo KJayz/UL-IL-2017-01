@@ -11,11 +11,20 @@
  *     Thomas Mortimer - Updated client to MVC and added new design patterns
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.admin;
+
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+// #Antoine
+//Librairies necessaires au traitement d'images et de fichiers
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.FieldAccessor_Integer;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.AdminController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.SystemStateController;
@@ -207,17 +216,34 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	public void setUpTables(){
 		setUpMessageTables(tblvwAdminMessages);
 	}
-
+	
+	//initialisation de l'image
+	private BufferedImage fingerPrint=null;
 	/**
 	 * Shows the modify coordinator screen.
 	 *
 	 * @param type The type of edit to be done, this could be add or delete
 	 */
 	private void showCoordinatorScreen(TypeOfEdit type){
+		
 		for(int i = anchrpnCoordinatorDetails.getChildren().size() -1; i >= 0; i--)
 			anchrpnCoordinatorDetails.getChildren().remove(i);
 		TextField txtfldUserID = new TextField();
 		TextField txtfldUserName = new TextField();
+		/*
+		 * Image needs a path as inputStream. So this path is asked to the user in a TextField. 
+		 * Format of image shall be .png
+		 */
+		TextField imagePath = new TextField(); 
+		//Image fingerPrint = new Image(imagePath.getText());
+		
+		try {
+			fingerPrint = ImageIO.read(new File(imagePath.getText()));
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+		
 		PasswordField psswrdfldPassword = new PasswordField();
 		txtfldUserID.setPromptText("User ID");
 		Button bttntypOK = null;
@@ -228,9 +254,11 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			bttntypOK = new Button("Create");
 			txtfldUserName.setPromptText("User name");
 			psswrdfldPassword.setPromptText("Password");
+			imagePath.setPromptText("Finger print path");
 			grdpn.add(txtfldUserName, 1, 2);
 			grdpn.add(psswrdfldPassword, 1, 3);
-			grdpn.add(bttntypOK, 1, 4);
+			grdpn.add(imagePath, 1, 4);
+			grdpn.add(bttntypOK, 1, 5);
 			break;
 		case Delete:
 			bttntypOK = new Button("Delete");
@@ -248,7 +276,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
 						switch(type){
 						case Add:
-							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText()).getValue()){
+							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), fingerPrint).getValue()){
 								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
 								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
 							}
