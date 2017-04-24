@@ -21,6 +21,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
@@ -153,5 +154,11 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 			return serverSideActor.oeGradeCrisis(aDtCrisisID, aDtGrade);
 		else
 			return new PtBoolean(false);
+	}
+
+	@Override
+	public PtBoolean ieSendAReport(CtReport aCtReport) throws RemoteException, NotBoundException {
+		//Here i should change something don't know what
+		return null;
 	}
 }

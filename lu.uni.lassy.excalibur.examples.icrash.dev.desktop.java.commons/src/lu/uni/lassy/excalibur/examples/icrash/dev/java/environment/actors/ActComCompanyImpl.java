@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
@@ -205,5 +207,24 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 		log.info("operation oeGradeCrisis successfully executed by the system");
 
 	return res;
+	}
+	
+	public PtBoolean ieSendAReport(CtReport aCtReport) throws NotBoundException {
+
+		Logger log = Log4JUtils.getInstance().getLogger();
+
+		log.info("message ActComCompany.ieSendAReport received from a Coordinator");
+		log.info("crisis id '"	+ aCtReport.id.value.getValue().toString() + "' "+
+				"prepared to send to next police Headquarter");
+		
+		for(ActProxyComCompany aProxy : listeners)
+			try {
+				if (aProxy instanceof ActProxyComCompany)
+					((ActProxyComCompany)aProxy).ieSendAReport(aCtReport);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+			}
+
+		return new PtBoolean(true);
 	}
 }

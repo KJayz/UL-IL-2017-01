@@ -7,7 +7,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
 /**
- * The Class DtCriminalAct, which holds the data type of the Criminal Act Message.
+ * The Class DtCriminalAct, which holds the data type of the Criminal Act Information.
  */
 public class DtCriminalAct extends DtString implements JIntIs {
 
@@ -24,7 +24,7 @@ public class DtCriminalAct extends DtString implements JIntIs {
 	}
 	
 	/** The maximum length of a criminal act . */
-	private int _maxLength = 100;
+	private int _maxLength = 200;
 	
 
 	public PtBoolean is(){

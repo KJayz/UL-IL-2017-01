@@ -59,7 +59,7 @@ public class CtCrisis implements Serializable {
 	/** The grade given by the coordinator handling the crisis. */
 	public DtGrade coordinatorgrade;
 	
-	/** The grade given by the indirect actor(s) involved in the crisis. */
+	/** The grade given by the in direct actor(s) involved in the crisis. */
 	public DtGrade victimgrade;
 	
 	/** The coordinatorID of the coordinator considered the main responsible for handling the crisis. */

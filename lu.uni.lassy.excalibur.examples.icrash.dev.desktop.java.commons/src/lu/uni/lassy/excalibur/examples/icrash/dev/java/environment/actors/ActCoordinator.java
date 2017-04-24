@@ -17,6 +17,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
@@ -162,5 +163,8 @@ public interface ActCoordinator extends ActAuthenticated {
 	 */
 	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException, NotBoundException;
 
+	
+		
+	
 	
 }
