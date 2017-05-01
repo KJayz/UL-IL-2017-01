@@ -20,6 +20,7 @@ import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -51,6 +52,7 @@ public interface ActProxyComCompany extends Remote, JIntIsActor {
 	 * @param aDtTime The time of the accident
 	 * @param aDtPhoneNumber The phone number of the human associated with the accident
 	 * @param aDtGPSLocation The location of the accident
+	 * @param aDtCriminalAct 
 	 * @param aDtComment The message sent by the human associated with the accident
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
@@ -58,7 +60,7 @@ public interface ActProxyComCompany extends Remote, JIntIsActor {
 	 */
 	public PtBoolean oeAlert(EtHumanKind aEtHumanKind,DtDate aDtDate,
 			DtTime aDtTime,DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation,DtComment aDtComment) throws RemoteException, NotBoundException;
+			DtGPSLocation aDtGPSLocation,DtCriminalAct aDtCriminalAct, DtComment aDtComment) throws RemoteException, NotBoundException;
 
 	/**
 	 * Receives a message from the server side actor with details of if the alert was logged or not.

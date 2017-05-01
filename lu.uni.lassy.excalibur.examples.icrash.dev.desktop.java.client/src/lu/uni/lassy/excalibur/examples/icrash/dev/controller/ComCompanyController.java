@@ -24,6 +24,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActCom
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyComCompany;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -99,6 +100,7 @@ public class ComCompanyController implements HasListeners{
 	 * @param latitude is the latitude point of where the accident happened
 	 * @param longitude is the longitude point of where the accident happened
 	 * @param comment is the information conveyed in the received SMS sent by the human (victim, witness, or anonymous)
+	 * @param criminal 
 	 * @return Returns a PtBoolean of true if done successfully, otherwise will return a false
 	 * @throws ServerOfflineException is an error that is thrown when the server is offline or not reachable
 	 * @throws InvalidHumanKindException is thrown when the enum type of HumanKind does not match the specification
@@ -107,7 +109,7 @@ public class ComCompanyController implements HasListeners{
 	 * @throws StringToNumberException the string to number exception
 	 */
 	public PtBoolean oeAlert(EtHumanKind aEtHumanKind, int year, int month, int day, int hour, int minute, int second,
-			String phoneNumber, String latitude, String longitude, String comment) throws ServerOfflineException, InvalidHumanKindException, ServerNotBoundException, IncorrectFormatException, StringToNumberException{
+			String phoneNumber, String latitude, String longitude, String criminal, String comment) throws ServerOfflineException, InvalidHumanKindException, ServerNotBoundException, IncorrectFormatException, StringToNumberException{
 		try {
 			if (aActProxyComCompany == null)
 				return new PtBoolean(false);
@@ -116,6 +118,7 @@ public class ComCompanyController implements HasListeners{
 			DtGPSLocation aDtGPSLocation = new DtGPSLocation(new DtLatitude(new PtReal(dblLatitude)), new DtLongitude(new PtReal(dblLongitude)));
 			DtPhoneNumber aDtPhoneNumber = new DtPhoneNumber(new PtString(phoneNumber));
 			DtComment aDtComment = new DtComment(new PtString(comment));
+			DtCriminalAct aDtCriminalAct = new DtCriminalAct (new PtString (criminal));
 			DtDate aDtDate = new DtDate(new DtYear(new PtInteger(year)), new DtMonth(new PtInteger(month)), new DtDay(new PtInteger(day)));
 			DtTime aDtTime = new DtTime(new DtHour(new PtInteger(hour)), new DtMinute(new PtInteger(minute)), new DtSecond(new PtInteger(second)));
 			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
@@ -123,8 +126,9 @@ public class ComCompanyController implements HasListeners{
 			ht.put(aDtGPSLocation.longitude, Double.toString(aDtGPSLocation.longitude.value.getValue()));
 			ht.put(aEtHumanKind, aEtHumanKind.name());
 			ht.put(aDtPhoneNumber, aDtPhoneNumber.value.getValue());
+			ht.put(aDtCriminalAct, aDtCriminalAct.value.getValue());
 			ht.put(aDtComment, aDtComment.value.getValue());
-			return aActProxyComCompany.oeAlert(aEtHumanKind, aDtDate, aDtTime, aDtPhoneNumber, aDtGPSLocation, aDtComment);
+			return aActProxyComCompany.oeAlert(aEtHumanKind, aDtDate, aDtTime, aDtPhoneNumber, aDtGPSLocation, aDtCriminalAct, aDtComment);
 		} catch (RemoteException e) {
 			Log4JUtils.getInstance().getLogger().error(e);
 			throw new ServerOfflineException();
