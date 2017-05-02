@@ -1,15 +1,15 @@
 /*
 @author Mauricelux
-@date Wed Apr 05 10:35:27 CEST 2017
+@date Tue May 02 12:25:25 CEST 2017
 */
 
 
 @@Use Case Subfunction icrash.usecases.subfunctions.oeSendReport
-@description "the coordinator can send all the information with this function to the police HQ."
+@description "The operation is used by the Coordinator to send the Report on the Crisis to the Comcompany"
 @parameter icrash.usecases.subfunctions.oeSendReport.AdtCrisisID ""
 @parameter icrash.usecases.subfunctions.oeSendReport.AetCrisisType ""
 @parameter icrash.usecases.subfunctions.oeSendReport.AdtGPSLocation ""
-@parameter icrash.usecases.subfunctions.oeSendReport.AdtDateAndTime ""
+@parameter icrash.usecases.subfunctions.oeSendReport.Ainstant ""
 @parameter icrash.usecases.subfunctions.oeSendReport.AdtCriminalAct ""
 @parameter icrash.usecases.subfunctions.oeSendReport.AdtComment ""
 @endParameters
