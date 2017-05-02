@@ -234,7 +234,7 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 	@Override
 	public PtBoolean oeAlert(EtHumanKind aEtHumanKind, DtDate aDtDate, DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
 			DtGPSLocation aDtGPSLocation, DtComment aDtComment) throws RemoteException, NotBoundException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
