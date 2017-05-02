@@ -1,0 +1,22 @@
+/*
+@author Mauricelux
+@date Tue May 02 12:31:44 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany.AactComCompany
+""
+@endParameters
+
+@description "test
+ "
+//postFunctional descriptions
+@postF 
+" test"
+@endPostF
+//example
+@example"test "

@@ -1,0 +1,49 @@
+/*
+@author Mauricelux
+@date Tue May 02 12:31:38 CEST 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtCrisisID
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AetCrisisType
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtGPSLocation
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtInstant
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtCriminalAct
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtComment
+""
+@endParameters
+
+@description "
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "
