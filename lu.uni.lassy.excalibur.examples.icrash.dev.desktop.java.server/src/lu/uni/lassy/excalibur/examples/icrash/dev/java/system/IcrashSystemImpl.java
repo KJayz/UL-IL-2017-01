@@ -59,6 +59,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPh
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -694,8 +695,14 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				DtCriminalAct acCriminal = new DtCriminalAct(new PtString(
 						"no information given on the criminal act, yet"));
 				
+				DtGrade acCoordinatorGrade = new DtGrade(new PtInteger(1));
+				
+				DtGrade acVictimGrade = new DtGrade(new PtInteger(1));
+				
+				DtCoordinatorID acGradedCoordinator = new DtCoordinatorID(new PtString("placeholder"));
+				
 				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminal,
-						acComment);
+						acComment, acCoordinatorGrade, acVictimGrade,acGradedCoordinator);
 	
 				//DB: insert crisis in the database
 				DbCrises.insertCrisis(aCtCrisis);
@@ -1195,7 +1202,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,
-			DtLogin aDtLogin, DtPassword aDtPassword) throws RemoteException {
+			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience) throws RemoteException {
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1210,7 +1217,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 			//PostF2
 			CtCoordinator ctCoordinator = new CtCoordinator();
-			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword);
+			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword,aEtExperience);
 			DbCoordinators.insertCoordinator(ctCoordinator);
 			
 			
@@ -1268,7 +1275,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * It is worth noticing that such system operation is not used anywhere for the moment (not even included in the class' interface)
 	 * 
 	 * */
-	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword) throws java.rmi.RemoteException{
+	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience) throws java.rmi.RemoteException{
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1278,8 +1285,8 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			if (ctAuth != null && ctAuth instanceof CtCoordinator){
 				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
 				CtCoordinator oldCoordinator = new CtCoordinator();
-				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd);
-				aCtCoordinator.update(aDtLogin, aDtPassword);
+				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd, aCtCoordinator.exp);
+				aCtCoordinator.update(aDtLogin, aDtPassword, aEtExperience);
 				if (DbCoordinators.updateCoordinator(aCtCoordinator).getValue()){
 					cmpSystemCtAuthenticated.remove(oldCoordinator.login.value.getValue());
 					cmpSystemCtAuthenticated.put(aCtCoordinator.login.value.getValue(), aCtCoordinator);
@@ -1288,7 +1295,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 					return new PtBoolean(true);
 				}
 				else
-					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd);
+					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd, oldCoordinator.exp);
 			}
 			return new PtBoolean(false);
 		} catch (Exception e) {

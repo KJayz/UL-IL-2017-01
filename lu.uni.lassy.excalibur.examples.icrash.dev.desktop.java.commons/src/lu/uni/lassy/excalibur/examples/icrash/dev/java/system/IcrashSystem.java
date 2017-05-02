@@ -32,6 +32,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtSt
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -41,6 +42,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPh
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
@@ -233,8 +235,9 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeAlert(EtHumanKind aEtHumanKind,DtDate aDtDate,
-				DtTime aDtTime,DtPhoneNumber aDtPhoneNumber,DtGPSLocation aDtGPSLocation,DtComment aDtComment) throws RemoteException; 
+	public PtBoolean oeAlert(EtHumanKind aEtHumanKind, DtDate aDtDate,
+			DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
+			DtGPSLocation aDtGPSLocation, DtCriminalAct aDtCriminalAct, DtComment aDtComment) throws RemoteException; 
 
 	/**
 	 * Validates an alert on the system
@@ -350,7 +353,7 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword) throws RemoteException; 	
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience) throws RemoteException; 	
 	
 	/**
 	 * Deletes a coordinator with the details specified.
