@@ -64,6 +64,8 @@ public class CtCrisis implements Serializable {
 	
 	/** The coordinatorID of the coordinator considered the main responsible for handling the crisis. */
 	public DtCoordinatorID gradedcoordinator;
+
+	public DtCriminalAct criminal;
 	
 	/**
 	 * Initialises the crisis.
@@ -78,13 +80,14 @@ public class CtCrisis implements Serializable {
 	 */
 	public PtBoolean init(DtCrisisID aId, EtCrisisType aType,
 			EtCrisisStatus aStatus, DtGPSLocation aLocation,
-			DtDateAndTime aInstant, DtComment aComment) {
+			DtDateAndTime aInstant, DtCriminalAct aCriminal, DtComment aComment) {
 
 		id = aId;
 		type = aType;
 		status = aStatus;
 		location = aLocation;
 		instant = aInstant;
+		criminal = aCriminal;
 		comment = aComment;
 
 		return new PtBoolean(true);
@@ -204,6 +207,8 @@ public class CtCrisis implements Serializable {
 			return false;
 		CtCrisis aCtCrisis = (CtCrisis)obj;
 		if (!aCtCrisis.id.value.getValue().equals(this.id.value.getValue()))
+			return false;
+		if (!aCtCrisis.criminal.value.getValue().equals(this.criminal.value.getValue()))
 			return false;
 		if (!aCtCrisis.comment.value.getValue().equals(this.comment.value.getValue()))
 			return false;
