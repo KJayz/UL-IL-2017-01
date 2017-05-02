@@ -5,26 +5,29 @@
 
 
 @@Operation
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport
 //parameters
 @parameter
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtCrisisID
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtCrisisID
 ""
 @parameter
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AetCrisisType
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AetCrisisType
 ""
 @parameter
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtGPSLocation
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtGPSLocation
 ""
 @parameter
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtCriminalAct
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtDateAndTime
 ""
 @parameter
-icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ.AdtComment
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtCriminalAct
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtComment
 ""
 @endParameters
 
-@description " this operation is used to send all the nessesary information to the Police Headquarter.
+@description " this operation is used to send the Report, all the nessesary information to the Police Headquarter.
  "
 //preProtocol descriptions
 @preP

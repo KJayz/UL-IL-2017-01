@@ -1,0 +1,38 @@
+/*
+@author Mauricelux
+@date Tue May 02 12:14:01 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany.AactComCompany
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "
+@@Operation
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany.AactComCompany
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

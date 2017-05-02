@@ -1,0 +1,18 @@
+package icrash.concepts.primarytypes.classes.operations.classes.ctReport.isSentToComCompany {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.environment
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany(AactComCompany:actComCompany):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		}
+	}
+}

@@ -1,0 +1,34 @@
+/*
+@author Mauricelux
+@date Tue May 02 12:12:57 CEST 2017
+*/
+
+
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctReport
+@description "The Report holds all the information that can be send to Police Headquarter. The Coordinator can send it to the ComCompany"
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.id
+""
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.type
+""
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.location
+""
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.instant
+""
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.criminal
+""
+@attribute
+icrash.concepts.primarytypes.classes.ctReport.comment
+""
+@endAttributes
+@operation
+icrash.concepts.primarytypes.classes.ctReport.init
+""
+@operation
+icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany
+""
+@endOperations

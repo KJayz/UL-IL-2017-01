@@ -1,0 +1,40 @@
+/*
+@author Mauricelux
+@date Tue May 02 12:13:53 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.classes.ctReport.init
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Aid
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Atype
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Astatus
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Alocation
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Ainstant
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Acriminal
+""
+@parameter
+icrash.concepts.primarytypes.classes.ctReport.init.Acomment
+""
+@endParameters
+
+@description "
+used to initialize the current object as a new instance of the ctReport type. "
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new ctReport instance having its attributes equal to the ones provided as parameters. "
+@endPostF
+//example
+@example" "

@@ -73,9 +73,10 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
 				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
-				operation oeSendToPoliceHQ(AdtCrisisID:dtCrisisID ,
+				operation oeSendReport(AdtCrisisID:dtCrisisID ,
 										   AetCrisisType:etCrisisType,
 										   AdtGPSLocation:dtGPSLocation,
+										   AdtInstant:dtDateAndTime,
 										   AdtCriminalAct:dtCriminalAct,
 										   AdtComment:dtComment
 										   
@@ -89,6 +90,7 @@ import lu.uni.lassy.messir.libraries.calendar
 			input interface inactCoordinator{
 				operation ieSendAnAlert(ActAlert:ctAlert ):ptBoolean
 				operation ieSendACrisis(ActCrisis:ctCrisis ):ptBoolean
+				operation ieSendAReport(ActReport:ctReport):ptBoolean
 	 		}
 		}
 		
@@ -103,6 +105,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										AdtTime:dtTime , 
 										AdtPhoneNumber:dtPhoneNumber ,
 										AdtGPSLocation:dtGPSLocation , 
+										AdtCriminalAct:dtCriminalAct ,
 										AdtComment:dtComment 
 										):ptBoolean
 			operation oeGradeCrisis(

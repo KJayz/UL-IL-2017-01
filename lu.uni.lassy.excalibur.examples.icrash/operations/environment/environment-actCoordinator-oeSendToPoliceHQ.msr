@@ -7,9 +7,12 @@ import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.datatypes
 
 
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+
 	Operation Model {
 
-		operation: icrash.environment.actCoordinator.outactCoordinator.oeSendToPoliceHQ(AdtCrisisID:dtCrisisID, AetCrisisType:etCrisisType, AdtGPSLocation:dtGPSLocation, AdtCriminalAct:dtCriminalAct, AdtComment:dtComment):ptBoolean{
+		operation: icrash.environment.actCoordinator.outactCoordinator.oeSendReport(AdtCrisisID:dtCrisisID ,AetCrisisType:etCrisisType, AdtGPSLocation:dtGPSLocation, Ainstant:dtDateAndTime, AdtCriminalAct:dtCriminalAct, AdtComment:dtComment):ptBoolean{
 		// include below the specification information (pre,post or ocl or prolog)
 
 		}

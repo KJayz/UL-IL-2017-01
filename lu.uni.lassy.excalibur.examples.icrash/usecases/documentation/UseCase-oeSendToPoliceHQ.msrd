@@ -4,13 +4,14 @@
 */
 
 
-@@Use Case Subfunction icrash.usecases.subfunctions.oeSendToPoliceHQ
+@@Use Case Subfunction icrash.usecases.subfunctions.oeSendReport
 @description "the coordinator can send all the information with this function to the police HQ."
-@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtCrisisID ""
-@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AetCrisisType ""
-@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtGPSLocation ""
-@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtCriminalAct ""
-@parameter icrash.usecases.subfunctions.oeSendToPoliceHQ.AdtComment ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AetCrisisType ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AdtGPSLocation ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AdtDateAndTime ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AdtCriminalAct ""
+@parameter icrash.usecases.subfunctions.oeSendReport.AdtComment ""
 @endParameters
 @protocolCondition
 "
