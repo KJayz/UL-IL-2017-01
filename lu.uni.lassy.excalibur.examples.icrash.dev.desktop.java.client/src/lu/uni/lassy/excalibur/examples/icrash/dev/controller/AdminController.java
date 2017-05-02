@@ -31,6 +31,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
@@ -56,17 +57,31 @@ public class AdminController extends AbstractUserController {
 	 * @param coordinatorID The ID of the coordinator to create, the user specifies the ID, not the system in the creation process
 	 * @param login The logon of the user to create. This is the username they will use at point of logon at the client front end
 	 * @param password The password of the user to create. This is the password they will use at point of logon at the client front end
+	 * @param experience The experience level of the user to create. This will define their permissions during the use of the iCrash system
 	 * @return Returns a PtBoolean true if the user was created, otherwise will return false
 	 * @throws ServerOfflineException is an error that is thrown when the server is offline or not reachable
 	 * @throws ServerNotBoundException is only thrown when attempting to access a server which has no current binding. This shouldn't happen, but you never know!
 	 * @throws IncorrectFormatException is thrown when a Dt/Et information type does not match the is() method specified in the specification
 	 */
-	public PtBoolean oeAddCoordinator(String coordinatorID, String login, String password, BufferedImage fingerPrint) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+	public PtBoolean oeAddCoordinator(String coordinatorID, String login, String password,String experience, BufferedImage fingerPrint) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
 			DtCoordinatorID aDtCoordinatorID = new DtCoordinatorID(new PtString(coordinatorID));
 			DtLogin aDtLogin = new DtLogin(new PtString(login));
 			DtPassword aDtPassword = new DtPassword(new PtString(password));
+			
+			EtExperience aEtExperience = null;
+			if (experience.equals(EtExperience.novice.name()))
+				aEtExperience = EtExperience.novice;
+			if (experience.equals(EtExperience.beginner.name()))
+				aEtExperience = EtExperience.beginner;
+			if (experience.equals(EtExperience.experienced.name()))
+				aEtExperience = EtExperience.experienced;
+			if (experience.equals(EtExperience.professional.name()))
+				aEtExperience = EtExperience.professional;
+			if (experience.equals(EtExperience.expert.name()))
+				aEtExperience = EtExperience.expert;
+			
 			DtFingerPrint aDtFingerPrint = new DtFingerPrint(fingerPrint);
 			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
 			ht.put(aDtCoordinatorID, aDtCoordinatorID.value.getValue());
@@ -74,7 +89,7 @@ public class AdminController extends AbstractUserController {
 			ht.put(aDtPassword, aDtPassword.value.getValue());
 			ht.put(aDtFingerPrint, aDtFingerPrint.getFingerPrint().toString());
 			try {
-				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword/*,aDtFingerPrint*/); 
+				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience/*,aDtFingerPrint*/); 
 				//calls the function oeAddCoordinator of the class ActProxyAdministratorImpl 
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
