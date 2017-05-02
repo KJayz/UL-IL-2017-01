@@ -21,9 +21,11 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
@@ -34,6 +36,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHu
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
@@ -115,7 +118,10 @@ public class TestCase_db_table_alerts {
 		EtCrisisStatus acStatus = EtCrisisStatus.pending;
 		DtCriminalAct acCriminalAct = new DtCriminalAct(new PtString("Not a criminal Act"));
 		DtComment acComment = new DtComment(new PtString("no report defined, yet"));
-		aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminalAct, acComment);
+		DtGrade acCoordinatorGrade = new DtGrade(new PtInteger(3));
+		DtGrade acVictimGrade = new DtGrade(new PtInteger(2));
+		DtCoordinatorID acGradedCoordinator = new DtCoordinatorID(new PtString("2"));
+		aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminalAct, acComment, acCoordinatorGrade, acVictimGrade, acGradedCoordinator);
 		DbAlerts.bindAlertCrisis(aCtAlert2, aCtCrisis);
 
 
