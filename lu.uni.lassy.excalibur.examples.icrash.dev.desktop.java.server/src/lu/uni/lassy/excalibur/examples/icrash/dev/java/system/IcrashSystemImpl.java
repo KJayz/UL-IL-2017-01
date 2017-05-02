@@ -49,6 +49,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtSt
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -643,7 +644,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 */
 	public  synchronized PtBoolean oeAlert(EtHumanKind aEtHumanKind, DtDate aDtDate,
 			DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation, DtComment aDtComment)
+			DtGPSLocation aDtGPSLocation, DtCriminalAct aDtCriminalAct, DtComment aDtComment)
 			throws RemoteException {
 		try{
 			//PreP1
@@ -662,7 +663,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			DtAlertID aId = new DtAlertID(new PtString(""
 					+ nextValueForAlertID_at_pre));
 			EtAlertStatus aStatus = EtAlertStatus.pending;
-			aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtComment);
+			aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminalAct, aDtComment);
 			//DB: insert alert in the database
 			DbAlerts.insertAlert(aCtAlert);
 	
@@ -690,7 +691,10 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				EtCrisisStatus acStatus = EtCrisisStatus.pending;
 				DtComment acComment = new DtComment(new PtString(
 						"no report defined, yet"));
-				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant,
+				DtCriminalAct acCriminal = new DtCriminalAct(new PtString(
+						"no information given on the criminal act, yet"));
+				
+				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminal,
 						acComment);
 	
 				//DB: insert crisis in the database
