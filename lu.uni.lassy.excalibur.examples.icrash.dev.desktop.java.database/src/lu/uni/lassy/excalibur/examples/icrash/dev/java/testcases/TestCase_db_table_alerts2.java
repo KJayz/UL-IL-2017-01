@@ -22,6 +22,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbAlerts;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
@@ -81,12 +82,15 @@ public class TestCase_db_table_alerts2 {
 	
 	
 		//**********************************************************
+		//set up criminal act
+		DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString("Not a criminal Act."));
+		
 		//set up comment
 		DtComment aDtComment = new DtComment(new PtString("13 cars involved in an accident."));
 		
 		
 		CtAlert aCtAlert = new CtAlert();
-		aCtAlert.init(aId, aStatus,aDtGPSLocation,aInstant, aDtComment);
+		aCtAlert.init(aId, aStatus,aDtGPSLocation,aInstant,aDtCriminalAct, aDtComment);
 		
 		DbAlerts.insertAlert(aCtAlert);
 		

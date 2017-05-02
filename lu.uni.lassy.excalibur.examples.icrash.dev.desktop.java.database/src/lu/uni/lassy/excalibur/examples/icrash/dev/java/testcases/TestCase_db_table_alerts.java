@@ -21,6 +21,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
@@ -39,6 +40,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 
 import org.apache.log4j.Logger;
+
+import com.mysql.jdbc.log.Log;
 
 /**
  * The Class that tests the database table of alerts.
@@ -87,10 +90,11 @@ public class TestCase_db_table_alerts {
 		//**********************************************************
 		//set up comment
 		DtComment aDtComment = new DtComment(new PtString("13 cars involved in an accident."));
-		
+		//set up a criminal act
+		DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString("Terrorist attack, bomb exploded in one of the cars."));
 		
 		CtAlert aCtAlert = new CtAlert();
-		aCtAlert.init(aId, aStatus,aDtGPSLocation,aInstant, aDtComment);
+		aCtAlert.init(aId, aStatus,aDtGPSLocation,aInstant,aDtCriminalAct, aDtComment);
 		
 		DbAlerts.insertAlert(aCtAlert);
 		
@@ -99,6 +103,7 @@ public class TestCase_db_table_alerts {
 		CtAlert aCtAlert2 = DbAlerts.getAlert(aId.value.getValue());
 		log.debug("The retrieved alert's id is " + aCtAlert2.id.value.getValue());
 		log.debug("The retrieved alert's status is " + aCtAlert2.status.toString());
+		log.debug("The retrieved alert's criminal act is " + aCtAlert2.criminal.value.getValue());
 		log.debug("The retrieved alert's comment is " + aCtAlert2.comment.value.getValue());
 		
 		
@@ -108,8 +113,9 @@ public class TestCase_db_table_alerts {
 		DtCrisisID acId = new DtCrisisID(new PtString("1"));
 		EtCrisisType acType = EtCrisisType.small;
 		EtCrisisStatus acStatus = EtCrisisStatus.pending;
+		DtCriminalAct acCriminalAct = new DtCriminalAct(new PtString("Not a criminal Act"));
 		DtComment acComment = new DtComment(new PtString("no report defined, yet"));
-		aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acComment);
+		aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminalAct, acComment);
 		DbAlerts.bindAlertCrisis(aCtAlert2, aCtCrisis);
 
 
