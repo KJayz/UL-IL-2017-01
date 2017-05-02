@@ -138,6 +138,10 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		txtfldLatitude.setMinWidth(width);
 		txtfldLatitude.setMaxWidth(width);
 		txtfldLatitude.setPromptText("Enter a latitude");
+		TextArea txtarCriminalAct = new TextArea();
+		txtarCriminalAct.setMinWidth(width);
+		txtarCriminalAct.setMaxWidth(width);
+		txtarCriminalAct.setPromptText("Criminal Act description");
 		TextArea txtarComment = new TextArea();
 		txtarComment.setMinWidth(width);
 		txtarComment.setMaxWidth(width);
@@ -153,18 +157,19 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 		grdpn.add(txtfldPhone, 1, 5, 2, 1);
 		grdpn.add(txtfldLatitude, 1, 6, 2, 1);
 		grdpn.add(txtfldLongitude, 1, 7, 2, 1);
-		grdpn.add(txtarComment, 1, 8, 2, 1);
-		grdpn.add(lblTimeHour, 1, 9);
-		grdpn.add(sldrHourPicker, 1, 10);
-		grdpn.add(txtfldCurrentSetHour, 2, 10);
-		grdpn.add(lblTimeMinute, 1, 11);
-		grdpn.add(sldrMinutePicker, 1, 12);
-		grdpn.add(txtfldCurrentSetMinute, 2, 12);
-		grdpn.add(lblTimeSecond, 1, 13);
-		grdpn.add(sldrSecondPicker, 1, 14);
-		grdpn.add(txtfldCurrentSetSecond, 2, 14);
-		grdpn.add(bttnOk, 1, 15);
-		grdpn.add(bttnClear, 2, 15);
+		grdpn.add(txtarCriminalAct, 1, 8, 2, 1);
+		grdpn.add(txtarComment, 1, 9, 2, 1);
+		grdpn.add(lblTimeHour, 1, 10);
+		grdpn.add(sldrHourPicker, 1, 11);
+		grdpn.add(txtfldCurrentSetHour, 2, 11);
+		grdpn.add(lblTimeMinute, 1, 12);
+		grdpn.add(sldrMinutePicker, 1, 13);
+		grdpn.add(txtfldCurrentSetMinute, 2, 13);
+		grdpn.add(lblTimeSecond, 1, 14);
+		grdpn.add(sldrSecondPicker, 1, 15);
+		grdpn.add(txtfldCurrentSetSecond, 2, 15);
+		grdpn.add(bttnOk, 1, 16);
+		grdpn.add(bttnClear, 2, 16);
 		bttnOk.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -172,7 +177,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 					if (checkDataAndSend(Math.floor(sldrHourPicker.getValue()), Math.floor(sldrMinutePicker.getValue()), Math.floor(sldrSecondPicker.getValue()),
 							dtpckr.getValue().getYear(), dtpckr.getValue().getMonthValue(), dtpckr.getValue().getDayOfMonth(),
 							lstvwPersonType.getSelectionModel().getSelectedItem(), txtfldPhone.getText(),
-							txtfldLatitude.getText(), txtfldLongitude.getText(),
+							txtfldLatitude.getText(), txtfldLongitude.getText(),txtarCriminalAct.getText(),
 							txtarComment.getText()).getValue())
 						resetForm(grdpn);
 					else
@@ -202,9 +207,9 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 	 * @param comment The message sent by the human about the accident
 	 * @return The success of the method
 	 */
-	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String comment){
+	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String criminal,String comment){
 		try {
-			return comcompanyController.oeAlert(humanKind, year, month, day, (int)hour, (int)minute, (int)second, phoneNumber, latitude, longitude, comment);
+			return comcompanyController.oeAlert(humanKind, year, month, day, (int)hour, (int)minute, (int)second, phoneNumber, latitude, longitude,criminal, comment);
 		} catch (ServerOfflineException | InvalidHumanKindException | ServerNotBoundException e) {
 			showExceptionErrorMessage(e);
 		} catch (IncorrectFormatException e) {

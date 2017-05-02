@@ -26,6 +26,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
@@ -86,13 +87,15 @@ public class DbCrises extends DbAbstract {
 						hour, min, sec);
 				String instant = sdf.format(calendar.getTime());
 
+				String criminalAct = aCtCrisis.criminal.value.getValue();
+				
 				String comment = aCtCrisis.comment.value.getValue();
 
 				log.debug("[DATABASE]-Insert crisis");
 				int val = st.executeUpdate("INSERT INTO " + dbName + ".crises"
 						+ "(id,type,status,latitude,longitude,instant,comment)"
 						+ "VALUES(" + "'" + id + "'" + ",'" + type + "','"
-						+ status + "', " + latitude + ", " + longitude + ", '"
+						+ status + "', " + latitude + ", " + longitude + ", '" + criminalAct + "','"
 						+ instant + "','" + comment + "')");
 
 				log.debug(val + " row affected");
@@ -185,12 +188,15 @@ public class DbCrises extends DbAbstract {
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
 
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("criminal")));
+					
 					//crisis's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
-					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation, 
+							aInstant, aDtCriminalAct, aDtComment);
 
 				}
 
@@ -331,13 +337,18 @@ public class DbCrises extends DbAbstract {
 					int sec = cal.get(Calendar.SECOND);
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
+					
+				
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("criminal")));
 
+					
 					//crisis' comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+							aInstant, aDtCriminalAct, aDtComment);
 
 					//*************************************
 					aCtCoordinator = new CtCoordinator();
@@ -449,12 +460,15 @@ public class DbCrises extends DbAbstract {
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
 
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("criminal")));
+					
 					//crisis' comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtComment);
+							aInstant, aDtCriminalAct, aDtComment);
 
 					//add instance to the hash
 					cmpSystemCtCrisis.put(aCtCrisis.id.value.getValue(),

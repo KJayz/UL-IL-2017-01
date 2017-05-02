@@ -80,6 +80,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation isAllocatedIfPossible():ptBoolean
 			}
 			
+			
 
 
 			class ctHuman role rnctHuman cardinality [0..*]{
@@ -130,6 +131,33 @@ import lu.uni.lassy.messir.libraries.calendar
 										Alogin:dtLogin ,
 										Apwd:dtPassword ):ptBoolean
 			}
+			
+			class ctReport
+					role rnctReport
+					cardinality [0..*]{
+					attribute id:dtCrisisID
+					attribute type:etCrisisType
+					attribute location:dtGPSLocation
+					attribute instant:dtDateAndTime
+					attribute criminal:dtCriminalAct
+					attribute comment:dtComment
+				
+				
+					operation init(
+										Aid:dtCrisisID ,
+										Atype:etCrisisType ,
+										Astatus:etCrisisStatus ,
+										Alocation:dtGPSLocation ,
+										Ainstant:dtDateAndTime ,
+										Acriminal:dtCriminalAct,
+										Acomment:dtComment
+									
+										):ptBoolean
+		
+		
+					operation isSentToComCompany(AactComCompany:actComCompany ):ptBoolean
+		
+				}
 		}
 	}
 }

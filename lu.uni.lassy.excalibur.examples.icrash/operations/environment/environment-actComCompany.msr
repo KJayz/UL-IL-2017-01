@@ -20,6 +20,7 @@ operation: actComCompany.outactComCompany.oeAlert(
  AdtTime:dtTime,
  AdtPhoneNumber:dtPhoneNumber,
  AdtGPSLocation:dtGPSLocation,
+ AdtCriminalAct:dtCriminalAct,
  AdtComment:dtComment
 ):ptBoolean{
 

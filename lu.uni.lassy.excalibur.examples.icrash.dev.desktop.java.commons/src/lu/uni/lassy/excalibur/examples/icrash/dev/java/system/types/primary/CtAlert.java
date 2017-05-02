@@ -42,6 +42,8 @@ public class CtAlert implements Serializable {
 	/** The comment associated with the alert. */
 	public DtComment comment;
 
+	public DtCriminalAct criminal;
+
 	/**
 	 * Initialises the alert.
 	 *
@@ -53,12 +55,13 @@ public class CtAlert implements Serializable {
 	 * @return the success of the initialisation of the alert
 	 */
 	public PtBoolean init(DtAlertID aId, EtAlertStatus aStatus,
-			DtGPSLocation aLocation, DtDateAndTime aInstant, DtComment aComment) {
+			DtGPSLocation aLocation, DtDateAndTime aInstant, DtCriminalAct aCriminal, DtComment aComment) {
 			
 		id = aId;
 		status = aStatus;
 		location = aLocation;
 		instant = aInstant;
+		criminal = aCriminal;
 		comment = aComment;
 		return new PtBoolean(true);
 	}
@@ -94,6 +97,8 @@ public class CtAlert implements Serializable {
 		if (!(aCtAlert.id.value.getValue().equals(this.id.value.getValue())))
 			return false;
 		if (!(aCtAlert.instant.toString().equals(this.instant.toString())))
+			return false;
+		if (!(aCtAlert.criminal.value.getValue().equals(this.criminal.value.getValue())))
 			return false;
 		if (!(aCtAlert.comment.value.getValue().equals(this.comment.value.getValue())))
 			return false;

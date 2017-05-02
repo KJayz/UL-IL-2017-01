@@ -23,6 +23,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -95,7 +96,7 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 	 */
 	synchronized public PtBoolean oeAlert(EtHumanKind aEtHumanKind,
 			DtDate aDtDate, DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation, DtComment aDtComment)
+			DtGPSLocation aDtGPSLocation, DtCriminalAct aDtCriminalAct, DtComment aDtComment)
 			throws RemoteException, NotBoundException {
 
 		if (serverSideActor != null)
@@ -161,4 +162,6 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 		//Here i should change something don't know what
 		return null;
 	}
+
+	
 }
