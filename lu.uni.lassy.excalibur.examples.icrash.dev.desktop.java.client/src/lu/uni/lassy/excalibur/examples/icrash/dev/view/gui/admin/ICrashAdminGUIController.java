@@ -230,6 +230,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			anchrpnCoordinatorDetails.getChildren().remove(i);
 		TextField txtfldUserID = new TextField();
 		TextField txtfldUserName = new TextField();
+		TextField expfldExperience = new TextField();
 		/*
 		 * Image needs a path as inputStream. So this path is asked to the user in a TextField. 
 		 * Format of image shall be .png
@@ -254,11 +255,13 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			bttntypOK = new Button("Create");
 			txtfldUserName.setPromptText("User name");
 			psswrdfldPassword.setPromptText("Password");
+			expfldExperience.setPromptText("Experience level");
 			imagePath.setPromptText("Finger print path");
 			grdpn.add(txtfldUserName, 1, 2);
 			grdpn.add(psswrdfldPassword, 1, 3);
 			grdpn.add(imagePath, 1, 4);
 			grdpn.add(bttntypOK, 1, 5);
+			grdpn.add(expfldExperience, 1, 6);
 			break;
 		case Delete:
 			bttntypOK = new Button("Delete");
@@ -276,7 +279,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
 						switch(type){
 						case Add:
-							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), fingerPrint).getValue()){
+							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), expfldExperience.getText(), fingerPrint).getValue()){
 								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
 								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
 							}
