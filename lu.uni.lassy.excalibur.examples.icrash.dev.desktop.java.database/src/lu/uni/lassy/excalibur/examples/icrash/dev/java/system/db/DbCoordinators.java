@@ -23,6 +23,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 
@@ -51,11 +53,11 @@ public class DbCoordinators extends DbAbstract{
 				String id = aCtCoordinator.id.value.getValue();
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
-	
+				String exp = aCtCoordinator.exp.toString();
 				log.debug("[DATABASE]-Insert coordinator");
 				int val = st.executeUpdate("INSERT INTO "+ dbName+ ".coordinators" +
 											"(id,login,pwd)" + 
-											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"')");
+											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"','"+exp+")");
 				
 				log.debug(val + " row affected");
 			}
@@ -106,8 +108,22 @@ public class DbCoordinators extends DbAbstract{
 					DtLogin aLogin = new DtLogin(new PtString(res.getString("login")));
 					//coordinator's pwd
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
+					//coordinator's exp -> [novice, beginner, experienced, professional , master]
+					//crisis' type -> [small, medium, huge]
+					String theExp = res.getString("exp");
+					EtExperience aExp = null;
+					if (theExp.equals(EtExperience.novice.name()))
+						aExp = EtExperience.novice;
+					if (theExp.equals(EtExperience.beginner.name()))
+						aExp = EtExperience.beginner;
+					if (theExp.equals(EtExperience.experienced.name()))
+						aExp = EtExperience.experienced;
+					if (theExp.equals(EtExperience.professional.name()))
+						aExp = EtExperience.professional;
+					if (theExp.equals(EtExperience.expert.name()))
+						aExp = EtExperience.expert;
 
-					aCtCoordinator.init(aId, aLogin,aPwd);
+					aCtCoordinator.init(aId, aLogin,aPwd,aExp);
 					
 				}
 								
@@ -182,8 +198,9 @@ public class DbCoordinators extends DbAbstract{
 				String id = aCtCoordinator.id.value.getValue();
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
+				String exp = aCtCoordinator.exp.toString();
 				String statement = "UPDATE "+ dbName+ ".coordinators" +
-						" SET pwd='"+pwd+"',  login='"+ login+"' " +
+						" SET pwd='"+pwd+"',  login='"+ login+"', exp='"+exp+" " +
 						"WHERE id='"+id+"'";
 				int val = st.executeUpdate(statement);
 				log.debug(val+" row updated");
@@ -232,8 +249,22 @@ public class DbCoordinators extends DbAbstract{
 							res.getString("id")));
 					DtLogin aLogin = new DtLogin(new PtString(res.getString("login")));
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
+					
+					String theExp = res.getString("exp");
+					EtExperience aExp = null;
+					if (theExp.equals(EtExperience.novice.name()))
+						aExp = EtExperience.novice;
+					if (theExp.equals(EtExperience.beginner.name()))
+						aExp = EtExperience.beginner;
+					if (theExp.equals(EtExperience.experienced.name()))
+						aExp = EtExperience.experienced;
+					if (theExp.equals(EtExperience.professional.name()))
+						aExp = EtExperience.professional;
+					if (theExp.equals(EtExperience.expert.name()))
+						aExp = EtExperience.expert;
+
 					//init aCtAlert instance
-					aCtCoord.init(aId, aLogin, aPwd);
+					aCtCoord.init(aId, aLogin, aPwd, aExp);
 					
 					//add instance to the hash
 					cmpSystemCtCoord

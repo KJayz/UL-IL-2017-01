@@ -8,9 +8,11 @@ Operation Model {
     postF{ 
         let TheResult: ptBoolean in
         ( if
-          ( self = small
+          ( self = very small
+          	or self = small
             or self = medium
             or self = huge
+            or self = insane
           )
           then (TheResult = true)
           else (TheResult = false)
