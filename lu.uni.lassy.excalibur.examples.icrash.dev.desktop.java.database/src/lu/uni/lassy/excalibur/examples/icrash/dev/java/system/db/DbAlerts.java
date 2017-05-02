@@ -28,6 +28,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
@@ -120,13 +121,15 @@ public class DbAlerts extends DbAbstract {
 						hour, min, sec);
 				String instant = sdf.format(calendar.getTime());
 
+				String criminalAct = aCtAlert.criminal.value.getValue();
+				
 				String comment = aCtAlert.comment.value.getValue();
 
 				log.debug("[DATABASE]-Insert alert");
 				int val = st.executeUpdate("INSERT INTO " + dbName + ".alerts"
 						+ "(id,status,latitude,longitude,instant,comment)"
 						+ "VALUES(" + "'" + id + "'" + ",'" + status + "', "
-						+ latitude + ", " + longitude + ", '" + instant + "','"
+						+ latitude + ", " + longitude + ", '" + instant + "','" + criminalAct + "','"
 						+ comment + "')");
 
 				log.debug(val + " row affected");
@@ -207,11 +210,13 @@ public class DbAlerts extends DbAbstract {
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
 
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(res.getString("criminal")));
+					
 					//alert's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
-					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
+					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminalAct,
 							aDtComment);
 
 				}
@@ -336,13 +341,16 @@ public class DbAlerts extends DbAbstract {
 					int sec = cal.get(Calendar.SECOND);
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
+					
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("criminal")));
 
 					//alert's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
 					//init aCtAlert instance
-					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
+					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminalAct,
 							aDtComment);
 
 					//add instance to the hash
@@ -433,12 +441,15 @@ public class DbAlerts extends DbAbstract {
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
 
+					DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("alerts.criminal")));
+					
 					//alert's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("alerts.comment")));
 
 					//init aCtAlert instance
-					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
+					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminalAct,
 							aDtComment);
 
 					//*************************************
@@ -491,13 +502,17 @@ public class DbAlerts extends DbAbstract {
 					aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aCrisisInstant = new DtDateAndTime(aDtDate,
 							aDtTime);
+					
+					DtCriminalAct aCrisisDtCriminalAct = new DtCriminalAct(new PtString(
+							res.getString("crises.criminal")));
+
 
 					//crisis's comment  
 					DtComment aCrisisDtComment = new DtComment(new PtString(
 							res.getString("crises.comment")));
 
 					aCtCrisis.init(aCrisisId, aCrisisType, aCrisisStatus,
-							aCrisisDtGPSLocation, aCrisisInstant,
+							aCrisisDtGPSLocation, aCrisisInstant, aCrisisDtCriminalAct,
 							aCrisisDtComment);
 
 					//add instances to the hash
@@ -587,12 +602,15 @@ public class DbAlerts extends DbAbstract {
 					DtTime aDtTime = ICrashUtils.setTime(h, min, sec);
 					DtDateAndTime aInstant = new DtDateAndTime(aDtDate, aDtTime);
 
+					DtCriminalAct aDtCriminal = new DtCriminalAct(new PtString(
+							res.getString("alerts.criminal")));
+					
 					//alert's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("alerts.comment")));
 
 					//init aCtAlert instance
-					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant,
+					aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminal,
 							aDtComment);
 
 					//*************************************
