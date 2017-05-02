@@ -28,9 +28,11 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtHuman;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber;
@@ -41,6 +43,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHu
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
@@ -510,10 +513,21 @@ public class DbAlerts extends DbAbstract {
 					//crisis's comment  
 					DtComment aCrisisDtComment = new DtComment(new PtString(
 							res.getString("crises.comment")));
+		
+					
+					//crisis' coordinatorgrade
+					DtGrade aCoordinatorGrade = new DtGrade(new PtInteger(res.getInt("coordinatorgrade")));
+					
+					//crisis' victimgrade
+					DtGrade aVictimGrade = new DtGrade(new PtInteger(res.getInt("victimgrade")));
+					
+					//crisis' gradedcoordinator
+					DtCoordinatorID aGradedCoordinator = new DtCoordinatorID(new PtString(res.getString("gradedcoordinator")));
+
 
 					aCtCrisis.init(aCrisisId, aCrisisType, aCrisisStatus,
 							aCrisisDtGPSLocation, aCrisisInstant, aCrisisDtCriminalAct,
-							aCrisisDtComment);
+							aCrisisDtComment, aCoordinatorGrade, aVictimGrade, aGradedCoordinator);
 
 					//add instances to the hash
 					assCtAlertCtCrisis.put(aCtAlert, aCtCrisis);

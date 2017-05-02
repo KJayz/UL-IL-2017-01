@@ -109,7 +109,6 @@ public class DbCoordinators extends DbAbstract{
 					//coordinator's pwd
 					DtPassword aPwd = new DtPassword(new PtString(res.getString("pwd")));
 					//coordinator's exp -> [novice, beginner, experienced, professional , master]
-					//crisis' type -> [small, medium, huge]
 					String theExp = res.getString("exp");
 					EtExperience aExp = null;
 					if (theExp.equals(EtExperience.novice.name()))

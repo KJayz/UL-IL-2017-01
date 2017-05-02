@@ -80,7 +80,7 @@ public class CtCrisis implements Serializable {
 	 */
 	public PtBoolean init(DtCrisisID aId, EtCrisisType aType,
 			EtCrisisStatus aStatus, DtGPSLocation aLocation,
-			DtDateAndTime aInstant, DtCriminalAct aCriminal, DtComment aComment) {
+			DtDateAndTime aInstant, DtCriminalAct aCriminal, DtComment aComment, DtGrade aCoordinatorGrade, DtGrade aVictimGrade, DtCoordinatorID aGradedCoordinator) {
 
 		id = aId;
 		type = aType;
@@ -89,6 +89,9 @@ public class CtCrisis implements Serializable {
 		instant = aInstant;
 		criminal = aCriminal;
 		comment = aComment;
+		coordinatorgrade = aCoordinatorGrade;
+		victimgrade = aVictimGrade;
+		gradedcoordinator = aGradedCoordinator;
 
 		return new PtBoolean(true);
 

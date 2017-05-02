@@ -29,15 +29,18 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCo
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
@@ -69,6 +72,9 @@ public class DbCrises extends DbAbstract {
 				String id = aCtCrisis.id.value.getValue();
 				String type = aCtCrisis.type.toString();
 				String status = aCtCrisis.status.toString();
+				int coordinatorgrade = aCtCrisis.coordinatorgrade.value.getValue();
+				int victimgrade = aCtCrisis.victimgrade.value.getValue();
+				String gradedcoordinator = aCtCrisis.gradedcoordinator.value.getValue();
 				double latitude = aCtCrisis.location.latitude.value.getValue();
 				double longitude = aCtCrisis.location.longitude.value
 						.getValue();
@@ -194,9 +200,18 @@ public class DbCrises extends DbAbstract {
 					//crisis's comment  
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
+					
+					//crisis' coordinatorgrade
+					DtGrade aCoordinatorGrade = new DtGrade(new PtInteger(res.getInt("coordinatorgrade")));
+					
+					//crisis' victimgrade
+					DtGrade aVictimGrade = new DtGrade(new PtInteger(res.getInt("victimgrade")));
+					
+					//crisis' gradedcoordinator
+					DtCoordinatorID aGradedCoordinator = new DtCoordinatorID(new PtString(res.getString("gradedcoordinator")));
 
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation, 
-							aInstant, aDtCriminalAct, aDtComment);
+							aInstant, aDtCriminalAct, aDtComment, aCoordinatorGrade, aVictimGrade, aGradedCoordinator );
 
 				}
 
@@ -347,8 +362,18 @@ public class DbCrises extends DbAbstract {
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
+					//crisis' coordinatorgrade
+					DtGrade aCoordinatorGrade = new DtGrade(new PtInteger(res.getInt("coordinatorgrade")));
+					
+					//crisis' victimgrade
+					DtGrade aVictimGrade = new DtGrade(new PtInteger(res.getInt("victimgrade")));
+					
+					//crisis' gradedcoordinator
+					DtCoordinatorID aGradedCoordinator = new DtCoordinatorID(new PtString(res.getString("gradedcoordinator")));
+
+					
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtCriminalAct, aDtComment);
+							aInstant, aDtCriminalAct, aDtComment, aCoordinatorGrade, aVictimGrade, aGradedCoordinator);
 
 					//*************************************
 					aCtCoordinator = new CtCoordinator();
@@ -361,8 +386,22 @@ public class DbCrises extends DbAbstract {
 					//coordinator's pwd
 					DtPassword aPwd = new DtPassword(new PtString(
 							res.getString("pwd")));
+					//coordinator's exp
+					String theExp = res.getString("exp");
+					EtExperience aExp = null;
+					if (theExp.equals(EtExperience.novice.name()))
+						aExp = EtExperience.novice;
+					if (theExp.equals(EtExperience.beginner.name()))
+						aExp = EtExperience.beginner;
+					if (theExp.equals(EtExperience.experienced.name()))
+						aExp = EtExperience.experienced;
+					if (theExp.equals(EtExperience.professional.name()))
+						aExp = EtExperience.professional;
+					if (theExp.equals(EtExperience.expert.name()))
+						aExp = EtExperience.expert;
+					
 
-					aCtCoordinator.init(aId1, aLogin, aPwd);
+					aCtCoordinator.init(aId1, aLogin, aPwd, aExp);
 
 					//add instances to the hash
 					assCtCrisisCtCoordinator.put(aCtCrisis, aCtCoordinator);
@@ -467,8 +506,18 @@ public class DbCrises extends DbAbstract {
 					DtComment aDtComment = new DtComment(new PtString(
 							res.getString("comment")));
 
+					//crisis' coordinatorgrade
+					DtGrade aCoordinatorGrade = new DtGrade(new PtInteger(res.getInt("coordinatorgrade")));
+					
+					//crisis' victimgrade
+					DtGrade aVictimGrade = new DtGrade(new PtInteger(res.getInt("victimgrade")));
+					
+					//crisis' gradedcoordinator
+					DtCoordinatorID aGradedCoordinator = new DtCoordinatorID(new PtString(res.getString("gradedcoordinator")));
+
+
 					aCtCrisis.init(aId, aType, aStatus, aDtGPSLocation,
-							aInstant, aDtCriminalAct, aDtComment);
+							aInstant, aDtCriminalAct, aDtComment, aCoordinatorGrade, aVictimGrade, aGradedCoordinator);
 
 					//add instance to the hash
 					cmpSystemCtCrisis.put(aCtCrisis.id.value.getValue(),
