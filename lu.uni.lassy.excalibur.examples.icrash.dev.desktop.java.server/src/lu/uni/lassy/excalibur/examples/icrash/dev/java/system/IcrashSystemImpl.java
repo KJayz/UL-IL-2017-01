@@ -49,8 +49,8 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtSt
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtAlertID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
@@ -59,6 +59,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPh
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.secondary.DtSMS;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
@@ -644,7 +645,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 */
 	public  synchronized PtBoolean oeAlert(EtHumanKind aEtHumanKind, DtDate aDtDate,
 			DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation, DtComment aDtComment)
+			DtGPSLocation aDtGPSLocation, DtCriminalAct aDtCriminalAct, DtComment aDtComment)
 			throws RemoteException {
 		try{
 			//PreP1
@@ -663,7 +664,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			DtAlertID aId = new DtAlertID(new PtString(""
 					+ nextValueForAlertID_at_pre));
 			EtAlertStatus aStatus = EtAlertStatus.pending;
-			aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtComment);
+			aCtAlert.init(aId, aStatus, aDtGPSLocation, aInstant, aDtCriminalAct, aDtComment);
 			//DB: insert alert in the database
 			DbAlerts.insertAlert(aCtAlert);
 	
@@ -691,8 +692,17 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				EtCrisisStatus acStatus = EtCrisisStatus.pending;
 				DtComment acComment = new DtComment(new PtString(
 						"no report defined, yet"));
-				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant,
-						acComment);
+				DtCriminalAct acCriminal = new DtCriminalAct(new PtString(
+						"no information given on the criminal act, yet"));
+				
+				DtGrade acCoordinatorGrade = new DtGrade(new PtInteger(1));
+				
+				DtGrade acVictimGrade = new DtGrade(new PtInteger(1));
+				
+				DtCoordinatorID acGradedCoordinator = new DtCoordinatorID(new PtString("placeholder"));
+				
+				aCtCrisis.init(acId, acType, acStatus, aDtGPSLocation, aInstant, acCriminal,
+						acComment, acCoordinatorGrade, acVictimGrade,acGradedCoordinator);
 	
 				//DB: insert crisis in the database
 				DbCrises.insertCrisis(aCtCrisis);
@@ -1102,7 +1112,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	//actAuthenticated Actor
-	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, DtFingerPrint aDtFingerPrint)
+	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword)
 			throws RemoteException {		
 		try {
 			log.debug("The current requesting authenticating actor is " + currentRequestingAuthenticatedActor.getLogin().value.getValue());
@@ -1120,8 +1130,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				if(ctAuthenticatedInstance.vpIsLogged.getValue())
 					throw new Exception("User " + aDtLogin.value.getValue() + " is already logged in");
 				PtBoolean pwdCheck = ctAuthenticatedInstance.pwd.eq(aDtPassword);
-				PtBoolean fingerPrintCheck = ctAuthenticatedInstance.fingerPrint.Compare(aDtFingerPrint.getFingerPrint());
-				if(pwdCheck.getValue() && fingerPrintCheck.getValue()) {
+				if(pwdCheck.getValue()) {
 					//PostP1
 					/**
 					 * Make sure that the user logging in is the current requesting user
@@ -1193,7 +1202,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,
-			DtLogin aDtLogin, DtPassword aDtPassword) throws RemoteException {
+			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience) throws RemoteException {
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1208,7 +1217,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 			//PostF2
 			CtCoordinator ctCoordinator = new CtCoordinator();
-			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword);
+			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword,aEtExperience);
 			DbCoordinators.insertCoordinator(ctCoordinator);
 			
 			
@@ -1266,7 +1275,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * It is worth noticing that such system operation is not used anywhere for the moment (not even included in the class' interface)
 	 * 
 	 * */
-	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword) throws java.rmi.RemoteException{
+	public PtBoolean oeUpdateCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience) throws java.rmi.RemoteException{
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1276,8 +1285,8 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			if (ctAuth != null && ctAuth instanceof CtCoordinator){
 				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
 				CtCoordinator oldCoordinator = new CtCoordinator();
-				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd);
-				aCtCoordinator.update(aDtLogin, aDtPassword);
+				oldCoordinator.init(aCtCoordinator.id, aCtCoordinator.login, aCtCoordinator.pwd, aCtCoordinator.exp);
+				aCtCoordinator.update(aDtLogin, aDtPassword, aEtExperience);
 				if (DbCoordinators.updateCoordinator(aCtCoordinator).getValue()){
 					cmpSystemCtAuthenticated.remove(oldCoordinator.login.value.getValue());
 					cmpSystemCtAuthenticated.put(aCtCoordinator.login.value.getValue(), aCtCoordinator);
@@ -1286,7 +1295,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 					return new PtBoolean(true);
 				}
 				else
-					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd);
+					aCtCoordinator.update(oldCoordinator.login, oldCoordinator.pwd, oldCoordinator.exp);
 			}
 			return new PtBoolean(false);
 		} catch (Exception e) {
