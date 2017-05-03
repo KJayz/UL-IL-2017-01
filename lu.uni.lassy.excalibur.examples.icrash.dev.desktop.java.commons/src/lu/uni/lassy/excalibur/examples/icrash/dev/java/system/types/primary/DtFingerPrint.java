@@ -46,6 +46,10 @@ public class DtFingerPrint implements JIntIs {
 		return fingerPrint;
 	}
 	
+	public PtBoolean Compare(BufferedImage anImage) {
+		return new PtBoolean(fingerPrint.equals(anImage));
+	}
+	
 	//Algorithm de reconnaissance de finger print a implementers
 
 		

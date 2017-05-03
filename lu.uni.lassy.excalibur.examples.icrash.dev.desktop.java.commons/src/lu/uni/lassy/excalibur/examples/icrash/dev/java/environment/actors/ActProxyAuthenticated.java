@@ -19,6 +19,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntHasServerSideActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -42,11 +43,12 @@ public interface ActProxyAuthenticated extends Remote, JIntHasServerSideActor, J
 	 *
 	 * @param aDtLogin The username to logon with
 	 * @param aDtPassword The password to logon with
+	 * @param aDtFingerPrint 
 	 * @return The success of the operation
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword)
+	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, DtFingerPrint aDtFingerPrint)
 			throws RemoteException, NotBoundException;
 
 	/**
