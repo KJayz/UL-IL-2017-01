@@ -18,8 +18,11 @@ import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db.DbCrises;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLatitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLongitude;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
@@ -27,6 +30,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCr
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDateAndTime;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.ICrashUtils;
@@ -83,12 +87,21 @@ public class TestCase_db_table_crises {
 	
 	
 		//**********************************************************
+		
+		//set up criminal act
+				DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString("Not a criminal Act."));
 		//set up comment
 		DtComment aDtComment = new DtComment(new PtString("1 bicycle involved in an accident."));
 		
+		//set up grade given by coordinator, by a victim and the ID of the handling coordinator
+		DtGrade aCoordinatorGrade = new DtGrade(new PtInteger(3));
+		DtGrade aVictimGrade = new DtGrade(new PtInteger(2));
+		DtCoordinatorID aGradedCoordinator = new DtCoordinatorID(new PtString("2"));
+		
+		
 		
 		CtCrisis aCtCrisis = new CtCrisis();
-		aCtCrisis.init(aId, aType, aStatus,aDtGPSLocation,aInstant, aDtComment);
+		aCtCrisis.init(aId, aType, aStatus,aDtGPSLocation,aInstant, aDtCriminalAct,aDtComment,aCoordinatorGrade,aVictimGrade,aGradedCoordinator);
 		
 		DbCrises.insertCrisis(aCtCrisis);
 		
@@ -98,6 +111,7 @@ public class TestCase_db_table_crises {
 		log.debug("The retrieved crisis' id is " + aCtCrisis2.id.value.getValue());
 		log.debug("The retrieved crisis' type is " + aCtCrisis2.type.toString());
 		log.debug("The retrieved crisis' status is " + aCtCrisis2.status.toString());
+		log.debug("The retrieved crisis' criminal act is " + aCtCrisis2.criminal.value.getValue());
 		log.debug("The retrieved crisis' comment is " + aCtCrisis2.comment.value.getValue());
 		
 		DbCrises.deleteCrisis(aCtCrisis2);

@@ -24,6 +24,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtReport;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCriminalAct;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCrisisID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
@@ -82,9 +83,10 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActComCompany#oeAlert(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtHumanKind, lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtDate, lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.DtTime, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPhoneNumber, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGPSLocation, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtComment)
 	 */
+	
 	synchronized public PtBoolean oeAlert(EtHumanKind aEtHumanKind,
 			DtDate aDtDate, DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
-			DtGPSLocation aDtGPSLocation, DtComment aDtComment)
+			DtGPSLocation aDtGPSLocation, DtCriminalAct aDtCriminalAct, DtComment aDtComment)
 			throws RemoteException, NotBoundException {
 
 		Logger log = Log4JUtils.getInstance().getLogger();
@@ -100,7 +102,7 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 
 		log.info("message ActComCompany.oeAlert sent to system");
 		PtBoolean res = iCrashSys_Server.oeAlert(aEtHumanKind, aDtDate,
-				aDtTime, aDtPhoneNumber, aDtGPSLocation, aDtComment);
+				aDtTime, aDtPhoneNumber, aDtGPSLocation, aDtCriminalAct, aDtComment);
 
 		if (res.getValue() == true)
 			log.info("operation oeAlert successfully executed by the system");
@@ -227,4 +229,14 @@ public class ActComCompanyImpl extends UnicastRemoteObject implements ActComComp
 
 		return new PtBoolean(true);
 	}
+	
+	//Dont know how to fix it
+	@Override
+	public PtBoolean oeAlert(EtHumanKind aEtHumanKind, DtDate aDtDate, DtTime aDtTime, DtPhoneNumber aDtPhoneNumber,
+			DtGPSLocation aDtGPSLocation, DtComment aDtComment) throws RemoteException, NotBoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }
