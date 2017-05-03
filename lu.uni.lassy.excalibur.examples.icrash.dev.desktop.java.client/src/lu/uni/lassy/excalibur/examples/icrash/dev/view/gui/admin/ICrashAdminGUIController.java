@@ -259,9 +259,9 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 			imagePath.setPromptText("Finger print path");
 			grdpn.add(txtfldUserName, 1, 2);
 			grdpn.add(psswrdfldPassword, 1, 3);
-			grdpn.add(imagePath, 1, 4);
-			grdpn.add(bttntypOK, 1, 5);
-			grdpn.add(expfldExperience, 1, 6);
+			grdpn.add(expfldExperience, 1, 4);
+			grdpn.add(imagePath, 1, 5);
+			grdpn.add(bttntypOK, 1, 6);
 			break;
 		case Delete:
 			bttntypOK = new Button("Delete");
