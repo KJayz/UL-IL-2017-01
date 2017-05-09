@@ -794,7 +794,7 @@ public class DbAlerts extends DbAbstract {
 				String sql = "UPDATE "
 						+ dbName
 						+ ".alerts SET `status` = ?, `latitude` = ?, `longitude` = ?,"
-						+ " `instant` = ?, `comment` = ? WHERE id = ?";
+						+ " `instant` = ?,`criminal` = ?, `comment` = ? WHERE id = ?";
 				String id = aCtAlert.id.value.getValue();
 				String status = aCtAlert.status.toString();
 				double latitude = aCtAlert.location.latitude.value.getValue();
@@ -813,6 +813,9 @@ public class DbAlerts extends DbAbstract {
 				Calendar calendar = new GregorianCalendar(year, month, day,
 						hour, min, sec);
 				String instant = sdf.format(calendar.getTime());
+				
+				String aDtCriminal = aCtAlert.criminal.value.getValue();
+					
 
 				String comment = aCtAlert.comment.value.getValue();
 
@@ -821,8 +824,9 @@ public class DbAlerts extends DbAbstract {
 				statement.setDouble(2, latitude);
 				statement.setDouble(3, longitude);
 				statement.setString(4, instant);
-				statement.setString(5, comment);
-				statement.setString(6, id);
+				statement.setString(5, aDtCriminal);
+				statement.setString(6, comment);
+				statement.setString(7, id);
 				int rows = statement.executeUpdate();
 				log.debug(rows + " row affected");
 			} catch (SQLException s) {

@@ -32,6 +32,7 @@ CREATE TABLE `alerts` (
 	  `latitude` double DEFAULT NULL,
 	  `longitude` double DEFAULT NULL,
 	  `instant` datetime DEFAULT NULL,
+	  `criminal` varchar(200) DEFAULT NULL,
 	  `comment` varchar(80) DEFAULT NULL,
   `crisis` varchar(80) DEFAULT NULL,
   `human` varchar(80) DEFAULT NULL,
@@ -64,6 +65,7 @@ CREATE TABLE `crises` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `instant` datetime DEFAULT NULL,
+  `criminal` varchar(200) DEFAULT NULL,
   `comment` varchar(80) DEFAULT NULL,
   `coordinator` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)

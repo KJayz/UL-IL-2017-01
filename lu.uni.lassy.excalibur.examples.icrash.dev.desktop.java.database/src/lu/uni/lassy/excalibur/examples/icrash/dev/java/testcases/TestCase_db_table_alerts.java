@@ -135,7 +135,7 @@ public class TestCase_db_table_alerts {
 
 		int val = DbAlerts.getMaxAlertID();
 		System.out.println("Current Max Alert ID is "+val);
-
+		
 		DbAlerts.deleteAlert(aCtAlert2);
 		
 	}

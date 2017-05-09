@@ -630,7 +630,7 @@ public class DbCrises extends DbAbstract {
 				String sql = "UPDATE "
 						+ dbName
 						+ ".crises SET `type` = ?, `status` = ?, `latitude` = ?, `longitude` = ?,"
-						+ " `instant` = ?, `comment` = ? WHERE id = ?";
+						+ " `instant` = ?,`criminal` = ? ,`comment` = ? WHERE id = ?";
 				String id = aCtCrisis.id.value.getValue();
 				String type = aCtCrisis.type.toString();
 				String status = aCtCrisis.status.toString();
@@ -652,6 +652,8 @@ public class DbCrises extends DbAbstract {
 						hour, min, sec);
 				String instant = sdf.format(calendar.getTime());
 
+				String criminal = aCtCrisis.criminal.value.getValue();
+				
 				String comment = aCtCrisis.comment.value.getValue();
 
 				PreparedStatement statement = conn.prepareStatement(sql);
@@ -660,8 +662,9 @@ public class DbCrises extends DbAbstract {
 				statement.setDouble(3, latitude);
 				statement.setDouble(4, longitude);
 				statement.setString(5, instant);
-				statement.setString(6, comment);
-				statement.setString(7, id);
+				statement.setString(6, criminal);
+				statement.setString(7, comment);
+				statement.setString(8, id);
 				int rows = statement.executeUpdate();
 				log.debug(rows + " row affected");
 			} catch (SQLException s) {
