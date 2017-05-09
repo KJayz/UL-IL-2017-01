@@ -150,5 +150,11 @@ import icrash.environment
   	  ieMessage(AMessage) returned to actAdministrator
   	}
   }
-  }
+  use case system subfunction oeSetGradeByCoordinator() {
+  	actor actCoordinator[primary, active]
+  	returned messages {
+  		ieMessage(AMessage) returned to actAdministrator
+  	}
+		}
+	}
 }
