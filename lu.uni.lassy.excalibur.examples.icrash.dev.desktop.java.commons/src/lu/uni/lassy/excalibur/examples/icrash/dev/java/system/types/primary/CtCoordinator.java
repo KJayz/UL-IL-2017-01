@@ -26,6 +26,7 @@ public class CtCoordinator extends CtAuthenticated {
 	/** The id of the coordinator. */
 	public DtCoordinatorID id;
 	public EtExperience exp;
+	
 		
 	/**
 	 * Initialises the coordinator.
@@ -36,10 +37,11 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param axp The experience level of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp){
-			super.init(aLogin, aPwd);
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aDtFingerPrint){
+			super.init(aLogin, aPwd, aDtFingerPrint);
 			id = aId;
 			exp = aExp;
+			
 			return new PtBoolean(true); 
 	}
 	
@@ -50,10 +52,12 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd the value to change the password to 
 	 * @return the success of the update method
 	 */
-	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp){
+	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aDtFingerPrint){
 		login = aLogin;
 		pwd = aPwd;
 		exp = aExp;
+		fingerPrint = aDtFingerPrint;
+		
 		return new PtBoolean(true);
 	}
 	

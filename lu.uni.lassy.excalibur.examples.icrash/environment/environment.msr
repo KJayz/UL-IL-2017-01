@@ -110,7 +110,7 @@ import lu.uni.lassy.messir.libraries.calendar
 										):ptBoolean
 			operation oeGradeCrisis(
 										AdtCrisisID:dtCrisisID ,
-										AdtGrade:dtInteger
+										AdtGrade:dtGrade
 										):ptBoolean
 			}
 			

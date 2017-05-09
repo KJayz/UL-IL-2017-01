@@ -20,7 +20,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
  */
 public enum EtCrisisType implements JIntIs {
 	
-	/** A very small crisi. */
+	/** A very small crisis. */
 	verysmall(1),
 	/** A small crisis. */
 	small(2), 

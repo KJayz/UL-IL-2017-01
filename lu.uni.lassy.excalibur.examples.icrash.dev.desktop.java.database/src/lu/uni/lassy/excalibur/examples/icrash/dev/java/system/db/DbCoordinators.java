@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db;
 
+import java.io.File;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,8 +20,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Hashtable;
 
+import javax.imageio.ImageIO;
+
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCoordinator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisType;
@@ -54,10 +58,11 @@ public class DbCoordinators extends DbAbstract{
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
 				String exp = aCtCoordinator.exp.toString();
+				String fingerPrint = aCtCoordinator.fingerPrint.getFingerPrint().toString();
 				log.debug("[DATABASE]-Insert coordinator");
 				int val = st.executeUpdate("INSERT INTO "+ dbName+ ".coordinators" +
 											"(id,login,pwd)" + 
-											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"','"+exp+")");
+											"VALUES("+"'"+id+"'"+",'"+login+"','"+pwd+"','"+exp+"','"+fingerPrint+")");
 				
 				log.debug(val + " row affected");
 			}
@@ -122,7 +127,8 @@ public class DbCoordinators extends DbAbstract{
 					if (theExp.equals(EtExperience.expert.name()))
 						aExp = EtExperience.expert;
 
-					aCtCoordinator.init(aId, aLogin,aPwd,aExp);
+					DtFingerPrint aDtFingerPrint = new DtFingerPrint(  ImageIO.read( new File( res.getString("fingerPrint"))));
+					aCtCoordinator.init(aId, aLogin,aPwd,aExp,aDtFingerPrint);
 					
 				}
 								
@@ -198,8 +204,9 @@ public class DbCoordinators extends DbAbstract{
 				String login =  aCtCoordinator.login.value.getValue();
 				String pwd =  aCtCoordinator.pwd.value.getValue();
 				String exp = aCtCoordinator.exp.toString();
+				String fingerPrint = aCtCoordinator.fingerPrint.getFingerPrint().toString();
 				String statement = "UPDATE "+ dbName+ ".coordinators" +
-						" SET pwd='"+pwd+"',  login='"+ login+"', exp='"+exp+" " +
+						" SET pwd='"+pwd+"',  login='"+ login+"', exp='"+exp+"', fingerPrint='"+fingerPrint+ " " +
 						"WHERE id='"+id+"'";
 				int val = st.executeUpdate(statement);
 				log.debug(val+" row updated");
@@ -261,9 +268,10 @@ public class DbCoordinators extends DbAbstract{
 						aExp = EtExperience.professional;
 					if (theExp.equals(EtExperience.expert.name()))
 						aExp = EtExperience.expert;
-
+					
+					DtFingerPrint aDtFingerPrint = new DtFingerPrint(  ImageIO.read( new File( res.getString("fingerPrint"))));
 					//init aCtAlert instance
-					aCtCoord.init(aId, aLogin, aPwd, aExp);
+					aCtCoord.init(aId, aLogin, aPwd, aExp, aDtFingerPrint);
 					
 					//add instance to the hash
 					cmpSystemCtCoord
