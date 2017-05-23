@@ -27,23 +27,25 @@ icrash.environment.actCoordinator.outactCoordinator.oeSendReport.AdtComment
 ""
 @endParameters
 
-@description "
- "
+@description 
+" is used to send the Report of a specific crisis to the Communcication Center. "
 //preProtocol descriptions
 @preP
-" "
+" The system is started."
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+" it us supposed that there exist one crisis ready to send back to the communication company having the given id."
 @endPreF
 //postFunctional descriptions
 @postF 
-" "
+" the communcication center recieved the report."
+@postF 
+" the report is considered as send."
 @endPostF
 //postProtocol descriptions
 @postP 
-" "
+" none"
 @endPostP
 //example
 @example" "
