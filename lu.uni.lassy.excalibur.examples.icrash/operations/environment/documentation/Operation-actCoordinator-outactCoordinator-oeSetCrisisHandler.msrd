@@ -19,6 +19,8 @@ icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler
 //preFunctional descriptions
 @preF
 " there exist one crisis having the given id in the pre-state."
+@preF
+" the actCoordinator instance must have an experience attribute with a value greater than the value of the crisistype attribute of the ctCrisis instance with the provided id"
 @endPreF
 
 //postFunctional descriptions
