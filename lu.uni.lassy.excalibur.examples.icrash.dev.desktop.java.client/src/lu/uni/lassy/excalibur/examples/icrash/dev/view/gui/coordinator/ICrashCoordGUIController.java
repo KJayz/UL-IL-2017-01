@@ -11,11 +11,16 @@
  *     Thomas Mortimer - Updated client to MVC and added new design patterns
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
 
 import javafx.util.Callback;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.CoordinatorController;
@@ -28,6 +33,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtAlert;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtAlertStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -47,7 +53,9 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.MapChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 /*
  * This is the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
  */
@@ -85,6 +93,13 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     private PasswordField psswrdfldCoordLogonPassword;
 
     /** The button that allows a user to initiate the logon function. */
+    
+    
+    
+    @FXML
+    final Button openButton = new Button("Open a Picture...");
+    BufferedImage fingerPrint= null;
+    
     @FXML
     private Button bttnCoordLogon;
 
@@ -178,6 +193,16 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     	logoff();
     }
 
+    
+    
+    @FXML 
+    protected void locateFile(ActionEvent event) throws IOException {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open Finger Print...");
+        File file = chooser.showOpenDialog(new Stage());
+        fingerPrint = ImageIO.read(file);
+    }
+    
     /**
      * Button event that deals with logging on the user
      *
@@ -451,7 +476,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	public void logon() {
 		if(txtfldCoordLogonUserName.getText().length() > 0 && psswrdfldCoordLogonPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText()).getValue()){
+				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText(), new DtFingerPrint(fingerPrint)).getValue()){
 					if (userController.getUserType() == UserType.Coordinator){
 						logonShowPanes(true);
 					}

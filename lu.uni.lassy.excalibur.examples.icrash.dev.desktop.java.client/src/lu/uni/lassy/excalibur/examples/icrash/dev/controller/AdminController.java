@@ -89,7 +89,7 @@ public class AdminController extends AbstractUserController {
 			ht.put(aDtPassword, aDtPassword.value.getValue());
 			ht.put(aDtFingerPrint, aDtFingerPrint.getFingerPrint().toString());
 			try {
-				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience/*,aDtFingerPrint*/); 
+				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience,aDtFingerPrint); 
 				//calls the function oeAddCoordinator of the class ActProxyAdministratorImpl 
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);

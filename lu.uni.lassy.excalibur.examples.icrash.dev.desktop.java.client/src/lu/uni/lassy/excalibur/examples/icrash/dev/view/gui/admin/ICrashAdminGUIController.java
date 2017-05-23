@@ -319,7 +319,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	public void logon() {
 		if(txtfldAdminUserName.getText().length() > 0 && psswrdfldAdminPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText()).getValue())
+				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), null).getValue())
 					logonShowPanes(true);
 			}
 			catch (ServerOfflineException | ServerNotBoundException e) {
