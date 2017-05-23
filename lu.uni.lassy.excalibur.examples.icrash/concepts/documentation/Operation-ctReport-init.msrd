@@ -14,9 +14,6 @@ icrash.concepts.primarytypes.classes.ctReport.init.Aid
 icrash.concepts.primarytypes.classes.ctReport.init.Atype
 ""
 @parameter
-icrash.concepts.primarytypes.classes.ctReport.init.Astatus
-""
-@parameter
 icrash.concepts.primarytypes.classes.ctReport.init.Alocation
 ""
 @parameter

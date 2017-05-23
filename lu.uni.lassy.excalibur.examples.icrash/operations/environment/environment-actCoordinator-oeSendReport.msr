@@ -1,11 +1,11 @@
-package icrash.environment.operations.actCoordinator.outactCoordinator.oeSendToPoliceHQ {
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeSendReport {
 
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.datatypes
-
+import icrash.environment
 
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
@@ -13,7 +13,37 @@ import icrash.concepts.primarytypes.classes
 	Operation Model {
 
 		operation: icrash.environment.actCoordinator.outactCoordinator.oeSendReport(AdtCrisisID:dtCrisisID ,AetCrisisType:etCrisisType, AdtGPSLocation:dtGPSLocation, Ainstant:dtDateAndTime, AdtCriminalAct:dtCriminalAct, AdtComment:dtComment):ptBoolean{
-		// include below the specification information (pre,post or ocl or prolog)
+		
+		preP{
+			let TheSystem: ctState in
+			let TheActor:actCoordinator in
+			
+			self rnActor.rnSystem = TheSystem
+			and self.rnActor = TheActor
+			
+			/*PreP01 */
+			and TheSystem.vpStarted = true
+			/* PreP02 */
+			and TheActor.rnctAuthenticated.vpIsLogged = true
+			
+			}
+			preF{
+			let TheSystem: ctState in
+			let TheActor:actCoordinator in
+			
+			self.rnActor.rnSystem = TheSystem
+			and self.rnActor = TheActor
+			
+			/* PreF01 */
+			
+			
+		}
+		postF{
+		 let TheSystem: ctState in
+ 	   	 let TheActor:actAdministrator in
+ 		 self.rnActor.rnSystem = TheSystem
+ 		 and self.rnActor = TheActor
+		}
 
 		}
 	}

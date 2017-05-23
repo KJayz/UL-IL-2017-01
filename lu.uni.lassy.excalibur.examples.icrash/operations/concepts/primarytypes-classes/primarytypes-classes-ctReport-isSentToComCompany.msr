@@ -13,6 +13,15 @@ import icrash.environment
 		operation: icrash.concepts.primarytypes.classes.ctReport.isSentToComCompany(AactComCompany:actComCompany):ptBoolean{
 		// include below the specification information (pre,post or ocl or prolog)
 
+postF{ 
+if 
+(
+/* Post F01 */
+  AactCoordinator.rnInterfaceIN.ieSendACrisis(self)
+)
+then (result = true)
+else (result = false)
+endif}
 		}
 	}
 }

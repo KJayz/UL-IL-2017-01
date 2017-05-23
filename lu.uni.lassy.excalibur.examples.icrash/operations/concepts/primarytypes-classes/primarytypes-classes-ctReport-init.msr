@@ -8,11 +8,32 @@ import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.datatypes
 import icrash.concepts.primarytypes.classes
 
+import icrash.environment
+
 	Operation Model {
 
-		operation: icrash.concepts.primarytypes.classes.ctReport.init(Aid:dtCrisisID, Atype:etCrisisType, Astatus:etCrisisStatus, Alocation:dtGPSLocation, Ainstant:dtDateAndTime, Acriminal:dtCriminalAct, Acomment:dtComment):ptBoolean{
+		operation: icrash.concepts.primarytypes.classes.ctReport.init(Aid:dtCrisisID, Atype:etCrisisType, Alocation:dtGPSLocation, Ainstant:dtDateAndTime, Acriminal:dtCriminalAct, Acomment:dtComment):ptBoolean{
 		// include below the specification information (pre,post or ocl or prolog)
 
+
+postF{
+	if
+	(
+		let Self:ctReport in
+		Self.id = Aid
+		and Self.type = Atype
+		and Self.location = Alocation
+		and Self.instant = Ainstant
+		and Self.criminal = Acriminal
+		and Self.comment = Acomment
+		/* Post F01 */
+		and (Self.oclIsNew and self = Self)
+)
+then (result = true)
+else (result = false)
+endif
+}	
+}
 		}
 	}
-}
+
