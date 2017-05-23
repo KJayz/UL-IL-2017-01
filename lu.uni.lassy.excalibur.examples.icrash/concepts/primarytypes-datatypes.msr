@@ -65,6 +65,7 @@ import lu.uni.lassy.messir.libraries.calendar
 			enum etExperience {
 				constants["novice","beginner","experienced","master","expert"]
 				operation is():ptBoolean
+				operation ge():ptBoolean
 			}
 			datatype dtGrade {
 				operation is():ptBoolean
