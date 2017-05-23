@@ -1,0 +1,31 @@
+package icrash.concepts.primarytypes.datatypes.operations.datatypes.etExperience.ge {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.datatypes
+
+	Operation Model {
+
+		operation: icrash.concepts.primarytypes.datatypes.etExperience.ge(AetCrisisType:etCrisisType):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		postF{ 
+        let TheResult: ptBoolean in
+        
+        self.value() = selfval
+        AetCrisisType.value() = compareval
+        ( if
+          ( selfval = compareval
+          	or selfval > compareval
+          )
+          then (TheResult = true)
+          else (TheResult = false)
+          endif
+          result = TheResult
+        )
+        }
+		}
+	}
+}

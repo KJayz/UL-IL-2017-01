@@ -923,6 +923,20 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				ActCoordinator theActCoordinator = (ActCoordinator) currentRequestingAuthenticatedActor;
 				CtCoordinator theCtCoordinator = (CtCoordinator) getCtAuthenticated(theActCoordinator);
 				
+				
+				//Coordinator Experience variant
+				
+				int expValue = theCtCoordinator.exp.getValue();
+				int crisisValue = theCrisis.type.getValue();
+				
+				if(expValue >= crisisValue) {
+					
+					log.debug("the Crisis Instance is too difficult for the coordinator");
+					return new PtBoolean(false);
+				}
+				
+				//End of variant
+				
 				log.debug("theCrisis Instance is " + theCrisis.toString());
 				log.debug("aDtCrisisID.value.getValue() is "
 						+ aDtCrisisID.value.getValue());
