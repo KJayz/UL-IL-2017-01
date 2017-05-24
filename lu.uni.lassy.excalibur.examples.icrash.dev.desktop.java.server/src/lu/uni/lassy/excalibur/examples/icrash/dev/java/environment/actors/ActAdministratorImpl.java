@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -57,7 +58,7 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 	 */
 	synchronized public PtBoolean oeAddCoordinator(
 			DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin,
-			DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aDtFingerPrint) throws RemoteException, NotBoundException {
+			DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException {
 
 		Logger log = Log4JUtils.getInstance().getLogger();
 
@@ -72,7 +73,7 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 
 		log.info("message ActAdministrator.oeAddCoordinator sent to system");
 		PtBoolean res = iCrashSys_Server.oeAddCoordinator(aDtCoordinatorID,
-				aDtLogin, aDtPassword, aEtExperience, aDtFingerPrint);
+				aDtLogin, aDtPassword, aEtExperience, aFingerPrintByte);
 
 		if (res.getValue() == true)
 			log.info("operation oeAddCoordinator successfully executed by the system");

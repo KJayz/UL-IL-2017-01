@@ -12,6 +12,8 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
+import java.io.ByteArrayOutputStream;
+
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
 /**
@@ -37,8 +39,8 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param axp The experience level of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aDtFingerPrint){
-			super.init(aLogin, aPwd, aDtFingerPrint);
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp, ByteArrayOutputStream aFingerPrintByte){
+			super.init(aLogin, aPwd, aFingerPrintByte);
 			id = aId;
 			exp = aExp;
 			
@@ -52,11 +54,11 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd the value to change the password to 
 	 * @return the success of the update method
 	 */
-	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aDtFingerPrint){
+	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp, ByteArrayOutputStream aFingerPrintByte){
 		login = aLogin;
 		pwd = aPwd;
 		exp = aExp;
-		fingerPrint = aDtFingerPrint;
+		fingerPrintByte = aFingerPrintByte;
 		
 		return new PtBoolean(true);
 	}

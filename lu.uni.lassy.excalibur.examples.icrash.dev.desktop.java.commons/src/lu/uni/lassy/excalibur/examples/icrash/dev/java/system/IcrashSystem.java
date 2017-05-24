@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -335,7 +336,7 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, DtFingerPrint aDtFingerPrint) throws RemoteException; 
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException; 
 	
 	/**
 	 * Processes a logout for the current authenticating actor.
@@ -354,7 +355,7 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aDtFingerPrint) throws RemoteException; 	
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException; 	
 	
 	/**
 	 * Deletes a coordinator with the details specified.

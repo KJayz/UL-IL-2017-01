@@ -13,6 +13,7 @@
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -1235,7 +1236,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,
-			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aDtFingerPrint) throws RemoteException {
+			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException {
 		try {
 			//PreP1
 			isSystemStarted();

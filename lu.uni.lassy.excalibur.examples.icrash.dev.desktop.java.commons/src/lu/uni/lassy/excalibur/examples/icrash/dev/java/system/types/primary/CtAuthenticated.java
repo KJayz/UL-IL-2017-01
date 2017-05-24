@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
@@ -29,7 +30,7 @@ public abstract class CtAuthenticated implements Serializable {
 	/**  The user's password. */
 	public DtPassword pwd;
 	
-	public DtFingerPrint fingerPrint;
+	public ByteArrayOutputStream fingerPrintByte;
 	
 	/**  A check to see if the current Ct class is considered logged into the system. */
 	public PtBoolean vpIsLogged;	
@@ -41,10 +42,10 @@ public abstract class CtAuthenticated implements Serializable {
 	 * @param aPwd The password of the user
 	 * @return The success of the initialisation of the user
 	 */
-	public PtBoolean init(DtLogin aLogin, DtPassword aPwd, DtFingerPrint aFingerPrint){
+	public PtBoolean init(DtLogin aLogin, DtPassword aPwd, ByteArrayOutputStream aFingerPrintByte){
 			login = aLogin;
 			pwd = aPwd;
-			fingerPrint = aFingerPrint;
+			fingerPrintByte = aFingerPrintByte;
 			vpIsLogged = new PtBoolean(false);
 			return new PtBoolean(true); 
 	}
@@ -69,7 +70,7 @@ public abstract class CtAuthenticated implements Serializable {
 			return false;
 		if (!aCtAuth.pwd.value.getValue().equals(this.pwd.value.getValue()))
 			return false;
-		if (!(aCtAuth.fingerPrint.Compare(this.fingerPrint.getFingerPrint())).getValue())
+		if (!(aCtAuth.fingerPrintByte.equals(this.fingerPrintByte)))
 			return false;
 		return true;
 	}

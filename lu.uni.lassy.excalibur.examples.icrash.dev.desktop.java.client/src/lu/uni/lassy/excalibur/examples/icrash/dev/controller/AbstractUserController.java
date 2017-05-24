@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNotBoundException;
@@ -53,12 +54,12 @@ public abstract class AbstractUserController implements HasListeners {
 	 * @throws ServerOfflineException Thrown if the server is currently offline
 	 * @throws ServerNotBoundException Thrown if the server hasn't been bound in the RMI settings
 	 */
-	public PtBoolean oeLogin(String login, String password, DtFingerPrint aFingerPrint) throws ServerOfflineException, ServerNotBoundException{
+	public PtBoolean oeLogin(String login, String password, ByteArrayOutputStream fingerPrintByte) throws ServerOfflineException, ServerNotBoundException{
 		DtLogin aDtLogin = new DtLogin(new PtString(login));
 		DtPassword aDtPassword = new DtPassword(new PtString(password));
-		DtFingerPrint aDtFingerPrint = aFingerPrint;
+		ByteArrayOutputStream aFingerPrintByte = fingerPrintByte;
 		try {
-			return this.getAuth().oeLogin(aDtLogin, aDtPassword, aDtFingerPrint);
+			return this.getAuth().oeLogin(aDtLogin, aDtPassword, aFingerPrintByte);
 		} catch (RemoteException e) {
 			Log4JUtils.getInstance().getLogger().error(e);
 			throw new ServerOfflineException();

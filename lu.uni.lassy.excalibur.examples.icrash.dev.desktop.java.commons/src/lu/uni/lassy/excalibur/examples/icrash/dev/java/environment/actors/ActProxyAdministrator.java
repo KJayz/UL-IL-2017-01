@@ -13,6 +13,7 @@
 
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
@@ -38,7 +39,7 @@ public interface ActProxyAdministrator extends ActProxyAuthenticated {
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aDtFingerPrint) throws RemoteException, NotBoundException;
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException;
 	
 	/**
 	 * Delete a coordinator to the system, using the parameters passed.

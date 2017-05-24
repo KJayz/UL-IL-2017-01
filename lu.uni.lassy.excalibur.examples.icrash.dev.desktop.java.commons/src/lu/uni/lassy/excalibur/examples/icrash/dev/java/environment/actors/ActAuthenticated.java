@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -41,12 +42,12 @@ public interface ActAuthenticated extends java.rmi.Remote, Serializable, JIntIsA
 	 *
 	 * @param aDtLogin The username to logon with
 	 * @param aDtPassword The password to logon with
-	 * @param aDtFingerPrint 
+	 * @param aFingerPrintByte 
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server isn't online
 	 * @throws NotBoundException Thrown if the server has not been bound in the RMI settings
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, DtFingerPrint aDtFingerPrint) throws RemoteException, NotBoundException;
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException;
 	
 	/**
 	 * Allows a user to logoff to the system.

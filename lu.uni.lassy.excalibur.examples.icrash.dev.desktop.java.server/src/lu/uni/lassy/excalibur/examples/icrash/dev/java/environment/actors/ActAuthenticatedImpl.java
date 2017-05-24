@@ -13,6 +13,7 @@
 
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -69,7 +70,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAuthenticated#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	synchronized public PtBoolean oeLogin(DtLogin aDtLogin,
-			DtPassword aDtPassword, DtFingerPrint aDtFingerPrint) throws RemoteException, NotBoundException {
+			DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException {
 
 		Logger log = Log4JUtils.getInstance().getLogger();
 
@@ -83,7 +84,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
 
 		log.info("message ActAuthenticated.oeLogin sent to system");
-		PtBoolean res = iCrashSys_Server.oeLogin(aDtLogin, aDtPassword, aDtFingerPrint);
+		PtBoolean res = iCrashSys_Server.oeLogin(aDtLogin, aDtPassword, aFingerPrintByte);
 
 		if (res.getValue() == true)
 			log.info("operation oeLogin successfully executed by the system");

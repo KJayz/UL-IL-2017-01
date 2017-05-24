@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 //Librairies necessaires au traitement d'images et de fichiers
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -221,6 +222,8 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	
 	//initialisation de l'image
 	private BufferedImage fingerPrint=null;
+	private ByteArrayOutputStream fingerPrintByte=null;
+	
 	/**
 	 * Shows the modify coordinator screen.
 	 *
@@ -242,6 +245,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		
 		try {
 			fingerPrint = ImageIO.read(new File(imagePath.getText()));
+			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
 		} catch (IOException e) {
             e.printStackTrace();
             
@@ -281,7 +285,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
 						switch(type){
 						case Add:
-							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), expfldExperience.getText(), fingerPrint).getValue()){
+							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), expfldExperience.getText(), fingerPrintByte).getValue()){
 								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
 								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
 							}
@@ -320,23 +324,22 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	@Override
 	public void logon() {
 		
-//		BufferedImage image = null;
-//
-//		try 
-//		{
-//		    image = ImageIO.read((getClass().getResource("fingerprint.jpg"))); // eventually C:\\ImageTest\\pic2.jpg
-//		} 
-//		catch (IOException e) 
-//		{
-//		    e.printStackTrace();
-//		}
+		BufferedImage fingerPrint=null;
+		ByteArrayOutputStream fingerPrintByte=null;
+		try {
+			fingerPrint = ImageIO.read((getClass().getResource("fingerprint.jpg")));
+			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
 		
 		if(txtfldAdminUserName.getText().length() > 0 && psswrdfldAdminPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), new DtFingerPrint((ImageIO.read((getClass().getResource("fingerprint.jpg")))))).getValue())
+				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), fingerPrintByte).getValue())
 					logonShowPanes(true);
 			}
-			catch (ServerOfflineException | ServerNotBoundException | IOException e) {
+			catch (ServerOfflineException | ServerNotBoundException e) {
 				showExceptionErrorMessage(e);
 			}	
     	}

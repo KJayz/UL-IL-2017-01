@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.model.actors;
 
+import java.io.ByteArrayOutputStream;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -75,8 +76,8 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, DtFingerPrint aDtFingerPrint)  throws RemoteException, NotBoundException{
-		return this._serverSideActor.oeLogin(aDtLogin, aDtPassword, aDtFingerPrint);
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte)  throws RemoteException, NotBoundException{
+		return this._serverSideActor.oeLogin(aDtLogin, aDtPassword, aFingerPrintByte);
 	}
 	
 	/* (non-Javadoc)
