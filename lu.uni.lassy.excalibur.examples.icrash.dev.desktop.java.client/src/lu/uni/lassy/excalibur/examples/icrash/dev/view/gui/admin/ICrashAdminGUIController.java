@@ -35,6 +35,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOf
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
@@ -172,6 +173,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		/** Deleting a coordinator. */
 		Delete
 	}
+	
 	
 	/**
 	 * The list of open windows in the system.
@@ -311,18 +313,30 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setRightAnchor(grdpn, 0.0);
 		txtfldUserID.requestFocus();
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController#logon()
 	 */
 	@Override
 	public void logon() {
+		
+//		BufferedImage image = null;
+//
+//		try 
+//		{
+//		    image = ImageIO.read((getClass().getResource("fingerprint.jpg"))); // eventually C:\\ImageTest\\pic2.jpg
+//		} 
+//		catch (IOException e) 
+//		{
+//		    e.printStackTrace();
+//		}
+		
 		if(txtfldAdminUserName.getText().length() > 0 && psswrdfldAdminPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), null).getValue())
+				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), new DtFingerPrint((ImageIO.read((getClass().getResource("fingerprint.jpg")))))).getValue())
 					logonShowPanes(true);
 			}
-			catch (ServerOfflineException | ServerNotBoundException e) {
+			catch (ServerOfflineException | ServerNotBoundException | IOException e) {
 				showExceptionErrorMessage(e);
 			}	
     	}

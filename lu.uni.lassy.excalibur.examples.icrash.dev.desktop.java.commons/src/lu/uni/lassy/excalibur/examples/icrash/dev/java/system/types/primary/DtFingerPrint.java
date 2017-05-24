@@ -18,28 +18,31 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 
 import java.awt.image.BufferedImage;
 
-public class DtFingerPrint implements JIntIs {
+public class DtFingerPrint implements Serializable,JIntIs {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2199100275426508608L;
 	
-	private BufferedImage fingerPrint;
+	public BufferedImage fingerPrint;
+	
 	
 	public DtFingerPrint(BufferedImage fingerPrint) {
 		this.fingerPrint=fingerPrint;
 	}
 
-	private DtPercent _percentGrey;
-	private DtPercent _percentWhite;
-	private DtPercent _percentBlack;
-	
-	private double sumPercents = _percentGrey.Sum(new DtPercent (new PtReal(_percentWhite.Sum(_percentBlack))));
+//	private DtPercent _percentGrey;
+//	private DtPercent _percentWhite;
+//	private DtPercent _percentBlack;
+//	
+//	private double sumPercents = _percentGrey.Sum(new DtPercent (new PtReal(_percentWhite.Sum(_percentBlack))));
+//	
 	@Override
 	public PtBoolean is() {
 		
-		return new PtBoolean((sumPercents>=99)&&(sumPercents <=101)) ;
+//		return new PtBoolean((sumPercents>=99)&&(sumPercents <=101)) ;
+		return new PtBoolean(true);
 	}
 	
 	public BufferedImage getFingerPrint() {

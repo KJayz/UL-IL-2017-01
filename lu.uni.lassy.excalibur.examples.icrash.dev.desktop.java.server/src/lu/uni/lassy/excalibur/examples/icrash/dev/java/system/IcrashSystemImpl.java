@@ -579,7 +579,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 			try 
 			{
-			    image = ImageIO.read(new File("fingerprint.jpg")); // eventually C:\\ImageTest\\pic2.jpg
+			    image = ImageIO.read((getClass().getResource("fingerprint.jpg"))); // eventually C:\\ImageTest\\pic2.jpg
 			} 
 			catch (IOException e) 
 			{
