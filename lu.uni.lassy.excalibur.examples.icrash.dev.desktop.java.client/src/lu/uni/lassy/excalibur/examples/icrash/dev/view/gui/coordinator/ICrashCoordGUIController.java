@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -98,7 +99,9 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     
     @FXML
     final Button openButton = new Button("Open a Picture...");
+    
     BufferedImage fingerPrint= null;
+    ByteArrayOutputStream fingerPrintByte = new ByteArrayOutputStream();
     
     @FXML
     private Button bttnCoordLogon;
@@ -201,6 +204,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
         chooser.setTitle("Open Finger Print...");
         File file = chooser.showOpenDialog(new Stage());
         fingerPrint = ImageIO.read(file);
+        javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
     }
     
     /**
@@ -476,7 +480,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	public void logon() {
 		if(txtfldCoordLogonUserName.getText().length() > 0 && psswrdfldCoordLogonPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText(), new DtFingerPrint(fingerPrint)).getValue()){
+				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText(), fingerPrintByte.toByteArray()).getValue()){
 					if (userController.getUserType() == UserType.Coordinator){
 						logonShowPanes(true);
 					}

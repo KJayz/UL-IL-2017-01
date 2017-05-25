@@ -13,6 +13,7 @@
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -407,7 +408,11 @@ public class DbCrises extends DbAbstract {
 						aExp = EtExperience.expert;
 					
 					//coordinator's fingerPrint
-					DtFingerPrint aDtFingerPrint = new DtFingerPrint(  ImageIO.read( new File( res.getString("fingerPrint"))));
+					
+					ByteArrayOutputStream aFingerPrintByte = new ByteArrayOutputStream();
+					javax.imageio.ImageIO.write(ImageIO.read( new File( res.getString("fingerPrint"))), "jpg", aFingerPrintByte);
+					
+					DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte.toByteArray());
 
 					aCtCoordinator.init(aId1, aLogin, aPwd, aExp, aDtFingerPrint);
 

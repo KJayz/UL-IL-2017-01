@@ -30,7 +30,7 @@ public abstract class CtAuthenticated implements Serializable {
 	/**  The user's password. */
 	public DtPassword pwd;
 	
-	public ByteArrayOutputStream fingerPrintByte;
+	public DtFingerPrint fingerPrint;
 	
 	/**  A check to see if the current Ct class is considered logged into the system. */
 	public PtBoolean vpIsLogged;	
@@ -42,10 +42,10 @@ public abstract class CtAuthenticated implements Serializable {
 	 * @param aPwd The password of the user
 	 * @return The success of the initialisation of the user
 	 */
-	public PtBoolean init(DtLogin aLogin, DtPassword aPwd, ByteArrayOutputStream aFingerPrintByte){
+	public PtBoolean init(DtLogin aLogin, DtPassword aPwd, DtFingerPrint aDtFingerPrint){
 			login = aLogin;
 			pwd = aPwd;
-			fingerPrintByte = aFingerPrintByte;
+			fingerPrint = aDtFingerPrint;
 			vpIsLogged = new PtBoolean(false);
 			return new PtBoolean(true); 
 	}
@@ -70,7 +70,7 @@ public abstract class CtAuthenticated implements Serializable {
 			return false;
 		if (!aCtAuth.pwd.value.getValue().equals(this.pwd.value.getValue()))
 			return false;
-		if (!(aCtAuth.fingerPrintByte.equals(this.fingerPrintByte)))
+		if (!((aCtAuth.fingerPrint).compare(this.fingerPrint.getFingerPrint())))
 			return false;
 		return true;
 	}

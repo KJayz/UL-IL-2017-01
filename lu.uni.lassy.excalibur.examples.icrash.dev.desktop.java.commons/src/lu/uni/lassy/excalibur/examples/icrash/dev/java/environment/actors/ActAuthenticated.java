@@ -47,7 +47,7 @@ public interface ActAuthenticated extends java.rmi.Remote, Serializable, JIntIsA
 	 * @throws RemoteException Thrown if the server isn't online
 	 * @throws NotBoundException Thrown if the server has not been bound in the RMI settings
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException;
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, byte[] aFingerPrintByte) throws RemoteException, NotBoundException;
 	
 	/**
 	 * Allows a user to logoff to the system.

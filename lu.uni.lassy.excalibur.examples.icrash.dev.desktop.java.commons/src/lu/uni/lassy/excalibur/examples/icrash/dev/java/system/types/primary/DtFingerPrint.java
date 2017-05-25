@@ -11,10 +11,11 @@
 
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtReal;
 
 import java.awt.image.BufferedImage;
 
@@ -28,8 +29,8 @@ public class DtFingerPrint implements Serializable,JIntIs {
 	public BufferedImage fingerPrint;
 	
 	
-	public DtFingerPrint(BufferedImage fingerPrint) {
-		this.fingerPrint=fingerPrint;
+	public DtFingerPrint(byte[] fingerPrint) throws IOException {
+		this.fingerPrint=javax.imageio.ImageIO.read(new ByteArrayInputStream(fingerPrint));
 	}
 
 //	private DtPercent _percentGrey;
@@ -49,8 +50,8 @@ public class DtFingerPrint implements Serializable,JIntIs {
 		return fingerPrint;
 	}
 	
-	public PtBoolean Compare(BufferedImage anImage) {
-		return new PtBoolean(fingerPrint.equals(anImage));
+	public Boolean compare(BufferedImage anImage) {
+		return (fingerPrint.equals(anImage));
 	}
 	
 	//Algorithm de reconnaissance de finger print a implementers

@@ -49,7 +49,7 @@ public interface ActProxyAuthenticated extends Remote, JIntHasServerSideActor, J
 	 * @throws RemoteException Thrown if the server is offline
 	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte)
+	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, byte[] aFingerPrintByte)
 			throws RemoteException, NotBoundException;
 
 	/**

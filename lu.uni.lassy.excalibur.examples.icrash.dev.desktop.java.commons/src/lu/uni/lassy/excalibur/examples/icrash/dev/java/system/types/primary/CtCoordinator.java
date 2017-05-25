@@ -39,8 +39,8 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param axp The experience level of the coordinator
 	 * @return The success of the initialisation
 	 */
-	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp, ByteArrayOutputStream aFingerPrintByte){
-			super.init(aLogin, aPwd, aFingerPrintByte);
+	public PtBoolean init(DtCoordinatorID aId,DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aFingerPrint){
+			super.init(aLogin, aPwd, aFingerPrint);
 			id = aId;
 			exp = aExp;
 			
@@ -54,11 +54,11 @@ public class CtCoordinator extends CtAuthenticated {
 	 * @param aPwd the value to change the password to 
 	 * @return the success of the update method
 	 */
-	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp, ByteArrayOutputStream aFingerPrintByte){
+	public PtBoolean update(DtLogin aLogin,DtPassword aPwd, EtExperience aExp, DtFingerPrint aFingerPrint){
 		login = aLogin;
 		pwd = aPwd;
 		exp = aExp;
-		fingerPrintByte = aFingerPrintByte;
+		fingerPrint = aFingerPrint;
 		
 		return new PtBoolean(true);
 	}

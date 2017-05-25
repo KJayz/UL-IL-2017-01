@@ -12,14 +12,13 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.controller;
 
-import java.io.ByteArrayOutputStream;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNotBoundException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOfflineException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated.UserType;
-import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
@@ -54,10 +53,10 @@ public abstract class AbstractUserController implements HasListeners {
 	 * @throws ServerOfflineException Thrown if the server is currently offline
 	 * @throws ServerNotBoundException Thrown if the server hasn't been bound in the RMI settings
 	 */
-	public PtBoolean oeLogin(String login, String password, ByteArrayOutputStream fingerPrintByte) throws ServerOfflineException, ServerNotBoundException{
+	public PtBoolean oeLogin(String login, String password, byte[] fingerPrintByte) throws ServerOfflineException, ServerNotBoundException{
 		DtLogin aDtLogin = new DtLogin(new PtString(login));
 		DtPassword aDtPassword = new DtPassword(new PtString(password));
-		ByteArrayOutputStream aFingerPrintByte = fingerPrintByte;
+		byte[] aFingerPrintByte = fingerPrintByte;
 		try {
 			return this.getAuth().oeLogin(aDtLogin, aDtPassword, aFingerPrintByte);
 		} catch (RemoteException e) {

@@ -285,7 +285,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 						DtCoordinatorID coordID = new DtCoordinatorID(new PtString(txtfldUserID.getText()));
 						switch(type){
 						case Add:
-							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), expfldExperience.getText(), fingerPrintByte).getValue()){
+							if (userController.oeAddCoordinator(txtfldUserID.getText(), txtfldUserName.getText(), psswrdfldPassword.getText(), expfldExperience.getText(), fingerPrintByte.toByteArray()).getValue()){
 								listOfOpenWindows.add(new CreateICrashCoordGUI(coordID, systemstateController.getActCoordinator(txtfldUserName.getText())));
 								anchrpnCoordinatorDetails.getChildren().remove(grdpn);
 							}
@@ -325,7 +325,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 	public void logon() {
 		
 		BufferedImage fingerPrint=null;
-		ByteArrayOutputStream fingerPrintByte=null;
+		ByteArrayOutputStream fingerPrintByte= new ByteArrayOutputStream();
 		try {
 			fingerPrint = ImageIO.read((getClass().getResource("fingerprint.jpg")));
 			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
@@ -336,7 +336,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		
 		if(txtfldAdminUserName.getText().length() > 0 && psswrdfldAdminPassword.getText().length() > 0){
 			try {
-				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), fingerPrintByte).getValue())
+				if (userController.oeLogin(txtfldAdminUserName.getText(), psswrdfldAdminPassword.getText(), fingerPrintByte.toByteArray()).getValue())
 					logonShowPanes(true);
 			}
 			catch (ServerOfflineException | ServerNotBoundException e) {

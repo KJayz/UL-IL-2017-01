@@ -12,6 +12,7 @@
  ******************************************************************************/
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.db;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -127,7 +128,11 @@ public class DbCoordinators extends DbAbstract{
 					if (theExp.equals(EtExperience.expert.name()))
 						aExp = EtExperience.expert;
 
-					DtFingerPrint aDtFingerPrint = new DtFingerPrint(  ImageIO.read( new File( res.getString("fingerPrint"))));
+					
+					ByteArrayOutputStream aFingerPrintByte = new ByteArrayOutputStream();
+					javax.imageio.ImageIO.write(ImageIO.read( new File( res.getString("fingerPrint"))), "jpg", aFingerPrintByte);
+					
+					DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte.toByteArray());
 					aCtCoordinator.init(aId, aLogin,aPwd,aExp,aDtFingerPrint);
 					
 				}
@@ -269,7 +274,11 @@ public class DbCoordinators extends DbAbstract{
 					if (theExp.equals(EtExperience.expert.name()))
 						aExp = EtExperience.expert;
 					
-					DtFingerPrint aDtFingerPrint = new DtFingerPrint(  ImageIO.read( new File( res.getString("fingerPrint"))));
+					
+					ByteArrayOutputStream aFingerPrintByte = new ByteArrayOutputStream();
+					javax.imageio.ImageIO.write(ImageIO.read( new File( res.getString("fingerPrint"))), "jpg", aFingerPrintByte);
+					
+					DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte.toByteArray());
 					//init aCtAlert instance
 					aCtCoord.init(aId, aLogin, aPwd, aExp, aDtFingerPrint);
 					

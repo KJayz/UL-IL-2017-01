@@ -576,11 +576,13 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			PostF 4 the environment for administrator actors, in the post state, is made of one instance.
 			*/
 			String adminName = AdminActors.values[0].name();
+			
 			BufferedImage image = null;
-
+			ByteArrayOutputStream fingerPrintByte = new ByteArrayOutputStream();
 			try 
 			{
 			    image = ImageIO.read((getClass().getResource("fingerprint.jpg"))); // eventually C:\\ImageTest\\pic2.jpg
+			    javax.imageio.ImageIO.write(image, "jpg", fingerPrintByte);
 			} 
 			catch (IOException e) 
 			{
@@ -601,7 +603,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			CtAdministrator ctAdmin = new CtAdministrator();
 			DtLogin aLogin = new DtLogin(new PtString(adminName));
 			DtPassword aPwd = new DtPassword(new PtString("7WXC1359"));
-			DtFingerPrint aDtFingerPrint = new DtFingerPrint(image);
+			DtFingerPrint aDtFingerPrint = new DtFingerPrint(fingerPrintByte.toByteArray());
 			ctAdmin.init(aLogin, aPwd, aDtFingerPrint);
 			/*
 			PostF 7 the association between ctAdministrator and actAdministrator is made of 
@@ -1145,7 +1147,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	//actAuthenticated Actor
-	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, DtFingerPrint aDtFingerPrint)
+	public PtBoolean oeLogin(DtLogin aDtLogin, DtPassword aDtPassword, byte[] aFingerPrintByte)
 			throws RemoteException {		
 		try {
 			log.debug("The current requesting authenticating actor is " + currentRequestingAuthenticatedActor.getLogin().value.getValue());
@@ -1156,6 +1158,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			 *this is done by checking if there exists an instance with
 			 *such credential in the ctAuthenticatedInstances data structure
 			 */
+			DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte);
 			CtAuthenticated ctAuthenticatedInstance = cmpSystemCtAuthenticated
 					.get(aDtLogin.value.getValue());
 			if (ctAuthenticatedInstance != null){
@@ -1163,7 +1166,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 				if(ctAuthenticatedInstance.vpIsLogged.getValue())
 					throw new Exception("User " + aDtLogin.value.getValue() + " is already logged in");
 				PtBoolean pwdCheck = ctAuthenticatedInstance.pwd.eq(aDtPassword);
-				PtBoolean fingerPrintCheck = ctAuthenticatedInstance.fingerPrint.Compare(aDtFingerPrint.getFingerPrint());
+				PtBoolean fingerPrintCheck = new PtBoolean(ctAuthenticatedInstance.fingerPrint.compare(aDtFingerPrint.getFingerPrint()));
 				if(pwdCheck.getValue() && fingerPrintCheck.getValue()) {
 					//PostP1
 					/**
@@ -1236,7 +1239,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.system.IcrashSystem#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,
-			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException {
+			DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, byte[] aFingerPrintByte) throws RemoteException {
 		try {
 			//PreP1
 			isSystemStarted();
@@ -1251,7 +1254,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 			//PostF2
 			CtCoordinator ctCoordinator = new CtCoordinator();
-			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword,aEtExperience, aDtFingerPrint);
+			ctCoordinator.init(aDtCoordinatorID, aDtLogin, aDtPassword,aEtExperience, new DtFingerPrint(aFingerPrintByte));
 			DbCoordinators.insertCoordinator(ctCoordinator);
 			
 			

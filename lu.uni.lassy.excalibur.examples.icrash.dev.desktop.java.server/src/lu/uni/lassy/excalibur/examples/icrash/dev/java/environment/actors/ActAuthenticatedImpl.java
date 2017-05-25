@@ -70,7 +70,7 @@ public abstract class ActAuthenticatedImpl extends UnicastRemoteObject
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAuthenticated#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
 	synchronized public PtBoolean oeLogin(DtLogin aDtLogin,
-			DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException {
+			DtPassword aDtPassword, byte[] aFingerPrintByte) throws RemoteException, NotBoundException {
 
 		Logger log = Log4JUtils.getInstance().getLogger();
 

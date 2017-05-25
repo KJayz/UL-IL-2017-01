@@ -20,6 +20,7 @@ import java.util.Hashtable;
 //Librairies necessaires au traitement d'images et de fichiers
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.IncorrectFormatException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNotBoundException;
@@ -63,7 +64,7 @@ public class AdminController extends AbstractUserController {
 	 * @throws ServerNotBoundException is only thrown when attempting to access a server which has no current binding. This shouldn't happen, but you never know!
 	 * @throws IncorrectFormatException is thrown when a Dt/Et information type does not match the is() method specified in the specification
 	 */
-	public PtBoolean oeAddCoordinator(String coordinatorID, String login, String password,String experience, ByteArrayOutputStream fingerPrintByte) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+	public PtBoolean oeAddCoordinator(String coordinatorID, String login, String password,String experience, byte[] fingerPrintByte) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
 		if (getUserType() == UserType.Admin){
 			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
 			DtCoordinatorID aDtCoordinatorID = new DtCoordinatorID(new PtString(coordinatorID));
@@ -82,14 +83,14 @@ public class AdminController extends AbstractUserController {
 			if (experience.equals(EtExperience.expert.name()))
 				aEtExperience = EtExperience.expert;
 			
-			ByteArrayOutputStream aFingerPrintByte = fingerPrintByte;
+			byte[] aFingerPrintByte = fingerPrintByte;
 			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
 			ht.put(aDtCoordinatorID, aDtCoordinatorID.value.getValue());
 			ht.put(aDtLogin, aDtLogin.value.getValue());
 			ht.put(aDtPassword, aDtPassword.value.getValue());
-			ht.put((JIntIs) aFingerPrintByte, aFingerPrintByte.toString());
+			//ht.put((JIntIs)aFingerPrintByte.hashCode(), aFingerPrintByte.toString());
 			try {
-				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience,aFingerPrintByte); 
+				return actorAdmin.oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience,new DtFingerPrint(aFingerPrintByte)); 
 				//calls the function oeAddCoordinator of the class ActProxyAdministratorImpl 
 			} catch (RemoteException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
@@ -97,6 +98,9 @@ public class AdminController extends AbstractUserController {
 			} catch (NotBoundException e) {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerNotBoundException();
+			} catch (IOException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				e.printStackTrace();
 			}
 		}
 		return new PtBoolean(false);

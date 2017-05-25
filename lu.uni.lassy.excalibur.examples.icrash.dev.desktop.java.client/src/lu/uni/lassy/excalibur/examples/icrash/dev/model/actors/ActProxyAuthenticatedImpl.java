@@ -76,7 +76,7 @@ public abstract class ActProxyAuthenticatedImpl extends UnicastRemoteObject impl
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAuthenticated#oeLogin(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte)  throws RemoteException, NotBoundException{
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, byte[] aFingerPrintByte)  throws RemoteException, NotBoundException{
 		return this._serverSideActor.oeLogin(aDtLogin, aDtPassword, aFingerPrintByte);
 	}
 	

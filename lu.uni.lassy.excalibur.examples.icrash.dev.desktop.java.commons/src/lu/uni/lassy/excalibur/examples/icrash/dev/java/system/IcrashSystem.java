@@ -336,7 +336,7 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, ByteArrayOutputStream aFingerPrintByte) throws RemoteException; 
+	public PtBoolean oeLogin(DtLogin aDtLogin,DtPassword aDtPassword, byte[] aFingerPrintByte) throws RemoteException; 
 	
 	/**
 	 * Processes a logout for the current authenticating actor.
@@ -355,7 +355,7 @@ public interface IcrashSystem extends Remote {
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
 	 */
-	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException; 	
+	public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID,DtLogin aDtLogin,DtPassword aDtPassword, EtExperience aEtExperience, byte[] aFingerPrintByte) throws RemoteException; 	
 	
 	/**
 	 * Deletes a coordinator with the details specified.

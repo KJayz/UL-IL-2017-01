@@ -13,6 +13,7 @@
 package lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -58,12 +59,20 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 	 */
 	synchronized public PtBoolean oeAddCoordinator(
 			DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin,
-			DtPassword aDtPassword, EtExperience aEtExperience, ByteArrayOutputStream aFingerPrintByte) throws RemoteException, NotBoundException {
+			DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aDtFingerPrint) throws RemoteException, NotBoundException {
 
 		Logger log = Log4JUtils.getInstance().getLogger();
 
 		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
-
+		
+		ByteArrayOutputStream aFingerPrintByte=new ByteArrayOutputStream();
+		try {
+			javax.imageio.ImageIO.write(aDtFingerPrint.getFingerPrint(), "jpg", aFingerPrintByte);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		//Gathering the remote object as it was published into the registry
 		IcrashSystem iCrashSys_Server = (IcrashSystem) registry
 				.lookup("iCrashServer");
@@ -73,7 +82,7 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 
 		log.info("message ActAdministrator.oeAddCoordinator sent to system");
 		PtBoolean res = iCrashSys_Server.oeAddCoordinator(aDtCoordinatorID,
-				aDtLogin, aDtPassword, aEtExperience, aFingerPrintByte);
+				aDtLogin, aDtPassword, aEtExperience, aFingerPrintByte.toByteArray());
 
 		if (res.getValue() == true)
 			log.info("operation oeAddCoordinator successfully executed by the system");
