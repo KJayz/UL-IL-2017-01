@@ -65,13 +65,6 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 
 		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
 		
-		ByteArrayOutputStream aFingerPrintByte=new ByteArrayOutputStream();
-		try {
-			javax.imageio.ImageIO.write(aDtFingerPrint.getFingerPrint(), "jpg", aFingerPrintByte);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		
 		//Gathering the remote object as it was published into the registry
 		IcrashSystem iCrashSys_Server = (IcrashSystem) registry
@@ -82,7 +75,7 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 
 		log.info("message ActAdministrator.oeAddCoordinator sent to system");
 		PtBoolean res = iCrashSys_Server.oeAddCoordinator(aDtCoordinatorID,
-				aDtLogin, aDtPassword, aEtExperience, aFingerPrintByte.toByteArray());
+				aDtLogin, aDtPassword, aEtExperience, aDtFingerPrint.getFingerPrint());
 
 		if (res.getValue() == true)
 			log.info("operation oeAddCoordinator successfully executed by the system");

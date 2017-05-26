@@ -26,11 +26,11 @@ public class DtFingerPrint implements Serializable,JIntIs {
 	 */
 	private static final long serialVersionUID = 2199100275426508608L;
 	
-	public BufferedImage fingerPrint;
+	public byte[] fingerPrint;
 	
 	
 	public DtFingerPrint(byte[] fingerPrint) throws IOException {
-		this.fingerPrint=javax.imageio.ImageIO.read(new ByteArrayInputStream(fingerPrint));
+		this.fingerPrint=fingerPrint;
 	}
 
 //	private DtPercent _percentGrey;
@@ -46,11 +46,11 @@ public class DtFingerPrint implements Serializable,JIntIs {
 		return new PtBoolean(true);
 	}
 	
-	public BufferedImage getFingerPrint() {
+	public byte[] getFingerPrint() {
 		return fingerPrint;
 	}
 	
-	public Boolean compare(BufferedImage anImage) {
+	public Boolean compare(byte[] anImage) {
 		return (fingerPrint.equals(anImage));
 	}
 	
