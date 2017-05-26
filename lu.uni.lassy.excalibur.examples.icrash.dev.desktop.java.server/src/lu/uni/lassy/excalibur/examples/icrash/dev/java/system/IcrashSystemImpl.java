@@ -1154,7 +1154,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte);
 			CtAuthenticated ctAuthenticatedInstance = cmpSystemCtAuthenticated
 					.get(aDtLogin.value.getValue());
-			if (true){
+			if (ctAuthenticatedInstance!=null){
 				//PreP2
 				if(ctAuthenticatedInstance.vpIsLogged.getValue())
 					throw new Exception("User " + aDtLogin.value.getValue() + " is already logged in");
