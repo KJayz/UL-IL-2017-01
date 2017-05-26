@@ -577,7 +577,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			*/
 			String adminName = AdminActors.values[0].name();
 			
-			BufferedImage image = ImageIO.read((getClass().getResource("fingerprint.jpg")));;
+			BufferedImage image = ImageIO.read((getClass().getResource("fingerprint1.jpg")));;
 			ByteArrayOutputStream fingerPrintByte = new ByteArrayOutputStream();
 			javax.imageio.ImageIO.write(image, "jpg", fingerPrintByte);
 			

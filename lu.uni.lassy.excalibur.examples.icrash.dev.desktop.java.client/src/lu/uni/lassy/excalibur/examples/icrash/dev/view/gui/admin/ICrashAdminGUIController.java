@@ -242,9 +242,10 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		 */
 		TextField imagePath = new TextField(); 
 		//Image fingerPrint = new Image(imagePath.getText());
-		
+		BufferedImage fingerPrint=null;
+		ByteArrayOutputStream fingerPrintByte= new ByteArrayOutputStream();
 		try {
-			fingerPrint = ImageIO.read(new File(imagePath.getText()));
+			fingerPrint = ImageIO.read((getClass().getResource("fingerprint1.jpg")));
 			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
 		} catch (IOException e) {
             e.printStackTrace();
@@ -327,7 +328,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		BufferedImage fingerPrint=null;
 		ByteArrayOutputStream fingerPrintByte= new ByteArrayOutputStream();
 		try {
-			fingerPrint = ImageIO.read((getClass().getResource("fingerprint.jpg")));
+			fingerPrint = ImageIO.read((getClass().getResource("fingerprint1.jpg")));
 			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
 		} catch (IOException e) {
             e.printStackTrace();

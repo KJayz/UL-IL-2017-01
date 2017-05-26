@@ -93,6 +93,10 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     @FXML
     private PasswordField psswrdfldCoordLogonPassword;
 
+    @FXML
+    private TextField txtfldCoordLogonFingerPrint;
+    
+    
     /** The button that allows a user to initiate the logon function. */
     
     
@@ -102,7 +106,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     
     BufferedImage fingerPrint= null;
     ByteArrayOutputStream fingerPrintByte = new ByteArrayOutputStream();
-    
+
     @FXML
     private Button bttnCoordLogon;
 
@@ -478,7 +482,16 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 	 */
 	@Override
 	public void logon() {
-		if(txtfldCoordLogonUserName.getText().length() > 0 && psswrdfldCoordLogonPassword.getText().length() > 0){
+		
+		try {
+			fingerPrint = ImageIO.read((getClass().getResource("fingerprint1.jpg")));
+			javax.imageio.ImageIO.write(fingerPrint, "jpg", fingerPrintByte);
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+		
+		if(txtfldCoordLogonUserName.getText().length() > 0 && psswrdfldCoordLogonPassword.getText().length() > 0 && txtfldCoordLogonFingerPrint.getText().length()>0){
 			try {
 				if (userController.oeLogin(txtfldCoordLogonUserName.getText(), psswrdfldCoordLogonPassword.getText(), fingerPrintByte.toByteArray()).getValue()){
 					if (userController.getUserType() == UserType.Coordinator){
