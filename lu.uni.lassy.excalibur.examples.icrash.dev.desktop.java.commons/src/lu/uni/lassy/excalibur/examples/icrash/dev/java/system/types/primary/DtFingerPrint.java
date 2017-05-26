@@ -14,6 +14,8 @@ package lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
+
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 
@@ -51,7 +53,7 @@ public class DtFingerPrint implements Serializable,JIntIs {
 	}
 	
 	public Boolean compare(byte[] anImage) {
-		return (fingerPrint.equals(anImage));
+		return Arrays.equals(fingerPrint, anImage);
 	}
 	
 	//Algorithm de reconnaissance de finger print a implementers
