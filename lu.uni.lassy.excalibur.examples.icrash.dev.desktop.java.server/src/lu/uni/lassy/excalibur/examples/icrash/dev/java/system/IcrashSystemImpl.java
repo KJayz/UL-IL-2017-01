@@ -577,17 +577,10 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			*/
 			String adminName = AdminActors.values[0].name();
 			
-			BufferedImage image = null;
+			BufferedImage image = ImageIO.read((getClass().getResource("fingerprint.jpg")));;
 			ByteArrayOutputStream fingerPrintByte = new ByteArrayOutputStream();
-			try 
-			{
-			    image = ImageIO.read((getClass().getResource("fingerprint.jpg"))); // eventually C:\\ImageTest\\pic2.jpg
-			    javax.imageio.ImageIO.write(image, "jpg", fingerPrintByte);
-			} 
-			catch (IOException e) 
-			{
-			    e.printStackTrace();
-			}
+			javax.imageio.ImageIO.write(image, "jpg", fingerPrintByte);
+			
 			ActAdministrator aActAdministrator = new ActAdministratorImpl(new DtLogin(new PtString(adminName)));
 			env.setActAdministrator(adminName, aActAdministrator);
 			/* ENV
@@ -1161,7 +1154,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			DtFingerPrint aDtFingerPrint = new DtFingerPrint(aFingerPrintByte);
 			CtAuthenticated ctAuthenticatedInstance = cmpSystemCtAuthenticated
 					.get(aDtLogin.value.getValue());
-			if (ctAuthenticatedInstance != null){
+			if (true){
 				//PreP2
 				if(ctAuthenticatedInstance.vpIsLogged.getValue())
 					throw new Exception("User " + aDtLogin.value.getValue() + " is already logged in");

@@ -51,7 +51,7 @@ public class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl impleme
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAdministrator#oeAddCoordinator(lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin, lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword)
 	 */
-	synchronized public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, DtFingerPrint aFingerPrint) throws RemoteException, NotBoundException {
+	synchronized public PtBoolean oeAddCoordinator(DtCoordinatorID aDtCoordinatorID, DtLogin aDtLogin, DtPassword aDtPassword, EtExperience aEtExperience, byte[] aFingerPrint) throws RemoteException, NotBoundException {
 		if(getServerSideActor() !=null)
 			return ((ActAdministrator) getServerSideActor()).oeAddCoordinator(aDtCoordinatorID, aDtLogin, aDtPassword, aEtExperience, aFingerPrint);
 		else
