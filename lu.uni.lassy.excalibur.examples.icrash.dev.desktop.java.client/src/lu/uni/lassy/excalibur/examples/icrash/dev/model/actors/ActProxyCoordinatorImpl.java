@@ -239,14 +239,4 @@ public class ActProxyCoordinatorImpl extends ActProxyAuthenticatedImpl
 	public PtBoolean oeLogout() throws RemoteException, NotBoundException {
 		return super.oeLogout();
 	}
-
-	@Override
-	synchronized public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException, NotBoundException {
-		if (getServerSideActor() != null)
-			return ((ActCoordinator) getServerSideActor()).oeSendToPoliceHQ(
-					aDtCrisisID);
-		else
-			return new PtBoolean(false);
-	}
-
 }

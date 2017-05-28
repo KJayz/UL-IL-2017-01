@@ -19,6 +19,7 @@ import java.rmi.RemoteException;
 
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
@@ -51,6 +52,17 @@ public interface ActProxyAdministrator extends ActProxyAuthenticated {
 	 */
 	public PtBoolean oeDeleteCoordinator(DtCoordinatorID aDtCoordinatorID) throws RemoteException, NotBoundException;
 	
+	
+	/**
+	 * Evaluate a coordinator in the system using the parameters passed
+	 * 
+	 * @param aDtCoordinatorID The ID of the existing coordinator
+	 * @param aEtExperience The experience level that is to be assigned to the coordinator
+	 * @return The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 */
+	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) throws RemoteException, NotBoundException;
 	/**
 	 * A message received from the server side actor saying the coordinator was created .
 	 *

@@ -16,6 +16,7 @@ import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 // #Antoine
 //Librairies necessaires au traitement d'images et de fichiers
@@ -35,8 +36,11 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerNo
 import lu.uni.lassy.excalibur.examples.icrash.dev.controller.exceptions.ServerOfflineException;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIsActor;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.CtCrisis;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtCrisisStatus;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
@@ -44,6 +48,7 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.model.Message;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController;
 import lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.coordinator.CreateICrashCoordGUI;
 import javafx.scene.layout.GridPane;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -52,12 +57,19 @@ import javafx.event.EventHandler;
  */
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.util.Callback;
 /*
  * This is the end of the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
  */
@@ -102,6 +114,10 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     /** The button that shows the controls for deleting a coordinator */
     @FXML
     private Button bttnBottomAdminCoordinatorDeleteACoordinator;
+    
+    /** The button that allows the admin to set the Experience attribute of a coordinator */
+    @FXML
+    private Button bttnBottomAdminCoordinatorEvaluateCoordinator;
 
     /** The tableview of the recieved messages from the system */
     @FXML
@@ -129,6 +145,16 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
     @FXML
     void bttnBottomAdminCoordinatorDeleteACoordinator_OnClick(ActionEvent event) {
     	showCoordinatorScreen(TypeOfEdit.Delete);
+    }
+    
+    /**
+     * The button event that will show the controls for evaluating a coordinator
+     * 
+     * @param event The event type thrown
+     */
+    @FXML
+    void bttnBottomAdminCoordinatorEvaluateCoordinator_OnClick(ActionEvent event) {
+    	showCoordinatorScreen(TypeOfEdit.Evaluate);
     }
 
     /**
@@ -172,7 +198,10 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		Add,
 		
 		/** Deleting a coordinator. */
-		Delete
+		Delete,
+		
+		/** Evaluating a coordinator. */
+		Evaluate
 	}
 	
 	
@@ -257,6 +286,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		Button bttntypOK = null;
 		GridPane grdpn = new GridPane();
 		grdpn.add(txtfldUserID, 1, 1);
+		ComboBox<EtExperience> cmbbx = new ComboBox<EtExperience>();
 		switch(type){
 		case Add:
 			bttntypOK = new Button("Create");
@@ -273,7 +303,14 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		case Delete:
 			bttntypOK = new Button("Delete");
 			grdpn.add(bttntypOK, 1, 2);
-			break;		
+			break;	
+		case Evaluate:
+			bttntypOK = new Button("Evaluate");
+			cmbbx.setItems( FXCollections.observableArrayList( EtExperience.values()));
+			cmbbx.setValue(EtExperience.novice);
+			grdpn.add(cmbbx, 1, 2);
+			grdpn.add(bttntypOK, 1, 3);
+			
 		}
 		bttntypOK.setDefaultButton(true);
 		bttntypOK.setOnAction(new EventHandler<ActionEvent>() {
@@ -304,6 +341,8 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 							else
 								showErrorMessage("Unable to delete coordinator", "An error occured when deleting the coordinator");
 							break;
+						case Evaluate:
+							userController.oeEvaluateCoordinator(txtfldUserID.getText(), cmbbx.getValue());
 						}
 					} catch (ServerOfflineException | ServerNotBoundException | IncorrectFormatException e) {
 						showExceptionErrorMessage(e);
@@ -318,6 +357,7 @@ public class ICrashAdminGUIController extends AbstractAuthGUIController {
 		AnchorPane.setRightAnchor(grdpn, 0.0);
 		txtfldUserID.requestFocus();
 	}
+	
 	
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.view.gui.abstractgui.AbstractAuthGUIController#logon()

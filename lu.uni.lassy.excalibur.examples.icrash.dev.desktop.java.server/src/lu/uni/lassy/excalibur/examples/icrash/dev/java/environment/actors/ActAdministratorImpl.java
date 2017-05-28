@@ -110,6 +110,27 @@ public class ActAdministratorImpl extends ActAuthenticatedImpl implements
 		return res;
 		
 	}
+	
+	synchronized public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) throws RemoteException, NotBoundException {
+		Logger log = Log4JUtils.getInstance().getLogger();
+
+		Registry registry = LocateRegistry.getRegistry(RmiUtils.getInstance().getHost(),RmiUtils.getInstance().getPort());
+
+		//Gathering the remote object as it was published into the registry
+		IcrashSystem iCrashSys_Server = (IcrashSystem) registry
+				.lookup("iCrashServer");
+
+		//set up ActAuthenticated instance that performs the request
+		iCrashSys_Server.setCurrentRequestingAuthenticatedActor(this);
+
+		log.info("message ActAdministrator.oeEvaluateCoordinator sent to system");
+		PtBoolean res = iCrashSys_Server.oeEvaluateCoordinator(aDtCoordinatorID,aEtExperience);
+
+		if (res.getValue() == true)
+			log.info("operation oeEvaluateCoordinator successfully executed by the system");
+
+		return res;
+	}
 
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActAdministrator#ieCoordinatorAdded()

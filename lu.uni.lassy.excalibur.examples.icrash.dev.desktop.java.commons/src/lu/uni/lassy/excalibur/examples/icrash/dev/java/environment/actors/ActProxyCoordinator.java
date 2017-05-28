@@ -155,13 +155,4 @@ public interface ActProxyCoordinator extends ActProxyAuthenticated {
 	 */
 	public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException, NotBoundException;
 
-	/**
-	 * 
-	 * @param aDtCrisisID
-	 * @return
-	 * @throws RemoteException
-	 * @throws NotBoundException
-	 */
-	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException, NotBoundException;
-
 }

@@ -405,12 +405,6 @@ public interface IcrashSystem extends Remote {
 	 */
 	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
 
-	/**
-	 * 
-	 * @param aDtCrisisID
-	 * @return
-	 * @throws RemoteException
-	 */
-	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException; 
+	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience); 
 
 }

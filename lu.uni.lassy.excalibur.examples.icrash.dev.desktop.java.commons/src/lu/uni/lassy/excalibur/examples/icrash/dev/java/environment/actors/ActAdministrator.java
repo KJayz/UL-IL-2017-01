@@ -54,6 +54,17 @@ public interface ActAdministrator extends ActAuthenticated {
 			throws RemoteException, NotBoundException;
 	
 	/**
+	 * Evaluate an existing coordinator in the system
+	 * 
+	 * @param aDtCoordinatorID The ID of the existing coordinator
+	 * @param aEtExperience The experience value to set for the coordinator
+	 * @return The success of the method
+	 * @throws RemoteException Thrown if the server is offline
+	 * @throws NotBoundException Thrown if the server has not been bound correctly in RMI settings
+	 */
+	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) throws RemoteException, NotBoundException;
+	
+	/**
 	 * A message sent to the listening actor saying the coordinator was created .
 	 *
 	 * @return The success of the method

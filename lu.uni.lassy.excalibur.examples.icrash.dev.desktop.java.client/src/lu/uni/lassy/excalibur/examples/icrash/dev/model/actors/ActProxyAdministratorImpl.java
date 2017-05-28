@@ -67,6 +67,14 @@ public class ActProxyAdministratorImpl extends ActProxyAuthenticatedImpl impleme
 		else
 			return new PtBoolean(false);
 	}
+	
+	@Override
+	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) throws RemoteException, NotBoundException {
+		if(getServerSideActor() != null)
+			return ((ActAdministrator) getServerSideActor()).oeEvaluateCoordinator(aDtCoordinatorID,aEtExperience);
+		else
+			return new PtBoolean(false);
+	}
 
 	/* (non-Javadoc)
 	 * @see lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActProxyAdministrator#ieCoordinatorAdded()

@@ -154,17 +154,4 @@ public interface ActCoordinator extends ActAuthenticated {
 	 */
 	public PtBoolean ieSendAnAlert(CtAlert aCtAlert) throws RemoteException;
 
-	/**
-	 * 
-	 * @param aDtCrisisID
-	 * @return
-	 * @throws RemoteException
-	 * @throws NotBoundException
-	 */
-	public PtBoolean oeSendToPoliceHQ(DtCrisisID aDtCrisisID) throws RemoteException, NotBoundException;
-
-	
-		
-	
-	
 }

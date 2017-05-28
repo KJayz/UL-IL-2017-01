@@ -30,10 +30,12 @@ import lu.uni.lassy.excalibur.examples.icrash.dev.java.environment.actors.ActPro
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.design.JIntIs;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtCoordinatorID;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtFingerPrint;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtGrade;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtLogin;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.DtPassword;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.system.types.primary.EtExperience;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtBoolean;
+import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtInteger;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.types.stdlib.PtString;
 import lu.uni.lassy.excalibur.examples.icrash.dev.java.utils.Log4JUtils;
 import lu.uni.lassy.excalibur.examples.icrash.dev.model.actors.ActProxyAdministratorImpl;
@@ -130,6 +132,30 @@ public class AdminController extends AbstractUserController {
 				Log4JUtils.getInstance().getLogger().error(e);
 				throw new ServerNotBoundException();
 			}
+		}
+		return new PtBoolean(false);
+	}
+	
+	/**
+	 * 
+	 */
+	public PtBoolean oeEvaluateCoordinator(String coordinatorID, EtExperience aEtExperience) throws ServerOfflineException, ServerNotBoundException, IncorrectFormatException{
+		if(getUserType() == UserType.Admin) {
+			ActProxyAdministratorImpl actorAdmin = (ActProxyAdministratorImpl)getAuth();
+			DtCoordinatorID aDtCoordinatorID = new DtCoordinatorID(new PtString(coordinatorID));
+			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
+			ht.put(aDtCoordinatorID,  aDtCoordinatorID.value.getValue());
+			if(!aDtCoordinatorID.is().getValue())
+				return new PtBoolean(false);
+			try {
+				return actorAdmin.oeEvaluateCoordinator(aDtCoordinatorID,aEtExperience);
+			} catch (RemoteException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerOfflineException();
+			} catch (NotBoundException e) {
+				Log4JUtils.getInstance().getLogger().error(e);
+				throw new ServerNotBoundException();
+			}	
 		}
 		return new PtBoolean(false);
 	}
