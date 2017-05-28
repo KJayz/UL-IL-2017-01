@@ -68,6 +68,9 @@ CREATE TABLE `crises` (
   `criminal` varchar(200) DEFAULT NULL,
   `comment` varchar(80) DEFAULT NULL,
   `coordinator` varchar(80) DEFAULT NULL,
+  `coordinatorgrade` int(1) DEFAULT NULL,
+  `victimgrade` int(1) DEFAULT NULL,
+  `gradecoordinator` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -93,6 +96,7 @@ CREATE TABLE `coordinators` (
  `id` varchar(80) NOT NULL,
   `login` varchar(80) DEFAULT NULL,
   `pwd` varchar(80) DEFAULT NULL,
+  `xp` varchar(20) DEFAULT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
