@@ -334,6 +334,7 @@ public abstract class AbstractGUIController implements Initializable {
 		TableColumn<CtCoordinator, String> idCol = new TableColumn<CtCoordinator, String>("ID");
 		TableColumn<CtCoordinator, String> nameCol = new TableColumn<CtCoordinator, String>("Username");
 		TableColumn<CtCoordinator, String> passwordCol = new TableColumn<CtCoordinator, String>("Password");
+		TableColumn<CtCoordinator, String> expCol = new TableColumn<CtCoordinator, String>("Exp");
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
 				return new ReadOnlyObjectWrapper<String>(coord.getValue().id.value.getValue());
@@ -349,8 +350,14 @@ public abstract class AbstractGUIController implements Initializable {
 				return new ReadOnlyObjectWrapper<String>(coord.getValue().pwd.value.getValue());
 			}
 		});
+		expCol.setCellValueFactory(new Callback<CellDataFeatures<CtCoordinator, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCoordinator, String> coord) {
+				return new ReadOnlyObjectWrapper<String>(coord.getValue().exp.name());
+			}
+		});
 		tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(nameCol);
+		tblvw.getColumns().add(expCol);
 		if (showPassword)
 			tblvw.getColumns().add(passwordCol);
 		setColumnsSameWidth(tblvw);
@@ -462,6 +469,10 @@ public abstract class AbstractGUIController implements Initializable {
 		TableColumn<CtCrisis, String> criminalCol = new TableColumn<CtCrisis, String>("CriminalAct");
 		TableColumn<CtCrisis, String> commentCol = new TableColumn<CtCrisis, String>("Comment");
 		TableColumn<CtCrisis, String> statusCol = new TableColumn<CtCrisis, String>("Status");
+		TableColumn<CtCrisis, Integer> coordinatorGradeCol = new TableColumn<CtCrisis, Integer>("coordGrade");
+		TableColumn<CtCrisis, Integer> victimGradeCol = new TableColumn<CtCrisis, Integer>("victimGrade");
+		TableColumn<CtCrisis, String> gradedCoordinatorCol = new TableColumn<CtCrisis, String>("Grader");
+		
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
@@ -510,6 +521,22 @@ public abstract class AbstractGUIController implements Initializable {
 				return new ReadOnlyObjectWrapper<String>(crisis.getValue().type.name());
 			}
 		});
+		coordinatorGradeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Integer>, ObservableValue<Integer>>() {
+			public ObservableValue<Integer> call(CellDataFeatures<CtCrisis, Integer> crisis) {
+				return new ReadOnlyObjectWrapper<Integer>(crisis.getValue().coordinatorgrade.value.getValue());
+			}
+		});
+		victimGradeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Integer>, ObservableValue<Integer>>() {
+			public ObservableValue<Integer> call(CellDataFeatures<CtCrisis, Integer> crisis) {
+				return new ReadOnlyObjectWrapper<Integer>(crisis.getValue().victimgrade.value.getValue());
+			}
+		});
+		gradedCoordinatorCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().gradedcoordinator.value.getValue());
+			}
+		});
+		
 		tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(dateCol);
 		tblvw.getColumns().add(timeCol);
@@ -519,6 +546,9 @@ public abstract class AbstractGUIController implements Initializable {
 		tblvw.getColumns().add(criminalCol);
 		tblvw.getColumns().add(commentCol);
 		tblvw.getColumns().add(statusCol);
+		tblvw.getColumns().add(coordinatorGradeCol);
+		tblvw.getColumns().add(victimGradeCol);
+		tblvw.getColumns().add(gradedCoordinatorCol);
 		setColumnsSameWidth(tblvw);
 	}
 	
