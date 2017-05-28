@@ -390,7 +390,6 @@ public interface IcrashSystem extends Remote {
 	 * @param aDtGrade The grade to be passed.
 	 * @return The success of the method
 	 * @throws RemoteException Thrown if the server is offline
-	 * @throws NotBoundException Thrown if the server has not been bound correctly in the RMI settings 
 	 */
 	public PtBoolean oeSetGradeByCoordinator(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
 
@@ -405,6 +404,14 @@ public interface IcrashSystem extends Remote {
 	 */
 	public PtBoolean oeGradeCrisis(DtCrisisID aDtCrisisID, DtGrade aDtGrade) throws RemoteException;
 
+	/**
+	 * Assigns a new experience value to a coordinator
+	 * 
+	 * @param aDtCoordinatorID The ID of the coordinator
+	 * @param aEtExperience The value of the experience level
+	 * @return The success of the method
+	 * @throws RemoteException
+	 */
 	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) throws RemoteException; 
 
 }
