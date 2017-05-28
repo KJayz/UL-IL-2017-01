@@ -154,8 +154,9 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     @FXML
     private Button bttnChangeStatusCrisis;
     
+    /** The button that allows a user to grade a crisis. */
     @FXML
-    private Button SetGradeByCoordinator;
+    private Button bttnSetGradeByCoordinator;
 
     /** The combobox that allows a user to select which crisis status type to view. */
     @FXML
@@ -264,6 +265,11 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     	validateAlert();
     }
     
+    /**
+     * Button event that deals with grading a crisis
+     * 
+     * @param event The event type fired
+     */
     @FXML
     void bttnSetGradeByCoordinator_OnClick(ActionEvent event) {
     	SetGradeByCoordinator();
