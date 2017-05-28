@@ -153,6 +153,9 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     /** The button that allows a user to change the status of a crisis. */
     @FXML
     private Button bttnChangeStatusCrisis;
+    
+    @FXML
+    private Button SetGradeByCoordinator;
 
     /** The combobox that allows a user to select which crisis status type to view. */
     @FXML
@@ -259,6 +262,11 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     @FXML
     void bttnValidateAlert_OnClick(ActionEvent event) {
     	validateAlert();
+    }
+    
+    @FXML
+    void bttnSetGradeByCoordinator_OnClick(ActionEvent event) {
+    	SetGradeByCoordinator();
     }
     
     /*
@@ -380,7 +388,7 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 							showWarningIncorrectInformationEntered(e);
 						}
 					}
-					//User cancelled the dialog
+					//User cancel(led the dialog
 					return new PtBoolean(true);
 				}
 			});
@@ -393,6 +401,51 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
 			}
 		}
 		populateCrisis();
+	}
+	
+	private void SetGradeByCoordinator() {
+		CtCrisis crisis = (CtCrisis)getObjectFromTableView(tblvwCrisis);
+		if (crisis != null)
+		{
+			Dialog<PtBoolean> dialog = new Dialog<PtBoolean>();
+			TextField txtfldCtCrisisID = new TextField();
+			txtfldCtCrisisID.setText(crisis.id.value.getValue());
+			txtfldCtCrisisID.setDisable(true);
+			TextArea txtarCtCrisisCoordinatorGrade = new TextArea();
+			txtarCtCrisisCoordinatorGrade.setPromptText("Enter in grade");
+			ButtonType bttntypGradeOK = new ButtonType("Grade", ButtonData.OK_DONE);
+			ButtonType bttntypeGradeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+			GridPane grdpn = new GridPane();
+			grdpn.add(txtfldCtCrisisID, 1, 1);
+			grdpn.add(txtarCtCrisisCoordinatorGrade, 1, 2);
+			dialog.getDialogPane().setContent(grdpn);
+			dialog.getDialogPane().getButtonTypes().add(bttntypeGradeCancel);
+			dialog.getDialogPane().getButtonTypes().add(bttntypGradeOK);
+			dialog.setResultConverter(new Callback<ButtonType, PtBoolean>(){
+
+				@Override
+				public PtBoolean call(ButtonType param) {
+					if (param.getButtonData() == ButtonData.OK_DONE && checkIfAllDialogHasBeenFilledIn(grdpn)){
+						try {
+							return userController.reportOnCrisis(crisis.id.value.getValue(), txtarCtCrisisCoordinatorGrade.getText());
+						} catch (ServerOfflineException | ServerNotBoundException e) {
+							showServerOffLineMessage(e);
+						} catch (IncorrectFormatException e) {
+							showWarningIncorrectInformationEntered(e);
+						}
+					}
+					//User cancel(led the dialog
+					return new PtBoolean(true);
+				}
+			});
+			dialog.initOwner(window);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			Optional<PtBoolean> result = dialog.showAndWait();
+			if (result.isPresent()){
+				if (!result.get().getValue())
+					showWarningMessage("Unable to set grade of crisis", "Unable to set the grade of the crisis, please try again");
+			}
+		}
 	}
 	
 	/**
