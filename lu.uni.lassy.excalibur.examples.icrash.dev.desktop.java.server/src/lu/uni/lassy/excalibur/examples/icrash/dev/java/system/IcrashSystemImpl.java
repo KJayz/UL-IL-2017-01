@@ -1450,25 +1450,26 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 
 	@Override
 	public PtBoolean oeEvaluateCoordinator(DtCoordinatorID aDtCoordinatorID, EtExperience aEtExperience) {
-		try{
-			//PreP1
-			isSystemStarted();
-			//PreP2
-			isAdminLoggedIn();
-			
-			CtAuthenticated ctAuth = getCtCoordinator(aDtCoordinatorID);
-			if (ctAuth != null && ctAuth instanceof CtCoordinator) {
-				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
-				
-				//PostF1
-				aCtCoordinator.exp = aEtExperience;
-				return new PtBoolean(true);
-			}
-			return new PtBoolean(false);
-		} catch (Exception e) {
-			log.error("Exception in oeEvaluateCoordinator..." + e);
-			return new PtBoolean(false);
-		}
+//		try{
+//			//PreP1
+//			isSystemStarted();
+//			//PreP2
+//			isAdminLoggedIn();
+//			
+//			CtAuthenticated ctAuth = getCtCoordinator(aDtCoordinatorID);
+//			if (ctAuth != null && ctAuth instanceof CtCoordinator) {
+//				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
+//				
+//				//PostF1
+//				aCtCoordinator.exp = aEtExperience;
+//				return new PtBoolean(true);
+//			}
+//			return new PtBoolean(false);
+//		} catch (Exception e) {
+//			log.error("Exception in oeEvaluateCoordinator..." + e);
+//			return new PtBoolean(false);
+//		}
+		return new PtBoolean(false);
 	}
 }
 	
