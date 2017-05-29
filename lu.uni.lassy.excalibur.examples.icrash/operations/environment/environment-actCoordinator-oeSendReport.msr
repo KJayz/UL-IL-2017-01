@@ -35,7 +35,11 @@ import icrash.concepts.primarytypes.classes
 			and self.rnActor = TheActor
 			
 			/* PreF01 */
-			
+			TheSystem.rnctReport->select(id.eq(AdtCrisisID))
+  			= ColctReport
+ 			 and ColctReport->size().eq(1)
+ 			 /* PreF02 */
+ 			 ColctReport->any(true).
 			
 		}
 		postF{
@@ -43,6 +47,9 @@ import icrash.concepts.primarytypes.classes
  	   	 let TheActor:actAdministrator in
  		 self.rnActor.rnSystem = TheSystem
  		 and self.rnActor = TheActor
+ 		 /* PostF01 */
+ 		 TheSystem.rnctReport->select(id.eq(AdtCrisisID))
+  			= ColctReport
 		}
 
 		}

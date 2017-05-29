@@ -46,6 +46,7 @@ postF{
   let TheActor:actAdministrator in
   self.rnActor.rnSystem = TheSystem
   and self.rnActor = TheActor
+  
 /* PostF01 */
 
   TheSystem.rnctCrisis->select(id.eq(AdtCrisisID))
