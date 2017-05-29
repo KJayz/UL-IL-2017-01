@@ -947,6 +947,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 	
 				//PostF1
 				theCrisis.status = EtCrisisStatus.handled;
+				theCrisis.gradedcoordinator = theCtCoordinator.id;
 				DbCrises.updateCrisis(theCrisis);
 				
 				assCtCrisisCtCoordinator.put(theCrisis, theCtCoordinator);
