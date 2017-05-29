@@ -17,8 +17,25 @@ import icrash.concepts.primarytypes.datatypes
         self.value() = selfval
         AetCrisisType.value() = compareval
         ( if
-          ( selfval = compareval
-          	or selfval > compareval
+          (self = novice and AetCrisisType = very small
+          	
+          	or self = beginner and AetCrisisType = very small
+          	or self = beginner and AetCrisisType = small
+          	
+          	or self = experienced and AetCrisisType = very small
+          	or self = experienced and AetCrisisType = small
+          	or self = experienced and AetCrisisType = medium
+          	
+          	or self = master and AetCrisisType = very small
+          	or self = master and AetCrisisType = small
+          	or self = master and AetCrisisType = medium
+          	or self = master and AetCrisisType = huge
+          	
+          	or self = expert and AetCrisisType = very small
+          	or self = expert and AetCrisisType = small
+          	or self = expert and AetCrisisType = medium
+          	or self = expert and AetCrisisType = huge
+          	or self = expert and AetCrisisType = insane
           )
           then (TheResult = true)
           else (TheResult = false)
