@@ -177,8 +177,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 					if (checkDataAndSend(Math.floor(sldrHourPicker.getValue()), Math.floor(sldrMinutePicker.getValue()), Math.floor(sldrSecondPicker.getValue()),
 							dtpckr.getValue().getYear(), dtpckr.getValue().getMonthValue(), dtpckr.getValue().getDayOfMonth(),
 							lstvwPersonType.getSelectionModel().getSelectedItem(), txtfldPhone.getText(),
-							txtfldLatitude.getText(), txtfldLongitude.getText(),txtarCriminalAct.getText(),
-							txtarComment.getText()).getValue())
+							txtfldLatitude.getText(), txtfldLongitude.getText(), txtarCriminalAct.getText(),txtarComment.getText()).getValue())
 						resetForm(grdpn);
 					else
 						showWarningMessage("Error", "Unable to create alert");
@@ -207,7 +206,7 @@ public class CommunicationCompanyGUIController extends AbstractGUIController imp
 	 * @param comment The message sent by the human about the accident
 	 * @return The success of the method
 	 */
-	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String criminal,String comment){
+	public PtBoolean checkDataAndSend(double hour, double minute, double second, int year, int month, int day, EtHumanKind humanKind, String phoneNumber, String latitude, String longitude, String criminal ,String comment){
 		try {
 			return comcompanyController.oeAlert(humanKind, year, month, day, (int)hour, (int)minute, (int)second, phoneNumber, latitude, longitude,criminal, comment);
 		} catch (ServerOfflineException | InvalidHumanKindException | ServerNotBoundException e) {

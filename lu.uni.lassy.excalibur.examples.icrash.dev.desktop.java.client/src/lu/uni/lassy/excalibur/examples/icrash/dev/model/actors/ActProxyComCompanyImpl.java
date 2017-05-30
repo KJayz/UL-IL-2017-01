@@ -101,7 +101,7 @@ public class ActProxyComCompanyImpl extends UnicastRemoteObject implements
 
 		if (serverSideActor != null)
 			return serverSideActor.oeAlert(aEtHumanKind, aDtDate, aDtTime,
-					aDtPhoneNumber, aDtGPSLocation, aDtComment);
+					aDtPhoneNumber, aDtGPSLocation,aDtCriminalAct, aDtComment);
 		else
 			return new PtBoolean(false);
 	}

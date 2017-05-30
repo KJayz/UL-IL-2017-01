@@ -61,6 +61,8 @@ import javafx.stage.Stage;
  * This is the import section to be replaced by modifications in the ICrash.fxml document from the sample skeleton controller
  */
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -174,12 +176,33 @@ public class ICrashCoordGUIController extends AbstractAuthGUIController {
     @FXML
     private Button bttnCoordLogoff;
 
+    
     /**
      * Button event that deals with changing the status of a crisis
      *
      * @param event The event type fired, we do not need it's details
      */
     @FXML
+    private Button bttnSendReport;
+
+    
+    @FXML
+    void bttnSendReport_OnClick(ActionEvent event) {
+    	sendReport();
+    }
+    
+    private void sendReport() {
+		
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Information");
+    	alert.setHeaderText(null);
+    	alert.setContentText("The Report has been send to the Comcomapy!");
+
+    	alert.showAndWait();
+		
+	}
+
+	@FXML
     void bttnChangeStatusCrisis_OnClick(ActionEvent event) {
     	changeCrisisStatus();
     }
