@@ -1,0 +1,22 @@
+/*
+@author kwinten
+@date Tue May 30 18:59:37 CEST 2017
+*/
+
+
+@@Operation
+icrash.concepts.primarytypes.datatypes.etExperience.ge
+//parameters
+@parameter
+icrash.concepts.primarytypes.datatypes.etExperience.ge.AetCrisisType
+""
+@endParameters
+
+@description "
+ "
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//example
+@example" "

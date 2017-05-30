@@ -14,8 +14,6 @@ import icrash.concepts.primarytypes.datatypes
 		postF{ 
         let TheResult: ptBoolean in
         
-        self.value() = selfval
-        AetCrisisType.value() = compareval
         ( if
           (self = novice and AetCrisisType = very small
           	

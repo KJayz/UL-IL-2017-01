@@ -1458,7 +1458,7 @@ public class IcrashSystemImpl extends UnicastRemoteObject implements
 			isAdminLoggedIn();
 			
 			CtAuthenticated ctAuth = getCtCoordinator(aDtCoordinatorID);
-			if (ctAuth != null && ctAuth instanceof CtCoordinator) {
+			if (ctAuth != null && ctAuth instanceof CtCoordinator) {	
 				CtCoordinator aCtCoordinator = (CtCoordinator)ctAuth;
 				
 				//PostF1

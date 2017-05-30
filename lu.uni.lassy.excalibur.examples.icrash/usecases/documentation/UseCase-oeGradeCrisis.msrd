@@ -1,0 +1,27 @@
+/*
+@author kwinten
+@date Tue May 30 18:59:39 CEST 2017
+*/
+
+
+@@Use Case Subfunction icrash.usecases.subfunctions.oeGradeCrisis
+@description ""
+@parameter icrash.usecases.subfunctions.oeGradeCrisis.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeGradeCrisis.AdtGrade ""
+@endParameters
+@protocolCondition
+"
+"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"
+"
+@endPostConditions
+@additionalInformation
+"
+none
+"

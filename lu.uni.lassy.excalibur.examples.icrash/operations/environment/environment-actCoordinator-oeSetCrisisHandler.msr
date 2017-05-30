@@ -38,7 +38,7 @@ operation: actCoordinator.outactCoordinator.oeSetCrisisHandler(AdtCrisisID:dtCri
   and ColctCrisis->size().eq(1)
   
 /*PreF02 */ 
-  TheActor.rnctCoordinator.xp.ge(ColctCrisis->any(true).crisistype)
+  TheActor.rnctCoordinator.xp.ge(ColctCrisis->any(true).type)
   }
 
 postF{
