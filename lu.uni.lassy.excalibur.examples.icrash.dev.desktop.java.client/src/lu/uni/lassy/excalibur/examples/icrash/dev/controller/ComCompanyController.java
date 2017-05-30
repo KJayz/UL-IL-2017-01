@@ -118,7 +118,7 @@ public class ComCompanyController implements HasListeners{
 			DtGPSLocation aDtGPSLocation = new DtGPSLocation(new DtLatitude(new PtReal(dblLatitude)), new DtLongitude(new PtReal(dblLongitude)));
 			DtPhoneNumber aDtPhoneNumber = new DtPhoneNumber(new PtString(phoneNumber));
 			DtComment aDtComment = new DtComment(new PtString(comment));
-			DtCriminalAct aDtCriminalAct = new DtCriminalAct (new PtString (criminal));
+			DtCriminalAct aDtCriminalAct = new DtCriminalAct(new PtString(criminal));
 			DtDate aDtDate = new DtDate(new DtYear(new PtInteger(year)), new DtMonth(new PtInteger(month)), new DtDay(new PtInteger(day)));
 			DtTime aDtTime = new DtTime(new DtHour(new PtInteger(hour)), new DtMinute(new PtInteger(minute)), new DtSecond(new PtInteger(second)));
 			Hashtable<JIntIs, String> ht = new Hashtable<JIntIs, String>();
